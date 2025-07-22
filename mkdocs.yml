@@ -1,11 +1,11 @@
 # 站点信息
-site_name: 个人编程知识库
-site_url: https://hidetoshidekisugi.github.io/Hidetoshi-Program-Knowledge-Database/ # (请替换为您的 GitHub Pages 地址)
+site_name: Self Program Knowledge Database
+site_url: https://hidetoshi20.github.io/Program-Knowledge-Database/ # (请替换为您的 GitHub Pages 地址)
 site_author: Hidetoshi Dekisugi # (请替换为您的名字)
-site_description: "一个关于编程、网络、数据库等主题的个人知识库。"
+site_description: "A comprehensive knowledge database for programming languages, databases, networks, Node.js, web front-end, operating systems, and Web 3.0." # (可以自定义)
 
 # 仓库信息
-repo_url: https://github.com/hidetoshidekisugi/Hidetoshi-Program-Knowledge-Database # (请替换为您的 GitHub 仓库地址)
+repo_url: https://github.com/Hidetoshi20/Program-Knowledge-Database # (请替换为您的 GitHub 仓库地址)
 repo_name: Hidetoshi-Program-Knowledge-Database # (请替换为您的仓库名称)
 edit_uri: "" # 隐藏 "编辑此页" 的链接
 
