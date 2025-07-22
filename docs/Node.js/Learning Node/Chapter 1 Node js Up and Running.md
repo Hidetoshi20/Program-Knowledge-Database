@@ -90,7 +90,7 @@ Unless there’s a compelling reason, I recommend installing Node using sudo.
 
 ### Note
 
-At one time there was a security concern about running the Node package manager (npm), covered in [Chapter 4](\l), with root privilege. However, those security issues have since been addressed.
+At one time there was a security concern about running the Node package manager (npm), covered in Chapter 4, with root privilege. However, those security issues have since been addressed.
 
 ## Partnering Node with WebMatrix on Windows 7
 
@@ -109,13 +109,13 @@ The other approach to using Node on Windows—in this case, Windows 7—is by in
 3. Install iisnode for IIS Express 7.x, which enables Node applications with IIS on Windows.
 4. Install Node templates for WebMatrix; these simplify Node development.
 
-You install WebMatrix using the Microsoft Web Platform Installer, as shown in [Figure 1-1](\l). The tool also installs IIS Express, which is a developer version of Microsoft’s web server. Download WebMatrix from http://www.microsoft.com/web/webmatrix/.
+You install WebMatrix using the Microsoft Web Platform Installer, as shown in Figure 1-1. The tool also installs IIS Express, which is a developer version of Microsoft’s web server. Download WebMatrix from http://www.microsoft.com/web/webmatrix/.
 
 ![](Chapter%201%20Node%20js%20Up%20and%20Running/image1.png)
 
 Figure 1-1. Installing WebMatrix in Windows 7
 
-Once the WebMatrix installation is finished, install the latest version of Node using the installer provided at the primary Node site (http://nodejs.org/#download). Installation is one-click, and once you’re finished you can open a Command window and type **node** to check for yourself that the application is operational, as shown in [Figure 1-2](\l).
+Once the WebMatrix installation is finished, install the latest version of Node using the installer provided at the primary Node site (http://nodejs.org/#download). Installation is one-click, and once you’re finished you can open a Command window and type **node** to check for yourself that the application is operational, as shown in Figure 1-2.
 
 For Node to work with IIS in Windows, install iisnode, a native IIS 7.x module created and maintained by Tomasz Janczuk. As with Node, installation is a snap using the prebuilt installation package, available at https://github.com/tjanczuk/iisnode. There are x86 and x64 installations, but for x64, you’ll need to install both.
 
@@ -123,7 +123,7 @@ For Node to work with IIS in Windows, install iisnode, a native IIS 7.x module c
 
 Figure 1-2. Testing in the Command window to ensure Node is properly installed
 
-During the iisnode installation, a window may pop up telling you that you’re missing the Microsoft Visual C++ 2010 Redistributable Package, as shown in [Figure 1-3](\l). If so, you’ll need to install this package, making sure you get the one that matches the version of iisnode you’re installing—either the x86 package (available at http://www.microsoft.com/download/en/details.aspx?id=5555) or the x64 package (available at http://www.microsoft.com/download/en/details.aspx?id=14632), or both. Once you’ve installed the requisite package, run the iisnode installation again.
+During the iisnode installation, a window may pop up telling you that you’re missing the Microsoft Visual C++ 2010 Redistributable Package, as shown in Figure 1-3. If so, you’ll need to install this package, making sure you get the one that matches the version of iisnode you’re installing—either the x86 package (available at http://www.microsoft.com/download/en/details.aspx?id=5555) or the x64 package (available at http://www.microsoft.com/download/en/details.aspx?id=14632), or both. Once you’ve installed the requisite package, run the iisnode installation again.
 
 ![](Chapter%201%20Node%20js%20Up%20and%20Running/image3.png)
 
@@ -133,15 +133,15 @@ If you want to install the iisnode samples, open a Command window with administr
 
 To complete the WebMatrix/Node setup, download and install the Node templates for WebMatrix, created by Steve Sanderson and found at https://github.com/SteveSanderson/Node-Site-Templates-for-WebMatrix.
 
-You can test that everything works by running WebMatrix, and in the opening pages, select the “Site from Template” option. In the page that opens, shown in [Figure 1-4](\l), you’ll see two Node template options: one for Express (introduced in [Chapter 7](\l)) and one for creating a basic, empty site configured for Node. Choose the latter option, giving the site a name of First Node Site, or whatever you want to use.
+You can test that everything works by running WebMatrix, and in the opening pages, select the “Site from Template” option. In the page that opens, shown in Figure 1-4, you’ll see two Node template options: one for Express (introduced in Chapter 7) and one for creating a basic, empty site configured for Node. Choose the latter option, giving the site a name of First Node Site, or whatever you want to use.
 
 ![](Chapter%201%20Node%20js%20Up%20and%20Running/image4.png)
 
 Figure 1-4. Creating a new Node site using a template in WebMatrix
 
-[Figure 1-5](\l) shows WebMatrix once the site has been generated. Click the Run button, located in the top left of the page, and a browser page should open with the ubiquitous “Hello, world!” message displayed.
+Figure 1-5 shows WebMatrix once the site has been generated. Click the Run button, located in the top left of the page, and a browser page should open with the ubiquitous “Hello, world!” message displayed.
 
-If you’re running the Windows Firewall, the first time you run a Node application, you may get a warning like that shown in [Figure 1-6](\l). You need to let the Firewall know this application is acceptable by checking the “Private networks” option and then the “Allow access” button. You want to restrict communication to just your private network on your development machine.
+If you’re running the Windows Firewall, the first time you run a Node application, you may get a warning like that shown in Figure 1-6. You need to let the Firewall know this application is acceptable by checking the “Private networks” option and then the “Allow access” button. You want to restrict communication to just your private network on your development machine.
 
 ![](Chapter%201%20Node%20js%20Up%20and%20Running/image5.png)
 
@@ -203,7 +203,7 @@ Now that you have Node installed, it’s time to jump into your first applicatio
 
 As is typical for testing out any new development environment, language, or tool, the first application we’ll create is “Hello, World”—a simple application that prints out a greeting to whomever accesses it.
 
-[Example 1-1](\l) shows all the text needed to create Hello, World in Node.
+Example 1-1 shows all the text needed to create Hello, World in Node.
 
 Example 1-1. Hello, World in Node
 
@@ -259,11 +259,11 @@ Exiting the terminal window will also kill the process.
 
 ### Note
 
-In [Chapter 16](\l), I cover how to create a persistent Node application installation.
+In Chapter 16, I cover how to create a persistent Node application installation.
 
 You won’t be able to start another Node application listening at the same port: you can run only one Node application against one port at a time. If you’re running Apache at port 80, you won’t be able to run the Node application at this port, either. You must use a different port for each application.
 
-You can also add *helloworld.js* as a new file to the existing WebMatrix website you created earlier, if you’re using WebMatrix. Just open the site, choose the “New File...” option from the menu bar, and add the text shown in [Example 1-1](\l) to the file. Then click the Run button.
+You can also add *helloworld.js* as a new file to the existing WebMatrix website you created earlier, if you’re using WebMatrix. Just open the site, choose the “New File...” option from the menu bar, and add the text shown in Example 1-1 to the file. Then click the Run button.
 
 Warning
 
@@ -273,7 +273,7 @@ WebMatrix overrides the port in the application. When you run the application, y
 
 I’ll get more in depth on the anatomy of Node applications in the next couple of chapters, but for now, let’s take a closer look at the Hello, World application.
 
-Returning to the text in [Example 1-1](\l), the first line of code is:
+Returning to the text in Example 1-1, the first line of code is:
 
 var http = require('http');
 
@@ -364,7 +364,7 @@ Though the application doesn’t process the requests in parallel, depending on 
 
 ## Reading a File Asynchronously
 
-To demonstrate Node’s asynchronous nature, [Example 1-2](\l) modifies the Hello, World application from earlier in the chapter. Instead of just typing out “Hello, World!” it actually opens up the previously created *helloworld.js* and outputs the contents to the client.
+To demonstrate Node’s asynchronous nature, Example 1-2 modifies the Hello, World application from earlier in the chapter. Instead of just typing out “Hello, World!” it actually opens up the previously created *helloworld.js* and outputs the contents to the client.
 
 Example 1-2. Asynchronously opening and writing out contents of a file
 
@@ -402,11 +402,11 @@ res.end();
 
 console.log('Server running on 8124/');
 
-A new module, File System (fs), is used in this example. The File System module wraps standard POSIX file functionality, including opening up and accessing the contents from a file. The method used is readFile. In [Example 1-2](\l), it’s passed the name of the file to open, the encoding, and an anonymous function.
+A new module, File System (fs), is used in this example. The File System module wraps standard POSIX file functionality, including opening up and accessing the contents from a file. The method used is readFile. In Example 1-2, it’s passed the name of the file to open, the encoding, and an anonymous function.
 
-The two instances of asynchronous behavior I want to point out in [Example 1-2](\l) are the callback function that’s attached to the readFile method, and the callback function attached to the listen method.
+The two instances of asynchronous behavior I want to point out in Example 1-2 are the callback function that’s attached to the readFile method, and the callback function attached to the listen method.
 
-As discussed earlier, the listen method tells the HTTP server object to begin listening for connections on the given port. Node doesn’t block, waiting for the connection to be established, so if we need to do something once the connection is established, we provide a callback function, as shown in [Example 1-2](\l).
+As discussed earlier, the listen method tells the HTTP server object to begin listening for connections on the given port. Node doesn’t block, waiting for the connection to be established, so if we need to do something once the connection is established, we provide a callback function, as shown in Example 1-2.
 
 When the connection is established, a listening event is emitted, which then invokes the callback function, outputting a message to the console.
 
@@ -422,9 +422,9 @@ Most people who have developed with JavaScript have done so in client applicatio
 
 Our job is made easier because of the Node event loop and being able to put our trust in asynchronous function calls. However, we’re no longer in Kansas, Dorothy—we are developing for a different environment.
 
-To demonstrate the differences in this new environment, I created two new applications: one as a service, and one to test the new service. [Example 1-3](\l) shows the code for the service application.
+To demonstrate the differences in this new environment, I created two new applications: one as a service, and one to test the new service. Example 1-3 shows the code for the service application.
 
-In the code, a function is called, synchronously, to write out numbers from 1 to 100. Then a file is opened, similar to what happened in [Example 1-2](\l), but this time the name of the file is passed in as a query string parameter. In addition, the file is opened only after a timer event.
+In the code, a function is called, synchronously, to write out numbers from 1 to 100. Then a file is opened, similar to what happened in Example 1-2, but this time the name of the file is passed in as a query string parameter. In addition, the file is opened only after a timer event.
 
 Example 1-3. New service that prints out a sequence of numbers and then the contents of a file
 
@@ -518,11 +518,11 @@ The browser sending multiple requests can impact your application if you’re ex
 
 So far, all we’ve done is test our Node applications from a browser. This isn’t really putting much stress on the asynchronous nature of the Node application.
 
-[Example 1-4](\l) contains the code for a very simple test application. All it does is use the HTTP module to request the example server several times in a loop. The requests aren’t asynchronous. However, we’ll also be accessing the service using the browser as we run the test program. Both, combined, asynchronously test the application.
+Example 1-4 contains the code for a very simple test application. All it does is use the HTTP module to request the example server several times in a loop. The requests aren’t asynchronous. However, we’ll also be accessing the service using the browser as we run the test program. Both, combined, asynchronously test the application.
 
 ### Note
 
-I’ll cover creating asynchronous testing applications in [Chapter 14](\l).
+I’ll cover creating asynchronous testing applications in Chapter 14.
 
 Example 1-4. Simple application to call the new Node application 2,000 times
 
@@ -569,7 +569,7 @@ As the test application is running, access the application using your browser. I
 - The numbers 1 through 100 printed out
 - The contents of the text file—in this case, *main.txt*
 
-Now, let’s mix things up a bit. In [Example 1-3](\l), make the counter global rather than local to the loop function, and start the application again. Then run the test program and access the page in the browser.
+Now, let’s mix things up a bit. In Example 1-3, make the counter global rather than local to the loop function, and start the application again. Then run the test program and access the page in the browser.
 
 The results have definitely changed. Rather than the numbers starting at 1 and going to 100, they start at numbers like 2,601 and 26,301. They still print out the next sequential 99 numbers, but the starting value is different.
 
@@ -593,7 +593,7 @@ Node isn’t all asynchronous function calls. Some objects may provide both sync
 
 The Node event loop and callback functions have two major benefits.
 
-First, the application can easily scale, since a single thread of execution doesn’t have an enormous amount of overhead. If we were to create a PHP application similar to the Node application in [Example 1-3](\l), the user would see the same page—but your system would definitely notice the difference. If you ran the PHP application in Apache with the default prefork MPM, each time the application was requested, it would have to be handled in a separate child process. Chances are, unless you have a significantly loaded system, you’ll only be able to run—at most—a couple of hundred child processes in parallel. More than that number of requests means that a client needs to wait for a response.
+First, the application can easily scale, since a single thread of execution doesn’t have an enormous amount of overhead. If we were to create a PHP application similar to the Node application in Example 1-3, the user would see the same page—but your system would definitely notice the difference. If you ran the PHP application in Apache with the default prefork MPM, each time the application was requested, it would have to be handled in a separate child process. Chances are, unless you have a significantly loaded system, you’ll only be able to run—at most—a couple of hundred child processes in parallel. More than that number of requests means that a client needs to wait for a response.
 
 A second benefit to Node is that you minimize resource usage, but without having to resort to multithreaded development. In other words, you don’t have to create a thread-safe application. If you’ve ever developed a thread-safe application previously, you’re probably feeling profoundly glad at this statement.
 

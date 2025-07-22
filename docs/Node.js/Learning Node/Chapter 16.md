@@ -20,13 +20,13 @@ Deploying a Node application has several prerequisites:
 - You must monitor your application’s performance, and be ready to adjust application parameters if the performance begins to degrade.
 - You need to take the fullest advantage of your server’s resources.
 
-[Chapter 14](\l) covered unit, acceptance, and performance testing, and [Chapter 15](\l) covered security. Here, we’ll look at implementing the other necessary components of deploying a Node application to production on your own server.
+Chapter 14 covered unit, acceptance, and performance testing, and Chapter 15 covered security. Here, we’ll look at implementing the other necessary components of deploying a Node application to production on your own server.
 
 ## Writing That package.json File
 
-Each Node module has a *package.json* file that contains information about the module, as well as code dependencies the module might have. I briefly touched on the *package.json* file with the discussion of modules in [Chapter 4](\l). Now I want to take a closer look at this file, especially as you can use it to deploy your application.
+Each Node module has a *package.json* file that contains information about the module, as well as code dependencies the module might have. I briefly touched on the *package.json* file with the discussion of modules in Chapter 4. Now I want to take a closer look at this file, especially as you can use it to deploy your application.
 
-As its name implies, *package.json* must be proper JSON. You can jump-start the *package.json* process by running npm init and answering the questions. When I ran npm init in [Chapter 4](\l), I didn’t provide any dependencies, but most Node applications will have them.
+As its name implies, *package.json* must be proper JSON. You can jump-start the *package.json* process by running npm init and answering the questions. When I ran npm init in Chapter 4, I didn’t provide any dependencies, but most Node applications will have them.
 
 As a case in point, the widget application we built over several chapters in the book is an example of an application, albeit a small one, that we might consider deploying. What would its *package.json* look like?
 
@@ -62,7 +62,7 @@ though it is simpler to use the single value format.
 
 If there are other contributors to the application, you can list them out in an array with the contributors keyword, with each person identified in the same manner as the author.
 
-If the Widget Factory had a binary application, you could list it with the bin property. An example of the use of bin is in the Nodeload (covered in [Chapter 14](\l)) *package.json*:
+If the Widget Factory had a binary application, you could list it with the bin property. An example of the use of bin is in the Nodeload (covered in Chapter 14) *package.json*:
 
 "bin": {
 
@@ -117,7 +117,7 @@ On my Ubuntu system, I first set the browser configuration option to Lynx:
 
 npm config set browser lynx
 
-Then I opened the docs for Passport, the authentication module covered in [Chapter 15](\l):
+Then I opened the docs for Passport, the authentication module covered in Chapter 15:
 
 npm docs passport
 
@@ -165,7 +165,7 @@ There are some publishing values, including private, to ensure that the applicat
 
 And publishConfig is used for setting npm configuration values.
 
-By the time we’re done, the Widget Factory *package.json* file looks like [Example 16-1](\l).
+By the time we’re done, the Widget Factory *package.json* file looks like Example 16-1.
 
 Example 16-1. The package.json file for the Widget Factory application
 
@@ -317,7 +317,7 @@ options: []
 child.on('exit', this.callback);
 child.start();
 
-Additionally, you can use Forever with Nodemon (introduced in [Chapter 14](\l)), not only to restart the application if it unexpectedly fails, but also to ensure that the application is refreshed if the source is updated. You simply wrap Nodemon within Forever and specify the --exitcrash option to ensure that if the application crashes, Nodemon exits cleanly, passing control to Forever:
+Additionally, you can use Forever with Nodemon (introduced in Chapter 14), not only to restart the application if it unexpectedly fails, but also to ensure that the application is refreshed if the source is updated. You simply wrap Nodemon within Forever and specify the --exitcrash option to ensure that if the application crashes, Nodemon exits cleanly, passing control to Forever:
 
 forever nodemon --exitcrash httpserver.js
 
@@ -438,9 +438,9 @@ In this last section, I’m going to briefly introduce some of the more commonly
 
 If your environment is Windows-based, and you’ve used Windows functionality previously (such as developing applications with .NET), then you’re definitely going to want to explore hosting a Node application in Windows Azure. To make it simpler to post Node applications to Azure, you can use the Cloud9 IDE (integrated development environment) in order to post a project.
 
-Cloud9 is a web-based IDE that can, among other things, interface with your GitHub account. When you open the application, you’re presented with the project management interface, as shown in [Figure 16-1](\l).
+Cloud9 is a web-based IDE that can, among other things, interface with your GitHub account. When you open the application, you’re presented with the project management interface, as shown in Figure 16-1.
 
-From the project management page, clicking on a project opens it into a separate page, where you can select any of the project files for editing, as shown in [Figure 16-2](\l). You can clone an existing project in GitHub directly from the IDE.
+From the project management page, clicking on a project opens it into a separate page, where you can select any of the project files for editing, as shown in Figure 16-2. You can clone an existing project in GitHub directly from the IDE.
 
 ![](Chapter%2016/image1.jpeg)
 

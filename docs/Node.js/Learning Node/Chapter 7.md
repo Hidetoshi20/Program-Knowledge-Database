@@ -6,7 +6,7 @@ Framework software provides infrastructure support that allows us to create webs
 
 The terms *frameworks* and *libraries* have been used interchangeably, because both provide reusable functionality that can be utilized by developers in a variety of applications. They both offer discrete capabilities as well, but they differ in that frameworks usually also provide an infrastructure that can impact the overall design of your application.
 
-There are some very sound frameworks in Node.js, including Connect (covered in [Chapter 6](\l)), though I see Connect more as middleware than a framework. Two Node frameworks that stand out—because of support, capability, and popularity—are Express and Geddy. If you ask people about the differences between the two, they’ll say Express is more Sinatra-like, while Geddy is more like Rails. What this means in non-Ruby terms is that Geddy is MVC (Model-View-Controller)–based, while Express is, well, more RESTful (more on what that means later in the chapter).
+There are some very sound frameworks in Node.js, including Connect (covered in Chapter 6), though I see Connect more as middleware than a framework. Two Node frameworks that stand out—because of support, capability, and popularity—are Express and Geddy. If you ask people about the differences between the two, they’ll say Express is more Sinatra-like, while Geddy is more like Rails. What this means in non-Ruby terms is that Geddy is MVC (Model-View-Controller)–based, while Express is, well, more RESTful (more on what that means later in the chapter).
 
 There’s also a new kid in town, Flatiron, which previously existed as independent components but is now pulled together into a comprehensive product. Another framework popular at the node-toolbox website is Ember.js, formerly known as SproutCore 2.0. This in addition to CoreJS, which is also MVC-based.
 
@@ -74,7 +74,7 @@ You’ve created your first Express application. Now let’s see what we need to
 
 # The app.js File in More Detail
 
-[Example 7-1](\l) shows the source code for the *app.js* file we just ran.
+Example 7-1 shows the source code for the *app.js* file we just ran.
 
 Example 7-1. Source code for the app.js file
 
@@ -138,9 +138,9 @@ res.render('index', { title: 'Express' });
 
 };
 
-A little digging in the code shows us that the Express response object’s render method renders a given view with a set of options—in this case, a title of “Express.” I’ll cover this more later in this chapter, in the section [Routing](\l).
+A little digging in the code shows us that the Express response object’s render method renders a given view with a set of options—in this case, a title of “Express.” I’ll cover this more later in this chapter, in the section Routing.
 
-Now let’s return to *app.js*. After we’ve included all the necessary modules, we create an Express object instance, and then configure it with a set of options via the configure method. (For more information on configure, see the upcoming sidebar [Setting the Application Mode](\l).) An optional first parameter to configure is a string identifying whether the application is of a specific environment (such as development or production). When an environment is not provided, the application is run in every environment. A second call to configure in *app.js* is specific only for the development environment. You can call configure for every possible environment, if you wish. The one that matches the environment is the one that will be processed.
+Now let’s return to *app.js*. After we’ve included all the necessary modules, we create an Express object instance, and then configure it with a set of options via the configure method. (For more information on configure, see the upcoming sidebar Setting the Application Mode.) An optional first parameter to configure is a string identifying whether the application is of a specific environment (such as development or production). When an environment is not provided, the application is run in every environment. A second call to configure in *app.js* is specific only for the development environment. You can call configure for every possible environment, if you wish. The one that matches the environment is the one that will be processed.
 
 ### Setting the Application Mode
 
@@ -164,7 +164,7 @@ You can use any term you want. By default, the environment is development.
 
 To ensure that your application always runs in a specific mode, add a NODE_ENV export to the user profile file.
 
-The second function to configure is an anonymous function enclosing several middleware references. Some of this is familiar (for instance, the use method) from our work with the Connect middleware in [Chapter 6](\l); this is not unexpected, since the same person, TJ Holowaychuk, is the primary author of both applications. What isn’t familiar are the two app.set method calls.
+The second function to configure is an anonymous function enclosing several middleware references. Some of this is familiar (for instance, the use method) from our work with the Connect middleware in Chapter 6; this is not unexpected, since the same person, TJ Holowaychuk, is the primary author of both applications. What isn’t familiar are the two app.set method calls.
 
 The app.set method is used to define various settings, such as the location for application views:
 
@@ -208,7 +208,7 @@ I covered logger, favicon, and static in the previous chapter, but not bodyParse
 
 ### Note
 
-Full REST (Representational State Transfer) support means support for HTTP PUT and DELETE, as well as GET and POST. We’ll discuss this more in the upcoming section [Routing and HTTP Verbs](\l).
+Full REST (Representational State Transfer) support means support for HTTP PUT and DELETE, as well as GET and POST. We’ll discuss this more in the upcoming section Routing and HTTP Verbs.
 
 The last configuration item is app.router. This optional middleware contains all the defined routes and performs the lookup for any given route. If omitted, the first call to app.get—app.post, etc.—mounts the routes instead.
 
@@ -216,7 +216,7 @@ Just as with Connect, the order of middleware is important. The favicon middlewa
 
 ### Note
 
-There’s more on Express/Connect in the section [A Closer Look at the Express/Connect Partnership](\l), later in the chapter.
+There’s more on Express/Connect in the section A Closer Look at the Express/Connect Partnership, later in the chapter.
 
 The second call to configure, specific to development mode, adds support for the Express errorHandler. I’ll cover it and other error handling techniques next.
 
@@ -334,9 +334,9 @@ Now it’s time to return to the key component of Express: routing.
 
 # Routing
 
-The core of all the Node frameworks—in fact, many modern frameworks—is the concept of routing. I covered a standalone routing module in [Chapter 6](\l), and demonstrated how you can use it to extract a service request from a URL.
+The core of all the Node frameworks—in fact, many modern frameworks—is the concept of routing. I covered a standalone routing module in Chapter 6, and demonstrated how you can use it to extract a service request from a URL.
 
-Express routing is managed using the HTTP verbs GET, PUT, DELETE, and POST. The methods are named accordingly, such as app.get for GET and app.post for POST. In the generated application, shown in [Example 7-1](\l), app.get is used to access the application root ('/'), and is passed a request listener—in this instance, the routes index function—to process the data request.
+Express routing is managed using the HTTP verbs GET, PUT, DELETE, and POST. The methods are named accordingly, such as app.get for GET and app.post for POST. In the generated application, shown in Example 7-1, app.get is used to access the application root ('/'), and is passed a request listener—in this instance, the routes index function—to process the data request.
 
 The routes.index function is simple:
 
@@ -384,7 +384,7 @@ The *index.jade* file is what provides the content for the body defined in *layo
 
 ### Note
 
-I cover the use of Jade templates and CSS with Express applications in [Chapter 8](\l).
+I cover the use of Jade templates and CSS with Express applications in Chapter 8.
 
 To recap what’s happening in this application:
 
@@ -420,9 +420,9 @@ Just as we hoped, the application now writes the content to the console as well 
 
 ## Routing Path
 
-The route, or route path, given in [Example 7-1](\l) is just a simple / (forward slash) signifying the root address. Express compiles all routes to a regular expression object internally, so you can use strings with special characters, or just use regular expressions directly in the path strings.
+The route, or route path, given in Example 7-1 is just a simple / (forward slash) signifying the root address. Express compiles all routes to a regular expression object internally, so you can use strings with special characters, or just use regular expressions directly in the path strings.
 
-To demonstrate, I created a bare-bones routing path application in [Example 7-2](\l) that listens for three different routes. If a request is made to the server for one of these routes, the parameters from the request are returned to the sender using the Express response object’s send method.
+To demonstrate, I created a bare-bones routing path application in Example 7-2 that listens for three different routes. If a request is made to the server for one of these routes, the parameters from the request are returned to the sender using the Express response object’s send method.
 
 Example 7-2. Simple application to test different routing path patterns
 
@@ -572,7 +572,7 @@ In the previous examples, we used app.get to process incoming requests. This met
 
 As noted earlier, REST means Representational State Transfer. *RESTful* is a term used to describe any web application that applies HTTP and REST principles: directory-structured URLs, statelessness, data transferred in an Internet media type (such as JSON), and the use of HTTP methods (GET, POST, DELETE, and PUT).
 
-Let’s say our application is managing that most infamous of products, the widget. To create a new widget, we’ll need to create a web page providing a form that gets the information about the new widget. We can generate this form with the application, and I’ll demonstrate this approach in [Chapter 8](\l), but for now we’ll use a static web page, shown in [Example 7-3](\l).
+Let’s say our application is managing that most infamous of products, the widget. To create a new widget, we’ll need to create a web page providing a form that gets the information about the new widget. We can generate this form with the application, and I’ll demonstrate this approach in Chapter 8, but for now we’ll use a static web page, shown in Example 7-3.
 
 Example 7-3. Sample HTML form to post widget data to the Express application
 
@@ -624,7 +624,7 @@ The page takes advantage of the new HTML5 attributes required and pattern to pro
 
 The widget form requires a widget name, price (with an associated regular expression to validate the data structure in the pattern attribute), and description. Browser-based validation should ensure we get the three values, and that the price is properly formatted as US currency.
 
-In the Express application, we’re just going to persist new widgets in memory, as we want to focus purely on the Express technology at this time. As each new widget is posted to the application, it’s added to an array of widgets via the app.post method. Each widget can be accessed by its application-generated identifier via the app.get method. [Example 7-4](\l) shows the entire application.
+In the Express application, we’re just going to persist new widgets in memory, as we want to focus purely on the Express technology at this time. As each new widget is posted to the application, it’s added to an array of widgets via the app.post method. Each widget can be accessed by its application-generated identifier via the app.get method. Example 7-4 shows the entire application.
 
 Example 7-4. Express application to add and display widgets
 
@@ -798,7 +798,7 @@ Next, we’ll need to add functionality to process these two new verbs. The upda
 
 To complete our widget application, we’ll also add in an index page for accessing widgets without any identifier or operation. All the index page does is list all the widgets currently in the memory store.
 
-[Example 7-5](\l) shows the complete widget application with all the new functionality shown in bold text.
+Example 7-5 shows the complete widget application with all the new functionality shown in bold text.
 
 Example 7-5. Widget application, modified to include the ability to edit and delete a widget and list all widgets
 
@@ -915,7 +915,7 @@ Handling all the functionality your application needs in one file would work for
 
 Ruby on Rails has inspired much of the fundamental nature of Node, providing an underlying design we can use to incorporate support for MVC into our Express application. Express has already incorporated the use of routes (fundamental to Rails), so we’re halfway there. Now we need to provide the second component—the separation of model, view, and controller. For the controller component, we’re going to need a set of defined actions for each object we maintain.
 
-Rails supports several different actions that map a route (verb and path) to a data action. The mapping is based on another concept, CRUD (create, read, update, and delete—the four fundamental persistent storage functions). The Rails website provides a guide that supplies an excellent table showing the mapping we need to create in our application. I extrapolated from the Rails table to create [Table 7-1](\l), which shows the mapping for maintaining widgets.
+Rails supports several different actions that map a route (verb and path) to a data action. The mapping is based on another concept, CRUD (create, read, update, and delete—the four fundamental persistent storage functions). The Rails website provides a guide that supplies an excellent table showing the mapping we need to create in our application. I extrapolated from the Rails table to create Table 7-1, which shows the mapping for maintaining widgets.
 
 Table 7-1. REST/route/CRUD mapping for maintaining widgets
 
@@ -983,7 +983,7 @@ res.send('Widget ' + req.body.widgetname + ' added with id ' + indx);
 
 Each function still receives the request and resource object. The only difference is that there isn’t a direct route-to-function mapping.
 
-[Example 7-6](\l) shows the new *widgets.js* file in the *controllers* subdirectory. Two of the methods, new and edit, are placeholders for now, to be addressed in [Chapter 8](\l). We’re still using an in-memory data store, and I simplified the widget object, removing the description field to make the application easier for testing.
+Example 7-6 shows the new *widgets.js* file in the *controllers* subdirectory. Two of the methods, new and edit, are placeholders for now, to be addressed in Chapter 8. We’re still using an in-memory data store, and I simplified the widget object, removing the description field to make the application easier for testing.
 
 Example 7-6. The widgets controller
 
@@ -1095,7 +1095,7 @@ res.send ('Updated ' + req.params.id);
 
 Notice that edit and new are both GET methods, as their only purpose is to serve a form. It’s the associated create and update methods that actually change the data: the former is served as POST, the latter as PUT.
 
-To map the routes to the new functions, I created a second module, maproutecontroller, with one exported function, mapRoute. It has two parameters—the Express app object and a prefix representing the mapped controller object (in this case, widgets). It uses the prefix to access the widgets controller object, and then maps the methods it knows are in this object (because the object is a controller and has a fixed set of required methods) to the appropriate route. [Example 7-7](\l) has the code for this new module.
+To map the routes to the new functions, I created a second module, maproutecontroller, with one exported function, mapRoute. It has two parameters—the Express app object and a prefix representing the mapped controller object (in this case, widgets). It uses the prefix to access the widgets controller object, and then maps the methods it knows are in this object (because the object is a controller and has a fixed set of required methods) to the appropriate route. Example 7-7 has the code for this new module.
 
 Example 7-7. Function to map routes to controller object methods
 
@@ -1135,7 +1135,7 @@ app.del(prefix + '/:id', prefixObj.destroy);
 
 };
 
-The mapRoute method is a very simple function, and should be recognizable when you compare the routes given to those in [Table 7-1](\l).
+The mapRoute method is a very simple function, and should be recognizable when you compare the routes given to those in Table 7-1.
 
 Last, we finish the main application that pulls all these pieces together. Thankfully, it’s a lot cleaner now that we don’t have all the routing method calls. To handle a possibly growing number of objects, I use an array to contain the prefix name for each. If we add a new object, we add a new prefix to the array.
 
@@ -1143,7 +1143,7 @@ Last, we finish the main application that pulls all these pieces together. Thank
 
 Express comes with an MVC application in the *examples* subdirectory. It uses a routine that accesses the *controllers* directory and infers the prefix names from the filenames it finds. With this approach, we don’t have to change the application file to add a new object.
 
-[Example 7-8](\l) shows the finished application. I added back in the original routes.index view, except I changed the title value in the *routes/index.js* file from “Express” to “Widget Factory.”
+Example 7-8 shows the finished application. I added back in the original routes.index view, except I changed the title value in the *routes/index.js* file from “Express” to “Widget Factory.”
 
 Example 7-8. Application that makes use of the new MVC infrastructure to maintain widgets
 
@@ -1249,7 +1249,7 @@ Once you’ve verified the data was changed, go ahead and delete the new record,
 
 curl --request DELETE http://examples.burningbird.net:3000/widgets/2
 
-Now that we have the controller component of the MVC, we need to add the view components, which I cover in [Chapter 8](\l). Before moving on, though, read the sidebar [Beyond Basic Express](\l) for some final tips.
+Now that we have the controller component of the MVC, we need to add the view components, which I cover in Chapter 8. Before moving on, though, read the sidebar Beyond Basic Express for some final tips.
 
 ### Beyond Basic Express
 

@@ -23,7 +23,7 @@ When thinking of what’s necessary to build a simple but functional static file
 7. Write the file to the response.
 8. Wait for the next request.
 
-Creating an HTTP server and reading files requires the HTTP and File System modules. The Path module will also come in handy, because it has a way of checking to make sure a file exists before trying to open it for reading. In addition, we’ll want to define a global variable for the base directory, or use the predefined __dirname (more on this in the upcoming sidebar [Why Not Use __dirname?](\l)).
+Creating an HTTP server and reading files requires the HTTP and File System modules. The Path module will also come in handy, because it has a way of checking to make sure a file exists before trying to open it for reading. In addition, we’ll want to define a global variable for the base directory, or use the predefined __dirname (more on this in the upcoming sidebar Why Not Use __dirname?).
 
 The top of the application has the following code at this point:
 
@@ -97,7 +97,7 @@ console.log(err);
 
 The read stream has two events of interest: open and error. The open event is sent when the stream is ready, and the error if a problem occurs. The application calls the pipe method in the callback function for the open event.
 
-At this point, the static file server looks like the application in [Example 6-1](\l).
+At this point, the static file server looks like the application in Example 6-1.
 
 Example 6-1. A simple static file web server
 
@@ -247,7 +247,7 @@ What doesn’t work, though, is when we access a directory instead of a file. Wh
 
 We not only need to check if the resource being accessed exists, but we also need to check whether it’s a file or a directory. If it’s a directory being accessed, we can either display its contents, or we can output an error—it’s the developer’s choice.
 
-The final version of a minimal static file server, in [Example 6-2](\l), uses fs.stats to check for the existence of the requested object and whether it’s a file. If the resource doesn’t exist, an HTTP status of 404 is returned. If the resource exists, but it’s a directory, an HTTP error status code of 403—forbidden—is returned. In all cases, the request is handled properly.
+The final version of a minimal static file server, in Example 6-2, uses fs.stats to check for the existence of the requested object and whether it’s a file. If the resource doesn’t exist, an HTTP status of 404 is returned. If the resource exists, but it’s a directory, an HTTP error status code of 403—forbidden—is returned. In all cases, the request is handled properly.
 
 Example 6-2. Final version of minimal static file server
 
@@ -349,11 +349,11 @@ video/mp4
 
 video/mp4
 
-Note the proper handling of the content types. [Figure 6-1](\l) shows one web page that contains a video element loaded into Chrome, and the network access displayed in the browser’s console.
+Note the proper handling of the content types. Figure 6-1 shows one web page that contains a video element loaded into Chrome, and the network access displayed in the browser’s console.
 
 ![](Chapter%206/image1.jpeg)
 
-Figure 6-1. Displaying the browser console while loading a web page served by the simple static file server from [Example 6-2](\l)
+Figure 6-1. Displaying the browser console while loading a web page served by the simple static file server from Example 6-2
 
 You get a better feel for how the read stream works when you load a page that has a video element and begin to play it. The browser grabs the read stream output at a speed it can manage, filling its own internal buffer, and then pauses the output. If you close the server while the video content is playing, the video continues to play...up to the point where it exhausts its current video buffer. The video element then goes blank because the read stream is no longer available. It’s actually a little fascinating to see how well everything works with so little effort on our part.
 
@@ -373,7 +373,7 @@ Though the application works when tested with several different documents, it’
 
 ### Note
 
-[Chapter 12](\l) revisits this application and covers what additional effort is needed to create a fully functional HTML5 video server.
+Chapter 12 revisits this application and covers what additional effort is needed to create a fully functional HTML5 video server.
 
 There are many little gotchas that can trip us when it comes to creating a static file server. Another approach is to use an existing static file server. In the next section, we’ll look at one included in the Connect middleware.
 
@@ -393,11 +393,11 @@ Currently, there are two major middleware applications used in Node applications
 
 The JSGI site is at http://wiki.commonjs.org/wiki/JSGI/Level0/A/Draft2. The JSGI-node GitHub site is at https://github.com/persvr/jsgi-node.
 
-I’m covering only Connect in this book, for three reasons. One, it’s simpler to use. JSGI would require us to spend too much time trying to understand how it works in general (independent of its use with Node), whereas with Connect, we can jump right in. Two, Connect provides middleware support for Express, a very popular framework (covered in [Chapter 7](\l)). Three, and perhaps most importantly, over time Connect has seemingly floated to the top as best in breed. It’s the most used middleware if the npm registry is any indication.
+I’m covering only Connect in this book, for three reasons. One, it’s simpler to use. JSGI would require us to spend too much time trying to understand how it works in general (independent of its use with Node), whereas with Connect, we can jump right in. Two, Connect provides middleware support for Express, a very popular framework (covered in Chapter 7). Three, and perhaps most importantly, over time Connect has seemingly floated to the top as best in breed. It’s the most used middleware if the npm registry is any indication.
 
 ### Note
 
-You will find an introduction to Connect 2.0 at http://tjholowaychuk.com/post/18418627138/connect-2-0. The Connect source is at https://github.com/senchalabs/Connect. (For more information on installation, see the sidebar [Working with Alpha Modules](\l)).
+You will find an introduction to Connect 2.0 at http://tjholowaychuk.com/post/18418627138/connect-2-0. The Connect source is at https://github.com/senchalabs/Connect. (For more information on installation, see the sidebar Working with Alpha Modules).
 
 ## Connect Basics
 
@@ -419,7 +419,7 @@ You can use npm to install directly from the Git repository. You can also use Gi
 
 Be aware that if you install a module directly from source, and you perform an npm update, npm will overwrite the module with what it considers to be the “latest” module—even if you are using a newer version of the module.
 
-In [Example 6-3](\l), I created a simple server application using Connect, and using two of the middleware[[1](\l)] bundled with Connect: connect.logger and connect.favicon. The logger middleware logs all requests to a stream—in this case, the default STDIO.output stream—and the favicon middleware serves up the *favicon.ico* file. The application includes the middleware using the use method on the Connect request listener, which is then passed as a parameter to the HTTP object’s createServer method.
+In Example 6-3, I created a simple server application using Connect, and using two of the middleware[1] bundled with Connect: connect.logger and connect.favicon. The logger middleware logs all requests to a stream—in this case, the default STDIO.output stream—and the favicon middleware serves up the *favicon.ico* file. The application includes the middleware using the use method on the Connect request listener, which is then passed as a parameter to the HTTP object’s createServer method.
 
 Example 6-3. Incorporating the logger and favicon middleware into a Connect-based application
 
@@ -443,7 +443,7 @@ http.createServer(app).listen(8124);
 
 You can use any number of middleware—either built in with Connect or provided by a third party—by just including additional use states.
 
-Rather than create the Connect request listener first, we can also incorporate the Connect middleware directly into the createServer method, as shown in [Example 6-4](\l).
+Rather than create the Connect request listener first, we can also incorporate the Connect middleware directly into the createServer method, as shown in Example 6-4.
 
 Example 6-4. Incorporating Connect bundled middleware into an application directly
 
@@ -469,11 +469,11 @@ Connect comes bundled with at least 20 middleware. I’m not going to cover them
 
 ### Note
 
-Other examples of the Connect middleware are utilized in the Express applications created in [Chapter 7](\l).
+Other examples of the Connect middleware are utilized in the Express applications created in Chapter 7.
 
 connect.static
 
-Earlier, we created a simplified static file server from scratch. Connect provides middleware that implements the functionality of that server, and more. It is extremely easy to use—you just specify the connect.static middleware option, passing in the root directory for all requests. The following implements most of what we created in [Example 6-2](\l), but with far less code:
+Earlier, we created a simplified static file server from scratch. Connect provides middleware that implements the functionality of that server, and more. It is extremely easy to use—you just specify the connect.static middleware option, passing in the root directory for all requests. The following implements most of what we created in Example 6-2, but with far less code:
 
 var connect = require('connect'),
 
@@ -559,7 +559,7 @@ Chrome/17.0.963.56 Safari/535.11"
 
 Chrome/17.0.963.56 Safari/535.11"
 
-This is very informative, but also very verbose. It’s also very familiar, resembling the default log format we get with a server such as Apache. You can change the format, and you can also direct the output to a file. [Example 6-5](\l) makes use of connect.logger, directing the log entries to a file and setting the format to the dev predefined format.
+This is very informative, but also very verbose. It’s also very familiar, resembling the default log format we get with a server such as Apache. You can change the format, and you can also direct the output to a file. Example 6-5 makes use of connect.logger, directing the log entries to a file and setting the format to the dev predefined format.
 
 Example 6-5. Setting logging to a file and changing logger format
 
@@ -613,7 +613,7 @@ connect.parseCookie and connect.cookieSession
 
 The scratch file server didn’t provide any functionality to work with HTTP cookies, nor did it handle session state. Luckily for us, both are handled with Connect middleware.
 
-Chances are, one of your first JavaScript client applications was to create an HTTP request cookie. The connect.parseCookie middleware provides the functionality that allows us to access the cookie data on the server. It parses the cookie header, populating req.cookies with the cookie/data pairs. [Example 6-6](\l) shows a simple web server that extracts the cookie for a key value of username and writes a somewhat creepy but relevant message to stdout.
+Chances are, one of your first JavaScript client applications was to create an HTTP request cookie. The connect.parseCookie middleware provides the functionality that allows us to access the cookie data on the server. It parses the cookie header, populating req.cookies with the cookie/data pairs. Example 6-6 shows a simple web server that extracts the cookie for a key value of username and writes a somewhat creepy but relevant message to stdout.
 
 Example 6-6. Accessing an HTTP request cookie, and using it for a console message
 
@@ -641,11 +641,11 @@ http.createServer(app).listen(8124);
 
 console.log('Server listening on port 8124');
 
-I’ll get into the use of the anonymous function, and especially the purpose of next, in the section [Custom Connect Middleware](\l). Focusing for now on connect.cookieParser, we see that this middleware intercepts the incoming request, pulls the cookie data out of the header, and stores the data in the request object. The anonymous function then accesses the username data from the cookies object, outputting it to the console.
+I’ll get into the use of the anonymous function, and especially the purpose of next, in the section Custom Connect Middleware. Focusing for now on connect.cookieParser, we see that this middleware intercepts the incoming request, pulls the cookie data out of the header, and stores the data in the request object. The anonymous function then accesses the username data from the cookies object, outputting it to the console.
 
 To create an HTTP response cookie, we pair connect.parseCookie with connect.cookieSession, which provides secure session persistence. Text is passed as a string to the connect.cookieParser function, providing a secret key for session data. The data is added directly to the session object. To clear the session data, set the session object to null.
 
-[Example 6-7](\l) creates two functions—one to clear the session data, and one to output a tracking message—that are used as middleware for incoming requests. They’re added as middleware in addition to logger, parseCookie, cookieSession, and static. The user is prompted for his or her username in the client page, which is then used to set a request cookie. On the server, the username and the number of resources the person has accessed in the current session are persisted via an encrypted response cookie.
+Example 6-7 creates two functions—one to clear the session data, and one to output a tracking message—that are used as middleware for incoming requests. They’re added as middleware in addition to logger, parseCookie, cookieSession, and static. The user is prompted for his or her username in the client page, which is then used to set a request cookie. On the server, the username and the number of resources the person has accessed in the current session are persisted via an encrypted response cookie.
 
 Example 6-7. Using a session cookie to track resource accesses
 
@@ -715,7 +715,7 @@ http.createServer(app).listen(8124);
 
 console.log('Server listening on port 8124');
 
-[Figure 6-2](\l) shows a web page accessed through the server application in [Example 6-8](\l). The JavaScript console is open to display both cookies. Note that the response cookie, unlike the request, is encrypted.
+Figure 6-2 shows a web page accessed through the server application in Example 6-8. The JavaScript console is open to display both cookies. Note that the response cookie, unlike the request, is encrypted.
 
 ![](Chapter%206/image2.png)
 
@@ -723,11 +723,11 @@ Figure 6-2. JavaScript console open in Chrome, displaying request and response c
 
 The number of documents the user accesses is tracked, either until the user accesses the */clear* URL (in which case the session object is set to null) or closes the browser, ending the session.
 
-[Example 6-7](\l) also made use of a couple of custom middleware functions. In the next (and final) section on Connect, we’ll discuss how these work with Connect, and how to create a third-party middleware.
+Example 6-7 also made use of a couple of custom middleware functions. In the next (and final) section on Connect, we’ll discuss how these work with Connect, and how to create a third-party middleware.
 
 ## Custom Connect Middleware
 
-In [Example 6-7](\l) in the previous section, we created two functions as Connect middleware in order to process incoming requests before the final static server. The three parameters passed to the functions are the HTTP request and response objects, and next, a callback function. These three form the signature for a Connect middleware function.
+In Example 6-7 in the previous section, we created two functions as Connect middleware in order to process incoming requests before the final static server. The three parameters passed to the functions are the HTTP request and response objects, and next, a callback function. These three form the signature for a Connect middleware function.
 
 To get a closer look at how Connect middleware works, let’s examine one used in earlier code, connect.favicon. This is nothing more than a simple function to either serve the default *favicon.ico* or provide a custom path:
 
@@ -741,7 +741,7 @@ The source code for connect.favicon, especially when compared with other source 
 
 return function(req, res, next)
 
-The next callback, passed as the last parameter to the function, is called if the middleware does not process the current request, or doesn’t process it completely. The next callback is also called if the middleware has an error, and an error object is returned as the parameter, as shown in [Example 6-8](\l).
+The next callback, passed as the last parameter to the function, is called if the middleware does not process the current request, or doesn’t process it completely. The next callback is also called if the middleware has an error, and an error object is returned as the parameter, as shown in Example 6-8.
 
 Example 6-8. The favicon Connect middleware
 
@@ -821,7 +821,7 @@ You’ve seen how you can create a custom Connect middleware directly in the app
 
 To create an external Connect middleware, create the module as you would any other module, but make sure it has all the pieces that Connect requires—specifying the three parameters (req, res, and next), and that it calls next if it doesn’t completely handle the request.
 
-[Example 6-9](\l) creates a Connect middleware that checks to see if the requested file exists and that it is a file (not a directory). If the request is a directory, it returns a 403 status code and a custom message. If the file doesn’t exist, it returns a 404 status code and, again, a custom message. If neither happens, then it calls next to trigger the Connect middleware into invoking the next function (in this case, connect.static).
+Example 6-9 creates a Connect middleware that checks to see if the requested file exists and that it is a file (not a directory). If the request is a directory, it returns a 403 status code and a custom message. If the file doesn’t exist, it returns a 404 status code and, again, a custom message. If neither happens, then it calls next to trigger the Connect middleware into invoking the next function (in this case, connect.static).
 
 Example 6-9. Creating a custom error handler middleware module
 
@@ -897,9 +897,9 @@ http.createServer(connect()
 
 ).listen(8124);
 
-Connect does have an errorHandler function, but it doesn’t serve the purpose we’re trying to achieve. Rather, its purpose is to provide a formatted output of an exception. You’ll see it in use with an Express application in [Chapter 7](\l).
+Connect does have an errorHandler function, but it doesn’t serve the purpose we’re trying to achieve. Rather, its purpose is to provide a formatted output of an exception. You’ll see it in use with an Express application in Chapter 7.
 
-There are several other bundled middleware, as well as a significant number of third-party middleware you can use with Connect. In addition, Connect forms the middleware layer for the Express application framework, discussed in [Chapter 7](\l). First, though, let’s take a quick look at two other types of services necessary for many Node applications: routers and proxies.
+There are several other bundled middleware, as well as a significant number of third-party middleware you can use with Connect. In addition, Connect forms the middleware layer for the Express application framework, discussed in Chapter 7. First, though, let’s take a quick look at two other types of services necessary for many Node applications: routers and proxies.
 
 # Routers
 
@@ -994,7 +994,7 @@ parse(request);
 
 If the request matches any of the existing route handler functions, that function is called.
 
-In [Example 6-10](\l), I created a simple application that looks for any given category, and an optional publication and publication item. It prints out to the console, the action specified in the request.
+In Example 6-10, I created a simple application that looks for any given category, and an optional publication and publication item. It prints out to the console, the action specified in the request.
 
 Example 6-10. Using Crossroads to route URL request into specific actions
 
@@ -1052,7 +1052,7 @@ Accessing all entries of category history and pub journal
 
 Accessing item 174 of pub journal of category history
 
-To match how something like Drupal works, with its combination of type of object and identifier, [Example 6-11](\l) uses another Crossroads method, matched.add, to map a route handler to a specific route.
+To match how something like Drupal works, with its combination of type of object and identifier, Example 6-11 uses another Crossroads method, matched.add, to map a route handler to a specific route.
 
 Example 6-11. Mapping a route handler to a given route
 
@@ -1169,7 +1169,7 @@ It can’t get much simpler than this. If you want to run the proxy in the backg
 
 I’ll demonstrate some of the http-proxy capabilities with WebSockets and HTTPS later in the book, but for now, we’ll pull together the technologies demonstrated in this chapter—a static file server, the Connect middleware, the Crossroads router, and the http-proxy proxy—to create one last example, so you can try a working application that combines all these pieces.
 
-In [Example 6-12](\l), I’m using the http-proxy to test for a dynamic incoming request (the request URL starts with /node/). If a match is found, the router proxies the request to one server, which uses the Crossroads router to parse out the relevant data. If the request isn’t for a dynamic resource, the proxy then routes the request to a static file server that’s utilizing several Connect middleware, including logger, favicon, and static.
+In Example 6-12, I’m using the http-proxy to test for a dynamic incoming request (the request URL starts with /node/). If a match is found, the router proxies the request to one server, which uses the Crossroads router to parse out the relevant data. If the request isn’t for a dynamic resource, the proxy then routes the request to a static file server that’s utilizing several Connect middleware, including logger, favicon, and static.
 
 Example 6-12. Combining Connect, Crossroads, and http-proxy to handle dynamic and static content requests
 
@@ -1267,4 +1267,4 @@ GET /html5media/chapter2/bigbuckposter.jpg 304 1ms
 
 I wouldn’t say we’re halfway to our own CMS (content management system), but we’re getting the tools we need if we wanted to build one. But then, why build our own when we can use Node-enabled frameworks (covered in the next chapter)?
 
-[[1](\l)] Connect refers to the individual middleware options as just “middleware.” I follow its convention in this chapter.
+[1] Connect refers to the individual middleware options as just “middleware.” I follow its convention in this chapter.

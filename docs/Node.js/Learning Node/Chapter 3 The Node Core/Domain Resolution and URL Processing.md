@@ -46,7 +46,7 @@ ns5.linode.com
 ns4.linode.com
 ```
 
-We used the URL module in [Example 1-3](\l) in [Chapter 1](\l). This simple module provides a way of parsing a URL and returning an object with all of the URL components. Passing in the following URL:
+We used the URL module in Example 1-3 in Chapter 1. This simple module provides a way of parsing a URL and returning an object with all of the URL components. Passing in the following URL:
 
 ```jsx
 var url = require('url');

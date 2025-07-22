@@ -102,9 +102,9 @@ The latter two command lines do have results, which are printed out by REPL.
 
 ### Note
 
-I’ll demonstrate how to create your own custom REPL—one that doesn’t output undefined—in the section [Custom REPL](\l).
+I’ll demonstrate how to create your own custom REPL—one that doesn’t output undefined—in the section Custom REPL.
 
-To end the REPL session, either press Ctrl-C twice, or Ctrl-D once. We’ll cover other ways to end the session later, in [REPL Commands](\l).
+To end the REPL session, either press Ctrl-C twice, or Ctrl-D once. We’ll cover other ways to end the session later, in REPL Commands.
 
 # Benefits of REPL: Getting a Closer Understanding of JavaScript Under the Hood
 
@@ -254,7 +254,7 @@ I’m not replicating what was displayed in REPL; I’ll leave that for you to t
 
 ### Note
 
-There’s more on global in [Chapter 3](\l).
+There’s more on global in Chapter 3.
 
 You can use the up and down arrow keys to traverse through the commands you’ve typed into REPL. This can be a handy way of reviewing what you’ve done, as well as a way of editing what you’ve done, though in a somewhat limited capacity.
 
@@ -328,7 +328,7 @@ I’m absolutely useless when it comes to regular expressions, and have to tweak
 
 Luckily, all we have to do with REPL is arrow up to find the line where the regular expression was created, tweak it, hit Enter, and continue with the next test.
 
-In addition to the arrow keys, you can also use the Tab key to *autocomplete* text. As an example, type **va** at the command line and then press Tab; REPL will autocomplete *var*. You can also use the Tab key to autocomplete any global or local variable. [Table 2-1](\l) offers a quick summary of keyboard commands that work with REPL.
+In addition to the arrow keys, you can also use the Tab key to *autocomplete* text. As an example, type **va** at the command line and then press Tab; REPL will autocomplete *var*. You can also use the Tab key to autocomplete any global or local variable. Table 2-1 offers a quick summary of keyboard commands that work with REPL.
 
 Table 2-1. Keyboard control in REPL
 
@@ -515,7 +515,7 @@ repl.start("node via TCP socket> ", socket);
 
 }).listen(8124);
 
-When you run the application, you get the standard input prompt where the Node application is running. However, you can also access REPL via TCP. I used PuTTY as a Telnet client to access this TCP-enabled version of REPL. It does work...to a point. I had to issue a .clear first, the formatting is off, and when I tried to use the underscore to reference the last expression, Node didn’t know what I was talking about, as shown in [Figure 2-1](\l).
+When you run the application, you get the standard input prompt where the Node application is running. However, you can also access REPL via TCP. I used PuTTY as a Telnet client to access this TCP-enabled version of REPL. It does work...to a point. I had to issue a .clear first, the formatting is off, and when I tried to use the underscore to reference the last expression, Node didn’t know what I was talking about, as shown in Figure 2-1.
 
 ![](Chapter%202%20Interactive%20Node%20with%20REPL/image1.png)
 
@@ -533,7 +533,7 @@ You can type in commands no differently than typing them in using stdin. Be awar
 
 console.log(someVariable); // actually printed out to server
 
-An application option that I consider to be more useful is to create a REPL application that preloads modules. In the application in [Example 2-1](\l), after the REPL is started, the http, os, and util modules are loaded and assigned to context properties.
+An application option that I consider to be more useful is to create a REPL application that preloads modules. In the application in Example 2-1, after the REPL is started, the http, os, and util modules are loaded and assigned to context properties.
 
 Example 2-1. Creating a custom REPL that preloads modules
 

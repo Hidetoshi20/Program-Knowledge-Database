@@ -45,7 +45,7 @@ A Socket.IO application requires two different components: a server and a client
 
 The client/server application demonstrated in this section sets up a communication between client and server, sending a text string back and forth that’s published to the web page. The client always echoes the recent string to the server, which modifies the string and sends it back to the client.
 
-The client application creates a new WebSockets connection, using the Socket.IO client-side library, and listens for any events labeled news. When an event is received, the application takes the text sent with the event and outputs it to the web page. It also echoes the text back to the server via an echo event. [Example 13-1](\l) shows the complete code for the client web page.
+The client application creates a new WebSockets connection, using the Socket.IO client-side library, and listens for any events labeled news. When an event is received, the application takes the text sent with the event and outputs it to the web page. It also echoes the text back to the server via an echo event. Example 13-1 shows the complete code for the client web page.
 
 Example 13-1. Client HTML page in the Socket.IO application
 
@@ -89,7 +89,7 @@ socket.emit('echo', { back: data.news });
 
 The server application uses HTTP to listen for incoming requests, and serves up only one file: the client HTML file. When a new socket connection is made, it emits a message to the client with the text of Counting... to an event labeled news.
 
-When the server gets an echo event, it takes the text sent with the event and appends a counter value to it. The counter is maintained in the application and incremented every time the echo event is transmitted. When the counter gets to 50, the server no longer transmits the data back to the client. [Example 13-2](\l) contains all the code for the server application.
+When the server gets an echo event, it takes the text sent with the event and appends a counter value to it. The counter is maintained in the application and incremented every time the echo event is transmitted. When the counter gets to 50, the server no longer transmits the data back to the client. Example 13-2 contains all the code for the server application.
 
 Example 13-2. Server application in the Socket.IO application
 
@@ -255,7 +255,7 @@ The socket passed as a parameter to the connection event handler is the unique c
 
 The application works...to a point. Where it fails is in not taking into account Node’s asynchronous nature. In the application, the counter used is one that’s global to the application. If only one customer accesses the application at a time, it works fine. However, if two users access the application at the same time, you get odd results: one browser may end up with fewer numbers than the other, and neither is likely to get an expected result. Add in more concurrent users, and the results are worse.
 
-What we need is a way of attaching data so it persists beyond events to the socket itself. Luckily, we have such a way—just by adding the data directly to the socket object that’s created with each new connection. [Example 13-3](\l) is a modification of the code from [Example 13-2](\l), where the counter is now attached to the socket object directly, rather than floating about as a global variable. The changed code is bolded in the text.
+What we need is a way of attaching data so it persists beyond events to the socket itself. Luckily, we have such a way—just by adding the data directly to the socket object that’s created with each new connection. Example 13-3 is a modification of the code from Example 13-2, where the counter is now attached to the socket object directly, rather than floating about as a global variable. The changed code is bolded in the text.
 
 Example 13-3. Modified server code incorporating the use of data persistence with the individual sockets
 
@@ -342,7 +342,7 @@ You can change the allowable transports by setting the transports option. By def
 - xhr-polling
 - jsonp-polling
 
-Another transport option is Flash Socket, which is not enabled by default. If we add the following to [Example 13-3](\l), then when we access the application with Opera and IE, the application uses Flash Socket (rather than Ajax long polling and Forever iFrame, respectively):
+Another transport option is Flash Socket, which is not enabled by default. If we add the following to Example 13-3, then when we access the application with Opera and IE, the application uses Flash Socket (rather than Ajax long polling and Forever iFrame, respectively):
 
 io.configure('development', function() {
 
@@ -416,7 +416,7 @@ You can also broadcast a message to everyone but a specific individual by issuin
 
 socket.broadcast.emit();
 
-In the simple chat application, when a new client connects, the client application prompts for a name and then broadcasts to other connected clients that this person has now entered the chat room. The client application also provides a text field and button to send messages, and provides a place where new messages from all participants are printed. [Example 13-4](\l) shows the client application code.
+In the simple chat application, when a new client connects, the client application prompts for a name and then broadcasts to other connected clients that this person has now entered the chat room. The client application also provides a text field and button to send messages, and provides a place where new messages from all participants are printed. Example 13-4 shows the client application code.
 
 Example 13-4. Client chat application
 
@@ -488,7 +488,7 @@ socket.emit('sendchat', text);
 
 Other than the addition of basic JavaScript functionality to capture the click event on the button, and the prompt to get the person’s name, the functionality isn’t much different than earlier examples.
 
-In the server, the new person’s username is attached as data to the socket. The server acknowledges the person directly, and then broadcasts the person’s name to other chat room participants. When the server receives any new chat message, it attaches the username to the message so everyone can see who sent it. Finally, when a client disconnects from the chat room, another message is broadcast to all connected users indicating that the person is no longer participating. [Example 13-5](\l) has the complete code for the server application.
+In the server, the new person’s username is attached as data to the socket. The server acknowledges the person directly, and then broadcasts the person’s name to other chat room participants. When the server receives any new chat message, it attaches the username to the message so everyone can see who sent it. Finally, when a client disconnects from the chat room, another message is broadcast to all connected users indicating that the person is no longer participating. Example 13-5 has the complete code for the server application.
 
 Example 13-5. Server chat application
 
@@ -548,7 +548,7 @@ io.sockets.emit('chat', 'SERVER', socket.username + ' has left the building');
 
 });
 
-[Figure 13-1](\l) shows the results of the application when I tested it from four different browsers (Chrome, Firefox, Opera, and IE).
+Figure 13-1 shows the results of the application when I tested it from four different browsers (Chrome, Firefox, Opera, and IE).
 
 ![](Chapter%2013/image1.png)
 
@@ -560,7 +560,7 @@ An additional modification to the application might add a list of people current
 
 The examples up to this point used Node’s HTTP as the web server. You can also easily incorporate Express into a Socket.IO application (or Socket.IO into an Express application). The key thing to remember is that Socket.IO must be able to listen for requests before they’re processed by Express.
 
-[Example 13-6](\l) converts the server component of the chat application from the last section into using Express to handle all web service requests. The line in the code that’s essential to the integration of Socket.IO and Express is in bold. The actual communication components are not changed at all from the code in [Example 13-5](\l).
+Example 13-6 converts the server component of the chat application from the last section into using Express to handle all web service requests. The line in the code that’s essential to the integration of Socket.IO and Express is in bold. The actual communication components are not changed at all from the code in Example 13-5.
 
 Example 13-6. Porting the chat server to Express
 

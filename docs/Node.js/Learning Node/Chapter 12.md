@@ -44,7 +44,7 @@ The wkhtmltopdf tool supports a large number of options, but I’m going to demo
 
 wkhtmltopdf.sh http://remoteweb.com/page1.html page1.pdf
 
-To implement this in Node, we need to use a child process. For extensibility, the application should also take the name of the input URL, as well as the output file. The entire application is in [Example 12-1](\l).
+To implement this in Node, we need to use a child process. For extensibility, the application should also take the name of the input URL, as well as the output file. The entire application is in Example 12-1.
 
 Example 12-1. Simple Node application that wraps wkhtmltopdf
 
@@ -181,7 +181,7 @@ You can install the Emailjs module via npm:
 
 npm install emailjs
 
-The form to upload the PDF is basic, needing little explanation. It uses a file input field in addition to a field for the person’s name and email address, and sets the method to POST and the action to the web service. Since we’re uploading a file, the enctype field must be set to multipart/form-data. The finished form page can be seen in [Example 12-2](\l).
+The form to upload the PDF is basic, needing little explanation. It uses a file input field in addition to a field for the person’s name and email address, and sets the method to POST and the action to the web service. Since we’re uploading a file, the enctype field must be set to multipart/form-data. The finished form page can be seen in Example 12-2.
 
 Example 12-2. Form to upload a PDF file
 
@@ -259,7 +259,7 @@ connect()
 
 The data is then made available to a custom middleware named upload, which handles both the data and the PDF—invoking a custom module to process the PDF file. The bodyParser middleware makes the username and email available on the request.body object, and the uploaded file on the request.files object. If a file is uploaded, it’s uploaded as an object named pdffile because that’s the name of the file upload field. You’ll need an additional test on the file type to ensure that the file uploaded is a PDF.
 
-[Example 12-3](\l) has the complete code for the PDF service application.
+Example 12-3 has the complete code for the PDF service application.
 
 Example 12-3. PDF upload web service application
 
@@ -330,7 +330,7 @@ The custom module *pdfprocess* is where the application performs the following s
 5. The PDF Toolkit burst operation is performed on this file, with all the individual PDFs placed in the *pdfs* directory.
 6. An email is sent to the user providing a URL/link where he can access the new directory containing the original uploaded PDF and the individual PDF pages.
 
-The filesystem functionality is provided by the Node File System module, the email functionality is handled by Emailjs, and the PDF Toolkit functionality is managed in a child process. There is no data returned from this child process, so the only events captured are child process exit and error events. [Example 12-4](\l) contains the code for this final piece of the application.
+The filesystem functionality is provided by the Node File System module, the email functionality is handled by Emailjs, and the PDF Toolkit functionality is managed in a child process. There is no data returned from this child process, so the only events captured are child process exit and error events. Example 12-4 contains the code for this final piece of the application.
 
 Example 12-4. Module to process PDF file and send user email with location of processed files
 
@@ -427,7 +427,7 @@ The filename is given first, then the operation, and then an output directive. T
 
 The email is sent using the Gmail SMTP server, which utilizes TLS (transport layer security), over port 587 and with a given Gmail username and password. You could, of course, use your own SMTP server. The message is sent both in plain text and with a given HTML-formatted attachment (for those folks who use an email reader capable of processing HTML).
 
-The end result of the application is a link sent to the user that takes her to the directory where she’ll find the uploaded PDF and the split pages. The Connect directory middleware ensures that the contents of the directory are attractively displayed. [Figure 12-1](\l) shows the results of uploading one very large PDF file on global warming.
+The end result of the application is a link sent to the user that takes her to the directory where she’ll find the uploaded PDF and the split pages. The Connect directory middleware ensures that the contents of the directory are attractively displayed. Figure 12-1 shows the results of uploading one very large PDF file on global warming.
 
 With this approach—providing acknowledgment to the user in an email—the user doesn’t have to wait around for (and the Node service isn’t hung up waiting on) the PDF processing.
 
@@ -575,7 +575,7 @@ Though we’re focusing on convert, be aware that everything in this section als
 
 The convert tool is the ImageMagick workhorse. With it, you can perform some pretty amazing transformations on an image and then save the results to a separate file. You can provide an adaptive blur, sharpen the image, annotate the image with text, position it on a backdrop, crop it, resize it, and even replace every pixel in the image with its color complement. There is little you can’t do to an image with ImageMagick. Of course, not every operation is equal, especially if you’re concerned about how long it will take. Some of the image conversions occur quickly, while others can take considerable time.
 
-To demonstrate how to use convert from a Node application, the small, self-contained application in [Example 12-5](\l) specifies an image filename on the command line and scales that image so it fits into a space no more than 150 pixels wide. The image is also transformed into a PNG, regardless of its original type.
+To demonstrate how to use convert from a Node application, the small, self-contained application in Example 12-5 specifies an image filename on the command line and scales that image so it fits into a space no more than 150 pixels wide. The image is also transformed into a PNG, regardless of its original type.
 
 The command-line version of this process is:
 
@@ -645,7 +645,7 @@ This is a lot of arguments, and the arguments are in a format you may not have s
 
 Minutely.
 
-What looks like a single argument on the command line (\(+clone -shadow 60x4+4+4 \)) is anything but to the Node child process. [Example 12-6](\l) is a variation of the conversion tool in [Example 12-5](\l), except now a Polaroid effect is being applied rather than the image being scaled. Pay particular attention to the line in bold text.
+What looks like a single argument on the command line (\(+clone -shadow 60x4+4+4 \)) is anything but to the Node child process. Example 12-6 is a variation of the conversion tool in Example 12-5, except now a Polaroid effect is being applied rather than the image being scaled. Pay particular attention to the line in bold text.
 
 Example 12-6. Applying a Polaroid effect to a photo using ImageMagick from a Node application
 
@@ -680,7 +680,7 @@ photo,
 photo + ".png"];
 var im = spawn('convert', opts);
 
-The bolded code in the example demonstrates how what appears to be a single argument on the command line becomes five arguments to the child process. The end result of running the application is shown in [Figure 12-2](\l).
+The bolded code in the example demonstrates how what appears to be a single argument on the command line becomes five arguments to the child process. The end result of running the application is shown in Figure 12-2.
 
 ![](Chapter%2012/image2.jpeg)
 
@@ -690,15 +690,15 @@ It’s unlikely that you’ll use the Node application with an ImageMagick child
 
 The key to creating a web application that uses ImageMagick is the same as with the PDF demonstration applications from earlier in the chapter: if the process is going to be slow (especially with a larger number of concurrent users), you need to consider providing functionality that allows the individual to upload the image file and then provide a link to the finished project (either at a site, or via email) rather than block, waiting for everything to finish.
 
-We can adapt the code in [Example 12-3](\l) and [Example 12-4](\l) to apply the Polaroid effect to any uploaded image. In particular, we can convert [Example 12-3](\l) into a module that can be applied for the same pattern of use: a file process that creates a new subdirectory for an uploaded file, runs a process, and deposits the resulting files in the same directory.
+We can adapt the code in Example 12-3 and Example 12-4 to apply the Polaroid effect to any uploaded image. In particular, we can convert Example 12-3 into a module that can be applied for the same pattern of use: a file process that creates a new subdirectory for an uploaded file, runs a process, and deposits the resulting files in the same directory.
 
 # Properly Serving HTML5 Video with HTTP
 
-In [Chapter 6](\l), we created a simple HTTP server that served static files and provided some basic directory and 404 handling. One of the web pages we tested with the server included an embedded HTML5 video. The web page also had a custom toolbar that allowed the user to click anywhere on a timeline to start the video at an intermediate position.
+In Chapter 6, we created a simple HTTP server that served static files and provided some basic directory and 404 handling. One of the web pages we tested with the server included an embedded HTML5 video. The web page also had a custom toolbar that allowed the user to click anywhere on a timeline to start the video at an intermediate position.
 
 The HTML5 video application worked with the Connect module’s static web server, but not the homemade web server. The reason is that the homemade web server didn’t handle the concept of *HTTP ranges*. HTTP servers such as Apache and IIS have support for ranges, as does the Connect model; our static server did not.
 
-In this section, we’ll add support for ranges to the minimal web server we created back in [Example 6-2](\l).
+In this section, we’ll add support for ranges to the minimal web server we created back in Example 6-2.
 
 ### Note
 
@@ -816,7 +816,7 @@ The content length (Content-Length) response is also prepared, calculated as the
 
 Last, the start and end values are also sent as an option to the createReadStream method call. This ensures that the stream is properly repositioned for streaming.
 
-[Example 12-7](\l) pulls all of these pieces together into a modified minimal web server that can now serve HTML5 video (or other resource) ranges.
+Example 12-7 pulls all of these pieces together into a modified minimal web server that can now serve HTML5 video (or other resource) ranges.
 
 Example 12-7. The minimal web server, now with support for ranges
 
@@ -978,7 +978,7 @@ Be aware that some of the functionality in Canvas, such as working with an image
 
 There are also a couple of additional methods available on the server that you wouldn’t have on the client. These allow us to stream a Canvas object to a file (either as a PNG or JPEG), persisting the results for later access (or serving in a web page). You can also convert the Canvas object to a data URI and include an img element in a generated HTML web page, or read an image from an external source (such as a file or a Redis database) and use it directly in the Canvas object.
 
-Jumping right in to demonstrate how to use the node-canvas module, [Example 12-8](\l) creates a canvas drawing and then streams it to a PNG file for later access. The example uses a rotated graphic image from an example at the Mozilla Developer Network, and adds a border and shadow to it. Once finished, it’s streamed to a PNG file for later access. Most of the functionality could be used in a client application as well as the Node application. The only real Node-specific component is persisting the graphic as a file in the end.
+Jumping right in to demonstrate how to use the node-canvas module, Example 12-8 creates a canvas drawing and then streams it to a PNG file for later access. The example uses a rotated graphic image from an example at the Mozilla Developer Network, and adds a border and shadow to it. Once finished, it’s streamed to a PNG file for later access. Most of the functionality could be used in a client application as well as the Node application. The only real Node-specific component is persisting the graphic as a file in the end.
 
 Example 12-8. Creating a graphic using node-canvas and persisting the result to a PNG file
 
@@ -1062,7 +1062,7 @@ console.log('saved png');
 
 });
 
-Once you’ve run the Node application, access the *shadow.png* file from your favorite browser. [Figure 12-3](\l) shows the generated image.
+Once you’ve run the Node application, access the *shadow.png* file from your favorite browser. Figure 12-3 shows the generated image.
 
 ![](Chapter%2012/image3.png)
 

@@ -1,6 +1,6 @@
 # Chapter 3. The Node Core
 
-[Chapter 1](\l) provided a first look at a Node application with the traditional (and always entertaining) Hello, World application. The examples in the chapter made use of a couple of modules from what is known as the *Node core*: the API providing much of the functionality necessary for building Node applications.
+Chapter 1 provided a first look at a Node application with the traditional (and always entertaining) Hello, World application. The examples in the chapter made use of a couple of modules from what is known as the *Node core*: the API providing much of the functionality necessary for building Node applications.
 
 In this chapter, I’m going to provide more detail on the Node core system. It’s not an exhaustive overview, since the API is quite large and dynamic in nature. Instead, we’ll focus on key elements of the API, and take a closer look at those that we’ll use in later chapters and/or are complex enough to need a more in-depth review.
 

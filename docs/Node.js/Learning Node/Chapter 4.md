@@ -101,7 +101,7 @@ As an example, to install Connect, a very popular middleware framework, use the 
 
 $ npm install connect
 
-npm not only installs Connect, it also discovers its module dependencies and installs them, too, as shown in [Figure 4-1](\l).
+npm not only installs Connect, it also discovers its module dependencies and installs them, too, as shown in Figure 4-1.
 
 Once it’s installed, you can find the module in your local directory’s *node_modules* directory. Any dependencies are installed in that module’s *node_modules* directory.
 
@@ -123,7 +123,7 @@ npm install
 
 ### Note
 
-npm can also work with Git, as demonstrated in the [Appendix A](\l).
+npm can also work with Git, as demonstrated in the Appendix A.
 
 You can even install an old friend, jQuery:
 
@@ -280,7 +280,7 @@ The npm website provides a registry of modules you can browse through, and an up
 
 ### Note
 
-I’ll cover other npm commands later in this chapter, in the section [Creating Your Own Custom Module](\l).
+I’ll cover other npm commands later in this chapter, in the section Creating Your Own Custom Module.
 
 # Finding Modules
 
@@ -643,11 +643,11 @@ npm init
 
 the tool will run through the required fields, prompting you for each. When it’s done, it generates a *package.json* file.
 
-In [Chapter 3](\l), [Example 3-13](\l), I started an object called inputChecker that checks incoming data for commands and then processes the command. The example demonstrated how to incorporate EventEmitter. Now we’re going to modify this simple object to make it usable by other applications and modules.
+In Chapter 3, Example 3-13, I started an object called inputChecker that checks incoming data for commands and then processes the command. The example demonstrated how to incorporate EventEmitter. Now we’re going to modify this simple object to make it usable by other applications and modules.
 
-First, we’ll create a subdirectory in *node_modules* and name it *inputcheck*, and then move the existing inputChecker code file to it. We need to rename the file to *index.js*. Next, we need to modify the code to pull out the part that implements the new object. We’ll save it for a future test file. The last modification we’ll do is add the exports object, resulting in the code shown in [Example 4-1](\l).
+First, we’ll create a subdirectory in *node_modules* and name it *inputcheck*, and then move the existing inputChecker code file to it. We need to rename the file to *index.js*. Next, we need to modify the code to pull out the part that implements the new object. We’ll save it for a future test file. The last modification we’ll do is add the exports object, resulting in the code shown in Example 4-1.
 
-Example 4-1. Application from [Example 3-13](\l) modified to be a module object
+Example 4-1. Application from Example 3-13 modified to be a module object
 
 var util = require('util');
 
@@ -697,7 +697,7 @@ self.emit('echo',input);
 
 We can’t export the object function directly, because util.inherits expects an object to exist in the file named inputChecker. We’re also modifying the inputChecker object’s prototype later in the file. We could have changed these code references to use exports.inputChecker, but that’s *kludgy*. It’s just as easy to assign the object in a separate statement.
 
-To create the *package.json* file, I ran npm init and answered each of the prompts. The resulting file is shown in [Example 4-2](\l).
+To create the *package.json* file, I ran npm init and answered each of the prompts. The resulting file is shown in Example 4-2.
 
 Example 4-2. Generated package.json for inputChecker module
 
@@ -739,9 +739,9 @@ The npm init command doesn’t prompt for dependencies, so we need to add them d
 
 ### Note
 
-[Chapter 16](\l) has a more in-depth look at the *package.json* file.
+Chapter 16 has a more in-depth look at the *package.json* file.
 
-At this point, we can test the new module to make sure it actually works as a module. [Example 4-3](\l) is the portion of the previously existing inputChecker application that tested the new object, now pulled out into a separate test application.
+At this point, we can test the new module to make sure it actually works as a module. Example 4-3 is the portion of the previously existing inputChecker application that tested the new object, now pulled out into a separate test application.
 
 Example 4-3. InputChecker test application
 

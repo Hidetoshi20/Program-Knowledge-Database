@@ -70,7 +70,7 @@ Web pages that ask for user login or credit card information had better be serve
 
 Adding support for HTTPS is similar to adding support for HTTP, with the addition of an options object that provides the public encryption key, and the signed certificate. The default port for an HTTPS server differs, too: HTTP is served via port 80 by default, while HTTPS is served via port 443.
 
-[Example 15-1](\l) demonstrates a very basic HTTPS server. It does little beyond sending a variation of our traditional Hello, World message to the browser.
+Example 15-1 demonstrates a very basic HTTPS server. It does little beyond sending a variation of our traditional Hello, World message to the browser.
 
 Example 15-1. Creating a very simple HTTPS server
 
@@ -100,13 +100,13 @@ res.end("Hello Secure World\n");
 
 The public key and certificate are opened, and their contents are read synchronously. The data is attached to the options object, passed as the first parameter in the https.createServer method. The callback function for the same method is the one we’re used to, with the server request and response object passed as parameters.
 
-Accessing the page demonstrates what happens when we use a self-signed certificate, as shown in [Figure 15-1](\l). It’s easy to see why a self-signed certificate should be used only during testing.
+Accessing the page demonstrates what happens when we use a self-signed certificate, as shown in Figure 15-1. It’s easy to see why a self-signed certificate should be used only during testing.
 
 ![](Chapter%2015/image1.png)
 
 Figure 15-1. What happens when you use Chrome to access a website using HTTPS with a self-signed certificate
 
-The browser address bar demonstrates another way that the browser signals that the site’s certificate can’t be trusted, as shown in [Figure 15-2](\l). Rather than displaying a lock indicating that the site is being accessed via HTTPS, it displays a lock with a red *x* showing that the certificate can’t be trusted. Clicking the icon opens an information window with more details about the certificate.
+The browser address bar demonstrates another way that the browser signals that the site’s certificate can’t be trusted, as shown in Figure 15-2. Rather than displaying a lock indicating that the site is being accessed via HTTPS, it displays a lock with a red *x* showing that the certificate can’t be trusted. Clicking the icon opens an information window with more details about the certificate.
 
 ![](Chapter%2015/image2.png)
 
@@ -144,7 +144,7 @@ Put simply, a rainbow table is basically a table of precomputed hash values for 
 
 The way around the rainbow table is with *salt* (no, not the crystalline variety), a unique generated value that is concatenated to the password before encryption. It can be a single value that is used with all the passwords and stored securely on the server. A better option, though, is to generate a unique salt for each user password, and then store it with the password. True, the salt can also be stolen at the same time as the password, but it would still require the person attempting to crack the password to generate a rainbow table specifically for the one and only password—adding immensely to the complexity of cracking any individual password.
 
-[Example 15-2](\l) is a simple application that takes a username and a password passed as command-line arguments, encrypts the password, and then stores both as a new user in a MySQL database table. The table is created with the following SQL:
+Example 15-2 is a simple application that takes a username and a password passed as command-line arguments, encrypts the password, and then stores both as a new user in a MySQL database table. The table is created with the following SQL:
 
 CREATE TABLE user (userid INT NOT NULL AUTO_INCREMENT, PRIMARY KEY(userid),
 
@@ -194,7 +194,7 @@ client.end();
 
 });
 
-The application to test a username and password, shown in [Example 15-3](\l), queries the database for the password and salt based on the username. It uses the salt to, again, encrypt the password. Once the password has been encrypted, it’s compared to the password stored in the database. If the two don’t match, the user isn’t validated. If they match, then the user’s in.
+The application to test a username and password, shown in Example 15-3, queries the database for the password and salt based on the username. It uses the salt to, again, encrypt the password. Once the password has been encrypted, it’s compared to the password stored in the database. If the two don’t match, the user isn’t validated. If they match, then the user’s in.
 
 Example 15-3. Checking a username and a password that has been encrypted
 
@@ -489,9 +489,9 @@ name="reset"
 id="reset"
 value="reset")
 
-To demonstrate all of these pieces, I incorporated the command-line authentication application from [Example 15-3](\l) into an Express application, shown in [Example 15-4](\l), with authentication provided by Passport. The only routes the application supports are the login route for the login form display and authentication, and access to a restricted admin page and the top-level index page.
+To demonstrate all of these pieces, I incorporated the command-line authentication application from Example 15-3 into an Express application, shown in Example 15-4, with authentication provided by Passport. The only routes the application supports are the login route for the login form display and authentication, and access to a restricted admin page and the top-level index page.
 
-The MySQL code from [Example 15-3](\l) is incorporated directly into the authentication routine (though normally this would be split out in a more formal application). Additional MySQL access code is used to find the user information given an identifier, when the user is deserialized.
+The MySQL code from Example 15-3 is incorporated directly into the authentication routine (though normally this would be split out in a more formal application). Additional MySQL access code is used to find the user information given an identifier, when the user is deserialized.
 
 Example 15-4. Combining password hash, MySQL user table, and Passport authentication into one Express application
 
@@ -703,7 +703,7 @@ http.createServer(app).listen(3000);
 
 console.log("Express server listening on port 3000");
 
-[Example 15-4](\l) is a longer example than I normally like to include in a book, but stubbing in the data source portions of the example wouldn’t give you a real feel for how the Passport component works with the password hashing component, discussed earlier.
+Example 15-4 is a longer example than I normally like to include in a book, but stubbing in the data source portions of the example wouldn’t give you a real feel for how the Passport component works with the password hashing component, discussed earlier.
 
 Let’s take a closer look at the authentication method. Once the application has queried for the user record given the username, it invokes the callback function with the database error, if an error occurs. If an error does not occur, but the username isn’t found, the application invokes the callback function with the username set to false to signal that the username wasn’t found, and provides an appropriate message. If the user is found, but the passwords don’t match, the same thing happens: a value of false is returned for the user and a message is generated.
 
@@ -825,7 +825,7 @@ p
 
 a(href='/auth/twitter') Login with Twitter
 
-If the person isn’t logged into Twitter, she’s presented a login page like the one shown in [Figure 15-3](\l).
+If the person isn’t logged into Twitter, she’s presented a login page like the one shown in Figure 15-3.
 
 ![](Chapter%2015/image3.png)
 
@@ -845,13 +845,13 @@ p
 
 img(src='#{user.img}',alt='avatar')
 
-This data is some of what’s stored when the person first authenticates. If you look into your Twitter account settings page and then click through to the Apps, you’ll see the application among those listed, as shown in [Figure 15-4](\l).
+This data is some of what’s stored when the person first authenticates. If you look into your Twitter account settings page and then click through to the Apps, you’ll see the application among those listed, as shown in Figure 15-4.
 
 ![](Chapter%2015/image4.jpeg)
 
 Figure 15-4. Twitter Apps Settings displaying the entry for our Node application
 
-[Example 15-5](\l) has the complete application code for authenticating the user via Twitter and storing her data in a MySQL database. You can, of course, also store the data in MongoDB, or even Redis, if you persist your Redis data. The Crypto module is no longer needed, because we’re no longer storing passwords—a distinct advantage to authenticating via a third-party service.
+Example 15-5 has the complete application code for authenticating the user via Twitter and storing her data in a MySQL database. You can, of course, also store the data in MongoDB, or even Redis, if you persist your Redis data. The Crypto module is no longer needed, because we’re no longer storing passwords—a distinct advantage to authenticating via a third-party service.
 
 Example 15-5. Complete application authenticating a user via Twitter
 
@@ -1139,7 +1139,7 @@ If you must require free text from a user for fields, such as his username when 
 
 ## Scrub Your Data and Sanitize It with node-validator
 
-If you must support text input fields, scrub the data before you use it. The node-mysql module provides a method, client.escape, that escapes the incoming text and protects against potential SQL injection attacks. You can also disable potentially destructive functionality. In [Chapter 10](\l)’s discussion on MongoDB, I mentioned how you can flag that a JavaScript function should be serialized when stored.
+If you must support text input fields, scrub the data before you use it. The node-mysql module provides a method, client.escape, that escapes the incoming text and protects against potential SQL injection attacks. You can also disable potentially destructive functionality. In Chapter 10’s discussion on MongoDB, I mentioned how you can flag that a JavaScript function should be serialized when stored.
 
 You can also use a validation tool that not only ensures that incoming data is safe, but also that it’s consistent. One such validation tool that stands out is node-validator.
 
@@ -1181,7 +1181,7 @@ The sanitize filter ensures that the string is sanitized according to whatever m
 
 var newstr = sanitize(str).xss(); // prevent XSS attack
 
-[Example 15-6](\l) uses both objects to check and sanitize three different strings.
+Example 15-6 uses both objects to check and sanitize three different strings.
 
 Example 15-6. Checking out node-validator’s methods
 
@@ -1257,7 +1257,7 @@ You can then run the script in a separate context, passing in any data it might 
 
 script_obj.runInNewContext(sandbox);
 
-[Example 15-7](\l) has a small but complete example of using vm to compile a JavaScript statement, utilizing two sandbox object properties, and creating a third.
+Example 15-7 has a small but complete example of using vm to compile a JavaScript statement, utilizing two sandbox object properties, and creating a third.
 
 Example 15-7. Simple example of using Node’s vm module to sandbox a script
 
@@ -1291,7 +1291,7 @@ str: 'My name is Shelley at burningbird.net' }
 
 The object passed to the new context is the point of connection between the calling application and the sandboxed script. The script has no other access to the parent context. If you tried to use a global object, such as console, in your sandboxed JavaScript, you’d get an error.
 
-To demonstrate, [Example 15-8](\l) modifies the [Example 15-7](\l) to load a script in from a file and run it. The script being loaded is nothing but a slight variation of what we had in the preceding example, with the addition of a console.log request:
+To demonstrate, Example 15-8 modifies the Example 15-7 to load a script in from a file and run it. The script being loaded is nothing but a slight variation of what we had in the preceding example, with the addition of a console.log request:
 
 var str = 'My name is ' + name + ' from ' + domain;
 
@@ -1343,7 +1343,7 @@ Running the application returns the following:
 
 The error occurs—and rightly so—because there is no console object within the virtual machine; it’s a V8 virtual machine, not a Node virtual machine. We’ve seen how we can implement any process with child processes in a Node application. We certainly don’t want to expose that kind of power to sandboxed code.
 
-We can run the script within a V8 context, which means it has access to the global object. [Example 15-9](\l) re-creates the application from [Example 15-8](\l), except this time the runInContext method is used, with a context object passed to the method. The context object is seeded with the object that has the parameters the script is expecting. Printing out the inspection results on the object after the script execution, though, shows that the newly defined property, str, is no longer present. We need to inspect the context to see the object as it exists both in the current context and the sandbox context.
+We can run the script within a V8 context, which means it has access to the global object. Example 15-9 re-creates the application from Example 15-8, except this time the runInContext method is used, with a context object passed to the method. The context object is seeded with the object that has the parameters the script is expecting. Printing out the inspection results on the object after the script execution, though, shows that the newly defined property, str, is no longer present. We need to inspect the context to see the object as it exists both in the current context and the sandbox context.
 
 Example 15-9. Running the code in context, with context object passed to vm
 

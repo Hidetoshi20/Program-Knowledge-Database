@@ -52,7 +52,7 @@ The options are detailed in the db-mysql documentation, as well as in the MySQL 
 
 ## Using Query String or Chained Methods
 
-To demonstrate db-mysql’s flexibility, the application in [Example 11-1](\l) connects to a database and runs the same query twice: the first using the query class chained methods, the second using a string query. The first query processes the result in a nested callback function, while the second listens for the success and error events and responds accordingly. In both cases, the result is returned in the rows object, which returns an array of objects representing each row of data.
+To demonstrate db-mysql’s flexibility, the application in Example 11-1 connects to a database and runs the same query twice: the first using the query class chained methods, the second using a string query. The first query processes the result in a nested callback function, while the second listens for the success and error events and responds accordingly. In both cases, the result is returned in the rows object, which returns an array of objects representing each row of data.
 
 Example 11-1. Demonstrating db-mysql’s flexibility by showing two different query styles
 
@@ -222,7 +222,7 @@ qry.execute('update nodetest2 set title = ? where id = ?',
 
 Placeholders can be used either with a direct query string or with the chained methods. Placeholders are a way of creating the query string ahead of time and then just passing in whatever values are needed. The placeholders are represented by question marks (?) in the string, and each value is given as an array element in the second parameter to the method.
 
-The result of the operation being performed on the database is reflected in the parameter returned in the callback for the success event. In [Example 11-2](\l), a new row is inserted into the test database. Note that it makes use of the MySQL NOW function to set the created field with the current date and time. When using a MySQL function, you’ll need to place it directly into the query string—you can’t use a placeholder.
+The result of the operation being performed on the database is reflected in the parameter returned in the callback for the success event. In Example 11-2, a new row is inserted into the test database. Note that it makes use of the MySQL NOW function to set the created field with the current date and time. When using a MySQL function, you’ll need to place it directly into the query string—you can’t use a placeholder.
 
 Example 11-2. Using placeholders in the query string
 
@@ -284,7 +284,7 @@ If the operation is successful, the following result is returned as a parameter 
 
 The id is the generated identifier for the table row; the affected property shows the number of rows affected by the change (1), and the warning displays how many warnings the query generated for the rows (in this case, 0).
 
-Database table row updates and deletions are handled in the same manner: either use the exact syntax you’d use in a MySQL client, or use placeholders. [Example 11-3](\l) adds a new record to the test database, updates the title, and then deletes the same record. You’ll notice I created a different query object for each query. Though you can run the same query multiple times, each query does have its own arguments—including the number of arguments it expects each time the query is run. I used four replacement values in the insert, but if I tried to use only two in the update, I’d get an error. The application also makes use of nested callbacks rather than event capturing.
+Database table row updates and deletions are handled in the same manner: either use the exact syntax you’d use in a MySQL client, or use placeholders. Example 11-3 adds a new record to the test database, updates the title, and then deletes the same record. You’ll notice I created a different query object for each query. Though you can run the same query multiple times, each query does have its own arguments—including the number of arguments it expects each time the query is run. I used four replacement values in the insert, but if I tried to use only two in the update, I’d get an error. The application also makes use of nested callbacks rather than event capturing.
 
 Example 11-3. Inserting, updating, and deleting a record using nested callbacks
 
@@ -386,7 +386,7 @@ Transaction support of a kind is supported in another module, mysql-queues, whic
 
 The db-mysql methods to insert, update, and delete a record are insert, update, and delete, respectively. Both the update and delete chained methods can also make use of the where method, which can in turn make use of the conditional chained methods of and and or. The update method can also use another chained method, set, to set values for the SQL statement.
 
-[Example 11-4](\l) duplicates the functionality from [Example 11-3](\l), but uses chained methods for the insert and update methods. It does not use the chained method for the delete, because at the time this book was written, the delete method did not work correctly.
+Example 11-4 duplicates the functionality from Example 11-3, but uses chained methods for the insert and update methods. It does not use the chained method for the delete, because at the time this book was written, the delete method did not work correctly.
 
 Example 11-4. Using chained methods to insert a new record and then update it
 
@@ -480,7 +480,7 @@ The native driver is quite simple to use. You create a client connection to the 
 
 As just stated, the node-mysql API is extremely simple: create the client, set the database, and send SQL statements as queries on the client. The callback functions are optional, and there is some minimal event support. When you’re using a callback, the parameters are typically an error and a result, though in the case of a SELECT query, the callback also has a fields parameter.
 
-[Example 11-5](\l) demonstrates how to use node-mysql to connect to the widget database, create a new record, update it, and delete it. This example, as simple as it is, demonstrates all the functionality that node-mysql supports.
+Example 11-5 demonstrates how to use node-mysql to connect to the widget database, create a new record, update it, and delete it. This example, as simple as it is, demonstrates all the functionality that node-mysql supports.
 
 Example 11-5. Demonstration of CRUD with node-mysql
 
@@ -634,7 +634,7 @@ The module doesn’t support multiple SQL statements concatenated onto each othe
 
 The mysql-queues module wraps the node-mysql module and provides support for multiple queries as well as database transaction support. Its use may be a little odd, especially since it provides asynchronous support without seeming to do so.
 
-Typically, to ensure that asynchronous functions have finished, you’d use nested callbacks, named functions, or a module like Async. In [Example 11-6](\l), though, mysql-queues controls the flow of execution, ensuring that the SQL statements that are queued—via the use of the *queue*—are finished before the final SELECT is processed. The SQL statements are completed in order: insert, update, and then the final retrieve.
+Typically, to ensure that asynchronous functions have finished, you’d use nested callbacks, named functions, or a module like Async. In Example 11-6, though, mysql-queues controls the flow of execution, ensuring that the SQL statements that are queued—via the use of the *queue*—are finished before the final SELECT is processed. The SQL statements are completed in order: insert, update, and then the final retrieve.
 
 Example 11-6. Using a queue to control the flow of SQL statement execution
 
@@ -700,7 +700,7 @@ client.end();
 
 });
 
-If you want transactional support, you’ll need to start a transaction rather than a queue. And you’ll need to use a rollback when an error occurs, as well as a commit when you’re finished with the transaction. Again, once you call execute on the transaction, any queries following the method call are queued until the transaction is finished. [Example 11-7](\l) contains the same application as in [Example 11-6](\l), but this time using a transaction.
+If you want transactional support, you’ll need to start a transaction rather than a queue. And you’ll need to use a rollback when an error occurs, as well as a commit when you’re finished with the transaction. Again, once you call execute on the transaction, any queries following the method call are queued until the transaction is finished. Example 11-7 contains the same application as in Example 11-6, but this time using a transaction.
 
 Example 11-7. Using a transaction to provide greater control over SQL updates
 
@@ -914,7 +914,7 @@ Now you have a JavaScript object representing the model that also maps to a rela
 
 The differences between using a MySQL database binding and using an ORM continue. You don’t insert a database row when using an ORM; rather, you build a new object instance and save it. The same is true when you update: you don’t update via SQL; you either modify a property directly or you use updateAttributes, passing in an object with the changed properties. You also don’t delete a row from a database; you access an object instance and then destroy it.
 
-To demonstrate how all these work together, [Example 11-8](\l) creates the model, syncs with the database (which creates the table if it doesn’t already exist), and then creates a new instance and saves it. After the new instance is created, it’s updated twice. All the objects are retrieved and the contents displayed before the recently added object instance is destroyed.
+To demonstrate how all these work together, Example 11-8 creates the model, syncs with the database (which creates the table if it doesn’t already exist), and then creates a new instance and saves it. After the new instance is created, it’s updated twice. All the objects are retrieved and the contents displayed before the recently added object instance is destroyed.
 
 Example 11-8. CRUD using Sequelize
 
@@ -1088,7 +1088,7 @@ Sequelize’s asynchronous nature is definitely obvious from Example 10-8. Norma
 
 Luckily, Sequelize provides a simple way of chaining queries so that you can do something such as creating many new object instances and saving them all at once. The module provides a *chainer* helper where you can add EventEmitter tasks (such as a query), one after the other, and they won’t be executed until you call run. Then the results of all operations are returned, either as a success or an error.
 
-[Example 11-9](\l) demonstrates the chainer helper by adding three new object instances and then running a findAll on the database when the instances have been successfully saved.
+Example 11-9 demonstrates the chainer helper by adding three new object instances and then running a findAll on the database when the instances have been successfully saved.
 
 Example 11-9. Using a chainer to simplify adding multiple object instances
 

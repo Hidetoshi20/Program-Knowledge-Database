@@ -1,6 +1,6 @@
 # Servers, Streams, and Sockets
 
-Much of the Node core API has to do with creating services that listen to specific types of communications. In the examples in [Chapter 1](\l), we used the HTTP module to create an HTTP web server. Other methods can create a TCP server, a TLS (Transport Layer Security) server, and a UDP (User Datagram Protocol)/datagram socket. I’ll cover TLS in [Chapter 15](\l), but in this section I want to introduce the TCP and UDP Node core functionality. First, though, I’ll offer a brief introduction to the terms used in this section.
+Much of the Node core API has to do with creating services that listen to specific types of communications. In the examples in Chapter 1, we used the HTTP module to create an HTTP web server. Other methods can create a TCP server, a TLS (Transport Layer Security) server, and a UDP (User Datagram Protocol)/datagram socket. I’ll cover TLS in Chapter 15, but in this section I want to introduce the TCP and UDP Node core functionality. First, though, I’ll offer a brief introduction to the terms used in this section.
 
 A *socket* is an endpoint in a communication, and a *network socket* is an endpoint in a communication between applications running on two different computers on the network. The data flows between the sockets in what’s known as a *stream*. The data in the stream can be transmitted as binary data in a buffer, or in Unicode as a string. Both types of data are transmitted as *packets*: parts of the data split off into specifically sized pieces. There is a special kind of packet, a finish packet (FIN), that is sent by a socket to signal that the transmission is done. How the communication is managed, and how reliable the stream is, depends on the type of socket created.
 
@@ -8,9 +8,9 @@ A *socket* is an endpoint in a communication, and a *network socket* is an endpo
 
 We can create a basic TCP server and client with the Node Net module. TCP forms the basis for most Internet applications, such as web service and email. It provides a way of reliably transmitting data between client and server sockets.
 
-Creating the TCP server is a little different than creating the HTTP server in [Example 1-1](\l) in [Chapter 1](\l). We create the server, passing in a callback function. The TCP server differs from the HTTP server in that, rather than passing a requestListener, the TCP callback function’s sole argument is an instance of a socket listening for incoming connections.
+Creating the TCP server is a little different than creating the HTTP server in Example 1-1 in Chapter 1. We create the server, passing in a callback function. The TCP server differs from the HTTP server in that, rather than passing a requestListener, the TCP callback function’s sole argument is an instance of a socket listening for incoming connections.
 
-[Example 3-2](\l) contains the code to create a TCP server. Once the server socket is created, it listens for two events: when data is received, and when the client closes the connection.
+Example 3-2 contains the code to create a TCP server. Once the server socket is created, it listens for two events: when data is received, and when the client closes the connection.
 
 Example 3-2. A simple TCP server, with a socket listening for client communication on port 8124
 
@@ -41,7 +41,7 @@ Notice how a callback function is attached to the two events via the on method. 
 Node objects that inherit from a special object, the EventEmitter, expose the on method event handling, as discussed later in this chapter.
 > 
 
-The TCP client is just as simple to create as the server, as shown in [Example 3-3](\l). The call to the setEncoding method on the client changes the encoding for the received data. As discussed earlier in the section [Buffer](\l), data is transmitted as a buffer, but we can use setEncoding to read it as a `utf8` string. The socket’s write method is used to transmit the data. It also attaches listener functions to two events: data, for received data, and close, in case the server closes the connection.
+The TCP client is just as simple to create as the server, as shown in Example 3-3. The call to the setEncoding method on the client changes the encoding for the received data. As discussed earlier in the section Buffer, data is transmitted as a buffer, but we can use setEncoding to read it as a `utf8` string. The socket’s write method is used to transmit the data. It also attaches listener functions to two events: data, for received data, and close, in case the server closes the connection.
 
 Example 3-3. The client socket sending data to the TCP server
 
@@ -103,19 +103,19 @@ As I mentioned earlier, TCP is the underlying transport mechanism for much of th
 
 ## HTTP
 
-You had a chance to work with the HTTP module in [Chapter 1](\l). We created servers using the createServer method, passing in the function that will act as the requestListener. Requests are processed as they come, asynchronously.
+You had a chance to work with the HTTP module in Chapter 1. We created servers using the createServer method, passing in the function that will act as the requestListener. Requests are processed as they come, asynchronously.
 
 In a network, TCP is the transportation layer and HTTP is the application layer. If you scratch around in the modules included with Node, you’ll see that when you create an HTTP server, you’re inheriting functionality from the TCP-based net.Server.
 
 For the HTTP server, the `requestListener` is a socket, while the `http.ServerRequest` object is a readable stream and the `http.ServerResponse` is a writable stream. HTTP adds another level of complexity because of the *chunked transfer encoding* it supports. The chunked transfer encoding allows transfer of data when the exact size of the response isn’t known until it’s fully processed. Instead, a zero-sized chunk is sent to indicate the end of a query. This type of encoding is useful when you’re processing a request such as a large database query output to an HTML table: writing the data can begin before the rest of the query data has been received.
 
 > Note
-More on streams in the upcoming section titled, appropriately enough, [Streams, Pipes, and Readline](\l).
+More on streams in the upcoming section titled, appropriately enough, Streams, Pipes, and Readline.
 > 
 
-The TCP examples earlier in this chapter, and the HTTP examples in [Chapter 1](\l), were both coded to work with network sockets. However, all of the server/socket modules can also connect to a Unix socket, rather than a specific network port. Unlike a network socket, a Unix or IPC (interprocess communication) socket enables communication between processes within the same system.
+The TCP examples earlier in this chapter, and the HTTP examples in Chapter 1, were both coded to work with network sockets. However, all of the server/socket modules can also connect to a Unix socket, rather than a specific network port. Unlike a network socket, a Unix or IPC (interprocess communication) socket enables communication between processes within the same system.
 
-To demonstrate Unix socket communication, I duplicated [Example 1-3](\l)’s code, but instead of binding to a port, the new server binds to a Unix socket, as shown in [Example 3-4](\l). The application also makes use of readFileSync, the synchronous version of the function to open a file and read its contents.
+To demonstrate Unix socket communication, I duplicated Example 1-3’s code, but instead of binding to a port, the new server binds to a Unix socket, as shown in Example 3-4. The application also makes use of readFileSync, the synchronous version of the function to open a file and read its contents.
 
 Example 3-4. HTTP server bound to a Unix socket
 
@@ -145,7 +145,7 @@ http.createServer(function (req, res) {
 
 The client is based on a code sample provided in the Node core documentation for the http.request object at the Node.js site. The http.request object, by default, makes use of http.globalAgent, which supports pooled sockets. The size of this pool is five sockets by default, but you can adjust it by changing the agent.maxSockets value.
 
-The client accepts the chunked data returned from the server, printing out to the console. It also triggers a response on the server with a couple of minor writes, as shown in [Example 3-5](\l).
+The client accepts the chunked data returned from the server, printing out to the console. It also triggers a response on the server with a couple of minor writes, as shown in Example 3-5.
 
 Example 3-5. Connecting to the Unix socket and printing out received data
 
@@ -182,7 +182,7 @@ I didn’t use the asynchronous file read function with the http.request object 
 Before leaving this section on the HTTP module, be aware that much of the behavior you’ve come to expect with Apache or other web servers isn’t built into a Node HTTP server. For instance, if you password-protect your website, Apache will pop up a window asking for your username and password; a Node HTTP server will not. If you want this functionality, you’re going to have to code for it.
 
 > Note
-[Chapter 15](\l) covers the SSL version of HTTP, *HTTPS*, along with Crypto and TLS/SSL.
+Chapter 15 covers the SSL version of HTTP, *HTTPS*, along with Crypto and TLS/SSL.
 > 
 
 ## UDP/Datagram Socket
@@ -199,7 +199,7 @@ require ('dgram');
 
 To create a UDP socket, use the createSocket method, passing in the type of socket—either `udp4` or `udp6`. You can also pass in a callback function to listen for events. Unlike messages sent with TCP, messages sent using UDP must be sent as buffers, not strings.
 
-[Example 3-6](\l) contains the code for a demonstration UDP client. In it, data is accessed via process.stdin, and then sent, as is, via the UDP socket. Note that we don’t have to set the encoding for the string, since the UDP socket accepts only a buffer, and the process.stdin data *is* a buffer. We do, however, have to convert the buffer to a string, using the buffer’s toString method, in order to get a meaningful string for the console.log method call that echoes the input.
+Example 3-6 contains the code for a demonstration UDP client. In it, data is accessed via process.stdin, and then sent, as is, via the UDP socket. Note that we don’t have to set the encoding for the string, since the UDP socket accepts only a buffer, and the process.stdin data *is* a buffer. We do, however, have to convert the buffer to a string, using the buffer’s toString method, in order to get a meaningful string for the console.log method call that echoes the input.
 
 Example 3-6. A datagram client that sends messages typed into the terminal
 
@@ -221,7 +221,7 @@ process.stdin.on('data', function (data) {
 });
 ```
 
-The UDP server, shown in [Example 3-7](\l), is even simpler than the client. All the server application does is create the socket, bind it to a specific port (8124), and listen for the message event. When a message arrives, the application prints it out using console.log, along with the IP address and port of the sender. Note especially that no encoding is necessary to print out the message—it’s automatically converted from a buffer to a string.
+The UDP server, shown in Example 3-7, is even simpler than the client. All the server application does is create the socket, bind it to a specific port (8124), and listen for the message event. When a message arrives, the application prints it out using console.log, along with the IP address and port of the sender. Note especially that no encoding is necessary to print out the message—it’s automatically converted from a buffer to a string.
 
 We didn’t have to bind the socket to a port. However, without the binding, the socket would attempt to listen in on every port.
 
@@ -275,7 +275,7 @@ There is one additional object that provides a specific functionality to readabl
 var readline = require('readline');
 ```
 
-The Readline module allows line-by-line reading of a stream. Be aware, though, that once you include this module, the Node program doesn’t terminate until you close the interface and the stdin stream. The Node site documentation contains an example of how to begin and terminate a Readline interface, which I adapted in [Example 3-8](\l). The application asks a question as soon as you run it, and then outputs the answer. It also listens for any “command,” which is really any line that terminates with \n. If the command is .leave, it leaves the application; otherwise, it just repeats the command and prompts the user for more. A Ctrl-C or Ctrl-D key combination also causes the application to terminate.
+The Readline module allows line-by-line reading of a stream. Be aware, though, that once you include this module, the Node program doesn’t terminate until you close the interface and the stdin stream. The Node site documentation contains an example of how to begin and terminate a Readline interface, which I adapted in Example 3-8. The application asks a question as soon as you run it, and then outputs the answer. It also listens for any “command,” which is really any line that terminates with \n. If the command is .leave, it leaves the application; otherwise, it just repeats the command and prompts the user for more. A Ctrl-C or Ctrl-D key combination also causes the application to terminate.
 
 Example 3-8. Using Readline to create a simple, command-driven user interface
 
@@ -346,7 +346,7 @@ repeating command: Time to go
 Leaving interface...
 ```
 
-This should look familiar. Remember from [Chapter 2](\l) that we can use rlwrap to override the command-line functionality for REPL. We use the following to trigger its use:
+This should look familiar. Remember from Chapter 2 that we can use rlwrap to override the command-line functionality for REPL. We use the following to trigger its use:
 
 ```bash
 env NODE_NO_READLINE=1 rlwrap node
@@ -413,7 +413,7 @@ The earlier code demonstrated sending output to the child process’s stdout and
 find . -ls | grep test
 ```
 
-[Example 3-9](\l) implements this functionality as child processes. Note that the first command, which performs the find, takes two arguments, while the second one takes just one: a term passed in via user input from stdin. Also note that, unlike the example in the Node documentation, the grep child process’s stdout encoding is changed via setEncoding. Otherwise, when the data is printed out, it would be printed out as a buffer.
+Example 3-9 implements this functionality as child processes. Note that the first command, which performs the find, takes two arguments, while the second one takes just one: a term passed in via user input from stdin. Also note that, unlike the example in the Node documentation, the grep child process’s stdout encoding is changed via setEncoding. Otherwise, when the data is printed out, it would be printed out as a buffer.
 
 Example 3-9. Using child processes to find files in subdirectories with a given search term, “test”
 
@@ -463,7 +463,7 @@ grep.on('exit', function (code) {
 
 When you run the application, you’ll get a listing of all files in the current directory and any subdirectories that contain *test* in their filename.
 
-All of the example applications up to this point work the same in Node 0.8 as in Node 0.6. [Example 3-9](\l) is an exception because of a change in the underlying API.
+All of the example applications up to this point work the same in Node 0.8 as in Node 0.6. Example 3-9 is an exception because of a change in the underlying API.
 
 In Node 0.6, the exit event would not be emitted until the child process exits and all STDIO pipes are closed. In Node 0.8, the event is emitted as soon as the child process finishes. This causes the application to crash, because the grep child process’s STDIO pipe is closed when it tries to process its data. For the application to work in Node 0.8, the application needs to listen for the close event on the find child process, rather than the exit event:
 
@@ -524,7 +524,7 @@ Earlier I warned you that child processes that invoke Unix system commands won�
 
 It wasn’t until recently that the Windows binary installation of Node even provided access to child processes. You also need to invoke whatever command you want to run via the Windows command interpreter, cmd.exe.
 
-[Example 3-10](\l) demonstrates running a Windows command. In the application, Windows cmd.exe is used to create a directory listing, which is then printed out to the console via the data event handler.
+Example 3-10 demonstrates running a Windows command. In the application, Windows cmd.exe is used to create a directory listing, which is then printed out to the console via the data event handler.
 
 Example 3-10. Running a child process application in Windows
 
@@ -555,5 +555,5 @@ The /c flag passed as the first argument to cmd.exe instructs it to carry out th
 > Note
 > 
 > 
-> I provide more demonstrations of child processes in [Chapter 9](\l) and [Chapter 12](\l).
+> I provide more demonstrations of child processes in Chapter 9 and Chapter 12.
 >

@@ -48,7 +48,7 @@ _: [Circular] }
 
 Any other global object or method, including require, is part of the global object’s interface.
 
-When Node developers discuss *context*, they’re really referring to the global object. In [Example 2-1](\l) in [Chapter 2](\l), the code accessed the context object when creating a custom REPL object. The context object is a global object. When an application creates a custom REPL, it exists within a new context, which in this case means it has its own global object. The way to override this and use the existing global object is to create a custom REPL and set the useGlobal flag to true, rather than the default of false.
+When Node developers discuss *context*, they’re really referring to the global object. In Example 2-1 in Chapter 2, the code accessed the context object when creating a custom REPL object. The context object is a global object. When an application creates a custom REPL, it exists within a new context, which in this case means it has its own global object. The way to override this and use the existing global object is to create a custom REPL and set the useGlobal flag to true, rather than the default of false.
 
 Modules exist in their own global namespace, which means that if you define a top-level variable in one module, it is not available in other modules. More importantly, it means that only what is explicitly exported from the module becomes part of whatever application includes the module. In fact, you can’t access a top-level module variable in an application or other module, even if you deliberately try.
 
@@ -122,7 +122,7 @@ linux
 
 The process object also wraps the STDIO streams stdin, stdout, and stderr. Both stdin and stdout are asynchronous, and are readable and writable, respectively. stderr, however, is a synchronous, blocking stream.
 
-To demonstrate how to read and write data from stdin and stdout, in [Example 3-1](\l) the Node application listens for data in stdin, and repeats the data to stdout. The stdin stream is paused by default, so we have to issue a resume call before sending data.
+To demonstrate how to read and write data from stdin and stdout, in Example 3-1 the Node application listens for data in stdin, and repeats the data to stdout. The stdin stream is paused by default, so we have to issue a resume call before sending data.
 
 Example 3-1. Reading and writing data to stdin and stdout, respectively
 
@@ -172,7 +172,7 @@ Of course, the converse of this is that you don’t want to break up a process t
 
 ## Buffer
 
-The Buffer class, also a global object, is a way of handling binary data in Node. In the section [Servers, Streams, and Sockets](\l) later in the chapter, I’ll cover the fact that streams are often binary data rather than strings. To convert the binary data to a string, the data encoding for the stream socket is changed using setEncoding.
+The Buffer class, also a global object, is a way of handling binary data in Node. In the section Servers, Streams, and Sockets later in the chapter, I’ll cover the fact that streams are often binary data rather than strings. To convert the binary data to a string, the data encoding for the stream socket is changed using setEncoding.
 
 As a demonstration, you can create a new buffer with the following:
 

@@ -38,10 +38,10 @@ Now you can inspect and reinspect the object interface at your leisure. Again, i
 
 The Utilities module provides several other methods, but the one you’re most likely to use is `util.inherits`. The `util.inherits` function takes two parameters, constructor and superConstructor. The result is that the constructor will inherit the functionality from the super constructor.
 
-[Example 3-11](\l) demonstrates all the nuances associated with using `util.inherits`. The explanation of the code follows.
+Example 3-11 demonstrates all the nuances associated with using `util.inherits`. The explanation of the code follows.
 
 > Note
-[Example 3-11](\l) and its explanation cover some core JavaScript functionality you might already be familiar with. However, it’s important that all readers come away from this section with the same understanding of what’s happening.
+Example 3-11 and its explanation cover some core JavaScript functionality you might already be familiar with. However, it’s important that all readers come away from this section with the same understanding of what’s happening.
 > 
 
 Example 3-11. Enabling object inheritance via the util.inherits method

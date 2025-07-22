@@ -24,7 +24,7 @@ en.emit('data');
 
 }
 
-In [Example 3-12](\l), we create an EventEmitter instance that emits an event, timed, every three seconds. In the event handler function for this event, a message with a counter is output to the console.
+In Example 3-12, we create an EventEmitter instance that emits an event, timed, every three seconds. In the event handler function for this event, a message with a counter is output to the console.
 
 Example 3-12. Very basic test of the EventEmitter functionality
 
@@ -58,7 +58,7 @@ someobj.prototype.somemethod = function() { this.emit('event'); };
 
 someobjinstance.on('event', function() { });
 
-Rather than attempt to decipher how EventEmitter works in the abstract sense, let’s move on to [Example 3-13](\l), which shows a working example of an object inheriting EventEmitter’s functionality. In the application, a new object, inputChecker, is created. The constructor takes two values, a person’s name and a filename. It assigns the person’s name to an object variable, and also creates a reference to a writable stream using the File System module’s createWriteStream method (for more on the File System module, see the sidebar [Readable and Writable Stream](\l)).
+Rather than attempt to decipher how EventEmitter works in the abstract sense, let’s move on to Example 3-13, which shows a working example of an object inheriting EventEmitter’s functionality. In the application, a new object, inputChecker, is created. The constructor takes two values, a person’s name and a filename. It assigns the person’s name to an object variable, and also creates a reference to a writable stream using the File System module’s createWriteStream method (for more on the File System module, see the sidebar Readable and Writable Stream).
 
 ### Readable and Writable Stream
 
@@ -138,4 +138,4 @@ ic.once(event, function);
 
 When you exceed 10 listeners for an event, you’ll get a warning by default. Use setMaxListeners, passing in a number, to change the number of listeners. Use a value of zero (0) for an unlimited amount of listeners.
 
-Many of the core Node objects, as well as third-party modules, make use of EventEmitter. In [Chapter 4](\l), I’ll demonstrate how to convert the code in [Example 3-13](\l) into a module.
+Many of the core Node objects, as well as third-party modules, make use of EventEmitter. In Chapter 4, I’ll demonstrate how to convert the code in Example 3-13 into a module.

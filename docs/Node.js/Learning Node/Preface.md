@@ -22,7 +22,7 @@ Node is designed to be used for applications that are heavy on input/output (I/O
 
 ### Note
 
-Asynchronous I/O means that applications don’t wait for an input/output process to finish before going on to the next step in the application code. [Chapter 1](\l) goes into more detail on the asynchronous nature of Node.
+Asynchronous I/O means that applications don’t wait for an input/output process to finish before going on to the next step in the application code. Chapter 1 goes into more detail on the asynchronous nature of Node.
 
 Most importantly, Node is written in a language that many traditional web developers are familiar with: JavaScript. You may be learning how to use new technologies, such as working with WebSockets or developing to a framework like Express, but at least you won’t have to learn a new language along with the concepts. This language familiarity makes it a lot easier to just focus on the new material.
 
@@ -44,25 +44,25 @@ If you’re not sure you’re familiar enough with JavaScript, you might want to
 
 You don’t have to read this book’s chapters in order, but there are paths through the book that are dependent on what you’re after and how much experience you have with Node.
 
-If you’ve never worked with Node, then you’re going to want to start with [Chapter 1](\l) and read through at least [Chapter 5](\l). These chapters cover getting both Node and the package manager (npm) installed, how to use them, creating your first applications, and utilizing modules. [Chapter 5](\l) also covers some of the style issues associated with Node, including how to deal with Node’s unique approach to asynchronous development.
+If you’ve never worked with Node, then you’re going to want to start with Chapter 1 and read through at least Chapter 5. These chapters cover getting both Node and the package manager (npm) installed, how to use them, creating your first applications, and utilizing modules. Chapter 5 also covers some of the style issues associated with Node, including how to deal with Node’s unique approach to asynchronous development.
 
-If you have had some exposure to Node, have worked with both the built-in Node modules and a few external ones, and have also used REPL (read-eval-print loop—the interactive console), you could comfortably skip [Chapter 1](\l)–[Chapter 4](\l), but I still recommend starting no later than [Chapter 5](\l).
+If you have had some exposure to Node, have worked with both the built-in Node modules and a few external ones, and have also used REPL (read-eval-print loop—the interactive console), you could comfortably skip Chapter 1–Chapter 4, but I still recommend starting no later than Chapter 5.
 
-I incorporate the use of the Express framework, which also utilizes the Connect middleware, throughout the book. If you’ve not worked with Express, you’re going to want to go through [Chapter 6](\l)–[Chapter 8](\l), which cover the concepts of routing, proxies, web servers, and middleware, and introduce Express. In particular, if you’re curious about using Express in a Model-View-Controller (MVC) framework, definitely read [Chapter 7](\l) and [Chapter 8](\l).
+I incorporate the use of the Express framework, which also utilizes the Connect middleware, throughout the book. If you’ve not worked with Express, you’re going to want to go through Chapter 6–Chapter 8, which cover the concepts of routing, proxies, web servers, and middleware, and introduce Express. In particular, if you’re curious about using Express in a Model-View-Controller (MVC) framework, definitely read Chapter 7 and Chapter 8.
 
-After these foundation chapters, you can skip around a bit. For instance, if you’re primarily working with key/value pairs, you’ll want to read the Redis discussion in [Chapter 9](\l); if you’re interested in document-centric data, check out [Chapter 10](\l), which introduces how to use MongoDB with Node. Of course, if you’re going to work only with a relational database, you can go directly to [Chapter 11](\l) and skip the Redis and MongoDB chapters, though do check them out sometime—they might provide a new viewpoint to working with data.
+After these foundation chapters, you can skip around a bit. For instance, if you’re primarily working with key/value pairs, you’ll want to read the Redis discussion in Chapter 9; if you’re interested in document-centric data, check out Chapter 10, which introduces how to use MongoDB with Node. Of course, if you’re going to work only with a relational database, you can go directly to Chapter 11 and skip the Redis and MongoDB chapters, though do check them out sometime—they might provide a new viewpoint to working with data.
 
-After those three data chapters, we get into specialized application use. [Chapter 12](\l) focuses purely on graphics and media access, including how to provide media for the new HTML5 video element, as well as working with PDF documents and Canvas. [Chapter 13](\l) covers the very popular Sockets.io module, especially for working with the new web socket functionality.
+After those three data chapters, we get into specialized application use. Chapter 12 focuses purely on graphics and media access, including how to provide media for the new HTML5 video element, as well as working with PDF documents and Canvas. Chapter 13 covers the very popular Sockets.io module, especially for working with the new web socket functionality.
 
-After the split into two different specialized uses of Node in [Chapter 12](\l) and [Chapter 13](\l), we come back together again at the end of the book. After you’ve had some time to work with the examples in the other chapters, you’re going to want to spend some in [Chapter 14](\l), learning in-depth practices for Node debugging and testing.
+After the split into two different specialized uses of Node in Chapter 12 and Chapter 13, we come back together again at the end of the book. After you’ve had some time to work with the examples in the other chapters, you’re going to want to spend some in Chapter 14, learning in-depth practices for Node debugging and testing.
 
-[Chapter 15](\l) is probably one of the tougher chapters, and also one of the more important. It covers issues of security and authority. I don’t recommend that it be one of the first chapters you read, but it is essential that you spend time in this chapter before you roll a Node application out for general use.
+Chapter 15 is probably one of the tougher chapters, and also one of the more important. It covers issues of security and authority. I don’t recommend that it be one of the first chapters you read, but it is essential that you spend time in this chapter before you roll a Node application out for general use.
 
-[Chapter 16](\l) is the final chapter, and you can safely leave it for last, regardless of your interest and experience. It focuses on how to prepare your application for production use, including how to deploy your Node application not only on your own system, but also in one of the cloud servers that are popping up to host Node applications. I’ll also cover how to deploy a Node application to your server, including how to ensure it plays well with another web server such as Apache, and how to ensure your application survives a crash and restarts when the system is rebooted.
+Chapter 16 is the final chapter, and you can safely leave it for last, regardless of your interest and experience. It focuses on how to prepare your application for production use, including how to deploy your Node application not only on your own system, but also in one of the cloud servers that are popping up to host Node applications. I’ll also cover how to deploy a Node application to your server, including how to ensure it plays well with another web server such as Apache, and how to ensure your application survives a crash and restarts when the system is rebooted.
 
-Node is heavily connected with the Git source control technique, and most (if not all) Node modules are hosted on GitHub. The [Appendix A](\l) provides a Git/GitHub survival guide for those who haven’t worked with either.
+Node is heavily connected with the Git source control technique, and most (if not all) Node modules are hosted on GitHub. The Appendix A provides a Git/GitHub survival guide for those who haven’t worked with either.
 
-I mentioned earlier that you don’t *have to* follow the chapters in order, but I recommend that you do. Many of the chapters work off effort in previous chapters, and you may miss out on important points if you skip around. In addition, though there are numerous standalone examples all throughout the book, I do use one relatively simple Express application called Widget Factory that begins life in [Chapter 7](\l) and is touched on, here and there, in most of the rest of the chapters. I believe you’ll have a better time with the book if you start at the beginning and then lightly skim the sections that you know, rather than skip a chapter altogether.
+I mentioned earlier that you don’t *have to* follow the chapters in order, but I recommend that you do. Many of the chapters work off effort in previous chapters, and you may miss out on important points if you skip around. In addition, though there are numerous standalone examples all throughout the book, I do use one relatively simple Express application called Widget Factory that begins life in Chapter 7 and is touched on, here and there, in most of the rest of the chapters. I believe you’ll have a better time with the book if you start at the beginning and then lightly skim the sections that you know, rather than skip a chapter altogether.
 
 As the king says in *Alice in Wonderland*, “Begin at the beginning and go on till you come to the end: then stop.”
 
@@ -78,7 +78,7 @@ You can find the examples as a compressed file at the O’Reilly web page for th
 
 npm install -d
 
-I’ll cover more on using the Node package manager (npm) in [Chapter 4](\l).
+I’ll cover more on using the Node package manager (npm) in Chapter 4.
 
 # Conventions Used in This Book
 

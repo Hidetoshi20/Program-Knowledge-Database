@@ -210,7 +210,7 @@ http://examples.burningbird.net:8080/debug?port=5858
 
 ---
 
-In the browser, the client-side debugger (part of the developer toolset) opens, and stops at the first breakpoint. Now you can use the tools you’re probably already familiar with from your client-side JavaScript development efforts, such as stepping over a couple of lines of code and examining an object’s properties, as shown in [Figure 14-1](\l).
+In the browser, the client-side debugger (part of the developer toolset) opens, and stops at the first breakpoint. Now you can use the tools you’re probably already familiar with from your client-side JavaScript development efforts, such as stepping over a couple of lines of code and examining an object’s properties, as shown in Figure 14-1.
 
 ![](Chapter%2014/image1.png)
 
@@ -230,7 +230,7 @@ You can run a module’s test scripts using npm. In the module subdirectory, typ
 
 npm test
 
-This command runs a module test script if one is provided. When I ran the test script in the subdirectory for node-redis (covered in [Chapter 9](\l)), the resulting output displayed successful test results, such as the portion displayed here:
+This command runs a module test script if one is provided. When I ran the test script in the subdirectory for node-redis (covered in Chapter 9), the resulting output displayed successful test results, such as the portion displayed here:
 
 Connected to 127.0.0.1:6379, Redis server version 2.4.11
 
@@ -494,7 +494,7 @@ nodeunit
 
 *thetest*.js
 
-[Example 14-1](\l) has a small but complete testing script with six assertions (tests). It consists of two test units, labeled Test 1 and Test 2. The first test unit runs four separate tests, while the second test unit runs two. The expect method call reflects the number of tests being run in the unit.
+Example 14-1 has a small but complete testing script with six assertions (tests). It consists of two test units, labeled Test 1 and Test 2. The first test unit runs four separate tests, while the second test unit runs two. The expect method call reflects the number of tests being run in the unit.
 
 Example 14-1. Nodeunit test script, with two test units, running a total of six tests
 
@@ -532,7 +532,7 @@ test.done();
 
 };
 
-The result of running the [Example 14-1](\l) test script with Nodeunit is:
+The result of running the Example 14-1 test script with Nodeunit is:
 
 example1.js
 
@@ -630,7 +630,7 @@ done();
 
 });
 
-The web server is from [Chapter 1](\l), and all it does is return the “Hello, World!” message. Note the use of the newline character—the test will fail if you don’t include it.
+The web server is from Chapter 1, and all it does is return the “Hello, World!” message. Note the use of the newline character—the test will fail if you don’t include it.
 
 I ran the test with the following command line:
 
@@ -678,7 +678,7 @@ return (2 * PI * r).toFixed(4);
 
 I needed to change the precision on the result because I’m going to be doing an equality assertion test on the results in the Vows application.
 
-In the Vows test application, the circle object is the topic, and the area and circumference methods are the vows. Both are encapsulated as a Vows context. The suite is the overall test application, and the batch is the test instance (circle and two methods). [Example 14-2](\l) shows the entire test.
+In the Vows test application, the circle object is the topic, and the area and circumference methods are the vows. Both are encapsulated as a Vows context. The suite is the overall test application, and the batch is the test instance (circle and two methods). Example 14-2 shows the entire test.
 
 Example 14-2. Vows test application with one batch, one context, one topic, and two vows
 
@@ -832,7 +832,7 @@ The application expects Firefox to be installed, since this is the browser speci
 
 Another approach is to use Sauce Labs as a remote testing environment, specifying which browser to use for a given test. You’ll need to create an account first, and then find your account username and application programming interface (API) key. The username is displayed in the top toolbar, and you can find the API key under the Account tab, after clicking the “View my API Key” link. This is also where you can track your remaining OnDemand and Scout minutes (the testing applications we’re creating use OnDemand minutes).
 
-To try the remote testing out, I created a simple test for a login form that we’ll build in [Chapter 15](\l). The login form has two text fields and two buttons. The text field values are username and password, and one of the buttons has a value of Submit. The test script is testing failure, not success, so the testing script (scenario) would be:
+To try the remote testing out, I created a simple test for a login form that we’ll build in Chapter 15. The login form has two text fields and two buttons. The text field values are username and password, and one of the buttons has a value of Submit. The test script is testing failure, not success, so the testing script (scenario) would be:
 
 1. Access web application (http://examples.burningbird.net:3000).
 2. Open login (*/login*).
@@ -840,7 +840,7 @@ To try the remote testing out, I created a simple test for a login form that we�
 4. Type **badpassword** into the password field.
 5. The page should display “Invalid Password.”
 
-These are the steps encoded into [Example 14-3](\l).
+These are the steps encoded into Example 14-3.
 
 Example 14-3. Test case for the login form with bad password
 
@@ -956,7 +956,7 @@ https://saucelabs.com/rest/shelleyjust/jobs/d709199180674dc68ec6338f8b86f5d6/
 
 results/selenium-server.log
 
-You can access the results directly, or you can log into Sauce Labs and see the results of all your tests, as shown in [Figure 14-2](\l).
+You can access the results directly, or you can log into Sauce Labs and see the results of all your tests, as shown in Figure 14-2.
 
 ![](Chapter%2014/image2.png)
 
@@ -978,7 +978,7 @@ npm install zombie
 
 Zombie resembles Soda in that you create a browser and then run tests that emulate the actions of a user at a browser. It even supports chained methods to circumvent the issues with nested callbacks.
 
-I converted the test case against the login form in [Example 14-3](\l) to Zombie, except this time the test uses the proper password and tests for success rather than failure (the user is redirected to the */admin* page). [Example 14-4](\l) has the code for this acceptance test.
+I converted the test case against the login form in Example 14-3 to Zombie, except this time the test uses the proper password and tests for success rather than failure (the user is redirected to the */admin* page). Example 14-4 has the code for this acceptance test.
 
 Example 14-4. Testing the login form with Zombie
 
@@ -1024,7 +1024,7 @@ ApacheBench works against web applications, which means you provide a URL rather
 
 ### Note
 
-In the next couple of sections, the test applications are working with Redis, so if you haven’t read [Chapter 9](\l), you may want to do that now.
+In the next couple of sections, the test applications are working with Redis, so if you haven’t read Chapter 9, you may want to do that now.
 
 ## Benchmark Testing with ApacheBench
 
@@ -1081,7 +1081,7 @@ The cumulative distribution provides a good look into the percentage of requests
 
 The last value we’re looking at is the requests per second—in this case, 722.22. This value can somewhat predict how well the application will scale, because it gives us an idea of the maximum requests per second—that is, the upper boundaries of application access. However, you’ll need to run the test at different times, and under different ancillary loads, especially if you’re running the test on a system that serves other uses.
 
-The application tested consists of a web server listening for requests. Each request triggers a query to a Redis data store. The application creates a persistent connection to the Redis data store that it maintains throughout the lifetime of the Node application. The test application is shown in [Example 14-5](\l).
+The application tested consists of a web server listening for requests. Each request triggers a query to a Redis data store. The application creates a persistent connection to the Redis data store that it maintains throughout the lifetime of the Node application. The test application is shown in Example 14-5.
 
 Example 14-5. Simple Redis access application used to test persistent Redis connection
 
@@ -1177,7 +1177,7 @@ client.quit();
 
 console.log('listening on 8124');
 
-I was curious about performance if I changed one parameter in the application: from maintaining a persistent connection to Redis to grabbing a connection when the web service was accessed, and releasing it as soon as the request was finished. That led to the second version of the application, shown in [Example 14-6](\l). The changes from the first are in bold text.
+I was curious about performance if I changed one parameter in the application: from maintaining a persistent connection to Redis to grabbing a connection when the web service was accessed, and releasing it as soon as the request was finished. That led to the second version of the application, shown in Example 14-6. The changes from the first are in bold text.
 
 Example 14-6. Modified application with nonpersistent Redis connections
 
@@ -1309,7 +1309,7 @@ Suppress display of progress
 
 Help
 
-What’s fun about Nodeload is the live graphics that are displayed while the test is running. If you access port 8000 of the test server (http://localhost:8000 or via domain), you can see a graphic display of the results as they are happening. [Figure 14-3](\l) shows a snapshot of the display during one test.
+What’s fun about Nodeload is the live graphics that are displayed while the test is running. If you access port 8000 of the test server (http://localhost:8000 or via domain), you can see a graphic display of the results as they are happening. Figure 14-3 shows a snapshot of the display during one test.
 
 ![](Chapter%2014/image3.png)
 
@@ -1387,4 +1387,4 @@ There are other flags, documented with the module. The module can be found at ht
 
 ### Note
 
-[Chapter 16](\l) demonstrates how to use Nodemon with Forever, which restarts your application if it shuts down for some reason.
+Chapter 16 demonstrates how to use Nodemon with Forever, which restarts your application if it shuts down for some reason.

@@ -4,7 +4,7 @@ Chapter 8. Express, Template Systems, and CSS
 
 Frameworks such as Express provide a great deal of useful functionality, but one thing they don’t provide is a way of separating the data from the presentation. You can use JavaScript to generate HTML to process the result of a query or update, but the effort can quickly become tedious—especially if you have to generate every part of the page, including sidebars, headers, and footers. Sure, you can use functions, but the work can still verge on overwhelming.
 
-Luckily for us, as framework systems have developed, so have template systems, and the same holds true for Node and Express. In [Chapter 7](\l), we briefly used Jade, the template system installed by default with Express, to generate an index page. Express also supports other compatible template systems, including another popular choice, EJS (embedded JavaScript). Jade and EJS take a completely different approach, but both deliver the expected results.
+Luckily for us, as framework systems have developed, so have template systems, and the same holds true for Node and Express. In Chapter 7, we briefly used Jade, the template system installed by default with Express, to generate an index page. Express also supports other compatible template systems, including another popular choice, EJS (embedded JavaScript). Jade and EJS take a completely different approach, but both deliver the expected results.
 
 In addition, though you can manually create CSS files for your website or application, you can also use a *CSS engine* that can simplify this aspect of your web design and development. Rather than having to remember to add in all of the curly braces and semicolons, you use a simplified structure that can be cleaner to maintain. One such CSS engine that works quite nicely with Express and other Node applications is Stylus.
 
@@ -104,7 +104,7 @@ Once EJS is installed, you can use it directly in a simple Node application—yo
 
 Call the EJS object’s renderFile method directly. Doing so opens the template and uses the data provided as an option to generate the HTML.
 
-[Example 8-1](\l) uses the standard HTTP server that comes with Node to listen for a request on port 8124. When a request is received, the application calls the EJS renderFile method, passing in the path for the template file, as well as a names array and a document title. The last parameter is a callback function that either provides an error (and a fairly readable error, at that) or the resulting generated HTML. In the example, the result is sent back via the response object if there’s no error. If there *is* an error, an error message is sent in the result, and the error object is output to the console.
+Example 8-1 uses the standard HTTP server that comes with Node to listen for a request on port 8124. When a request is received, the application calls the EJS renderFile method, passing in the path for the template file, as well as a names array and a document title. The last parameter is a callback function that either provides an error (and a fairly readable error, at that) or the resulting generated HTML. In the example, the result is sent back via the response object if there’s no error. If there *is* an error, an error message is sent in the result, and the error object is output to the console.
 
 Example 8-1. Generating HTML from data and an EJS template
 
@@ -164,7 +164,7 @@ A third rendering method, which I won’t demonstrate, is compile, which takes a
 
 ### Note
 
-The use of compile is demonstrated in [Chapter 9](\l), in the section [Building a Game Leaderboard](\l).
+The use of compile is demonstrated in Chapter 9, in the section Building a Game Leaderboard.
 
 ## Using the EJS for Node Filters
 
@@ -200,7 +200,7 @@ Here is the result of that filter combination:
 
 Cinder Ella, Joe Brown, Mary Smith, Tom Thumb
 
-The filters aren’t documented in the EJS for Node documentation, and you have to be careful using them interchangeably because some of the filters want a string, not an array of objects. [Table 8-1](\l) contains a list of the filters, and a brief description of what type of data they work with and what they do.
+The filters aren’t documented in the EJS for Node documentation, and you have to be careful using them interchangeably because some of the filters want a string, not an array of objects. Table 8-1 contains a list of the filters, and a brief description of what type of data they work with and what they do.
 
 Table 8-1. EJS for Node filters
 
@@ -231,13 +231,13 @@ Table 8-1. EJS for Node filters
 
 # Using a Template System (EJS) with Express
 
-The template system provides the missing piece we need to complete the *views* portion of the MVC (Model-View-Controller) application architecture introduced in [Chapter 7](\l).
+The template system provides the missing piece we need to complete the *views* portion of the MVC (Model-View-Controller) application architecture introduced in Chapter 7.
 
 ### Note
 
-The *model* portion of the MVC architecture is added in [Chapter 10](\l).
+The *model* portion of the MVC architecture is added in Chapter 10.
 
-In [Chapter 7](\l), I provided a quick introduction for using a template system in [Example 7-1](\l). The example used Jade, but we can easily convert it to use EJS. How easily? [Example 8-2](\l) is an exact duplicate of the application in [Example 7-1](\l), except now using EJS rather than Jade. Exactly one line is changed, shown in bold.
+In Chapter 7, I provided a quick introduction for using a template system in Example 7-1. The example used Jade, but we can easily convert it to use EJS. How easily? Example 8-2 is an exact duplicate of the application in Example 7-1, except now using EJS rather than Jade. Exactly one line is changed, shown in bold.
 
 Example 8-2. Using EJS as a template system for an application
 
@@ -288,7 +288,7 @@ res.end();
 
 };
 
-In the *views* directory, the *index.ejs* file (note the extension) uses EJS for Node annotation rather than the Jade we saw in [Chapter 7](\l):
+In the *views* directory, the *index.ejs* file (note the extension) uses EJS for Node annotation rather than the Jade we saw in Chapter 7:
 
 <html>
 
@@ -316,7 +316,7 @@ To recap what’s happening with this application:
 4. The application render function renders the specified view, with whatever options—in this case, the title.
 5. The rendered content is then written to the response object, and back to the user’s browser.
 
-In [Chapter 7](\l), we focused on the routing aspects of the application, and now we’ll focus on the view. We’ll take the application we created at the end of [Chapter 7](\l), in [Example 7-6](\l) through [Example 7-8](\l), and add in the views capability. First, though, we need to do a little restructuring of the environment to ensure that the application can grow as needed.
+In Chapter 7, we focused on the routing aspects of the application, and now we’ll focus on the view. We’ll take the application we created at the end of Chapter 7, in Example 7-6 through Example 7-8, and add in the views capability. First, though, we need to do a little restructuring of the environment to ensure that the application can grow as needed.
 
 ## Restructuring for a Multiple Object Environment
 
@@ -384,7 +384,7 @@ res.sendfile(filePath);
 
 };
 
-The HTML page with the form is nothing to get excited about—just a simple form, as shown in [Example 8-3](\l). However, we did add the description field back in to make the data a little more interesting.
+The HTML page with the form is nothing to get excited about—just a simple form, as shown in Example 8-3. However, we did add the description field back in to make the data a little more interesting.
 
 Example 8-3. HTML new widget form
 
@@ -448,7 +448,7 @@ npm install express-rewrite
 
 ## Processing a New Object Post
 
-Prior to adding in the new template support, we need to make changes to the main application file to incorporate the use of the EJS template system. I won’t repeat the *app.js* file completely from [Example 7-8](\l) in [Chapter 7](\l), because the only change is to the configure method call to include the EJS template engine and *views* directory:
+Prior to adding in the new template support, we need to make changes to the main application file to incorporate the use of the EJS template system. I won’t repeat the *app.js* file completely from Example 7-8 in Chapter 7, because the only change is to the configure method call to include the EJS template engine and *views* directory:
 
 app.configure(function(){
 
@@ -474,7 +474,7 @@ Now we’re ready to convert the widget controller so it uses templates, startin
 
 The actual processing of the data in the widget controller for the new widget doesn’t change. We still pull the data from the request body, and add it to the in-memory widget store. However, now that we have access to a template system, we’re going to change how we respond to the successful addition of a new widget.
 
-I created a new EJS template, named *added.ejs*, shown in [Example 8-4](\l). All it does is provide a listing of the widget’s properties, and a message consisting of the title sent with the widget object.
+I created a new EJS template, named *added.ejs*, shown in Example 8-4. All it does is provide a listing of the widget’s properties, and a message consisting of the title sent with the widget object.
 
 Example 8-4. “Widget added” confirmation view template
 
@@ -502,7 +502,7 @@ Example 8-4. “Widget added” confirmation view template
 
 </body>
 
-The code to process the update is little different from that shown in [Chapter 7](\l), other than the fact that we’re now rendering a view rather than sending a message back to the user (the part that changes is in bold text):
+The code to process the update is little different from that shown in Chapter 7, other than the fact that we’re now rendering a view rather than sending a message back to the user (the part that changes is in bold text):
 
 // add a widget
 
@@ -531,11 +531,11 @@ console.log(widgets[indx-1]);
 **res.render('widgets/added', {title: 'Widget Added', widget : widgets[indx-1]});**
 };
 
-The two options sent to the view are the page title and the widget object. [Figure 8-1](\l) shows the informative, though plain, result.
+The two options sent to the view are the page title and the widget object. Figure 8-1 shows the informative, though plain, result.
 
 Warning
 
-The code to process a new widget doesn’t do any validation of the data or check for authority or SQL injection hacks. Data validation, security, and authorization are covered in [Chapter 15](\l).
+The code to process a new widget doesn’t do any validation of the data or check for authority or SQL injection hacks. Data validation, security, and authorization are covered in Chapter 15.
 
 ![](Chapter%208/image1.png)
 
@@ -549,7 +549,7 @@ A *picklist* is nothing more than a list of choices from which one can choose. F
 
 Right now, the widget application index page just has a data dump of the widget data store. It’s informative, but ugly and not all that useful. To improve the result, we’re going to add a view to display all of the widgets in a table—one widget per row, with the widget properties in columns. We’re also going to add two more columns: one with a link to edit the widget, and one with a link to delete the widget. These provide the missing piece to the application: a way to edit or delete a widget without having to remember or know its identifier.
 
-[Example 8-5](\l) has the contents of the template for this new view, named *index.ejs*. Since the file is located in the *widgets* subdirectory, we don’t have to worry that it’s the same name as the higher-level *index.ejs* file.
+Example 8-5 has the contents of the template for this new view, named *index.ejs*. Since the file is located in the *widgets* subdirectory, we don’t have to worry that it’s the same name as the higher-level *index.ejs* file.
 
 Example 8-5. Widgets index page with links to edit and delete the individual widgets
 
@@ -611,7 +611,7 @@ res.render('widgets/index', {title : 'Widgets', widgets : widgets});
 
 };
 
-In [Example 8-5](\l), if the object has a length property (is an array), its element objects are traversed and their properties are printed out as table data, in addition to the links to edit and delete the object. [Figure 8-2](\l) shows the table after several widgets have been added to our in-memory data store.
+In Example 8-5, if the object has a length property (is an array), its element objects are traversed and their properties are printed out as table data, in addition to the links to edit and delete the object. Figure 8-2 shows the table after several widgets have been added to our in-memory data store.
 
 ![](Chapter%208/image2.png)
 
@@ -627,7 +627,7 @@ Rather than incorporate the delete request into the Show Widget page, it’s als
 
 To display an individual widget is as simple as providing a placeholder for all of its properties, embedded into whatever HTML you want to use. In the widget application, I’m using an unordered list (ul) for the widget properties.
 
-Since we’re also encompassing into the page the trigger for deleting the object, at the bottom I’ve added a form that displays a button reading “Delete Widget.” In the form is the hidden _method field that is used to generate the HTTP DELETE verb that routes to the application’s destroy method. The entire template is shown in [Example 8-6](\l).
+Since we’re also encompassing into the page the trigger for deleting the object, at the bottom I’ve added a form that displays a button reading “Delete Widget.” In the form is the hidden _method field that is used to generate the HTTP DELETE verb that routes to the application’s destroy method. The entire template is shown in Example 8-6.
 
 Example 8-6. View to display a widget’s properties and a form to delete the widget
 
@@ -703,7 +703,7 @@ res.render('widgets/show', {title : 'Show Widget', widget : widgets[indx]});
 
 };
 
-[Figure 8-3](\l) demonstrates what the Show Widget page looks like, complete with the Delete Widget button at the bottom.
+Figure 8-3 demonstrates what the Show Widget page looks like, complete with the Delete Widget button at the bottom.
 
 ![](Chapter%208/image3.png)
 
@@ -717,7 +717,7 @@ One last view for the update widget, and we’re done converting the widget appl
 
 The form to edit the widget is exactly the same as the form to add a widget, except for the addition of one field: _method. In addition, the form is prepopulated with the data for the widget being edited, so we need to incorporate the template tags and appropriate values.
 
-[Example 8-7](\l) contains the contents for the *edit.ejs* template file. Note the use of the template tags with the value fields in the input elements. Also notice the addition of the _method field.
+Example 8-7 contains the contents for the *edit.ejs* template file. Note the use of the template tags with the value fields in the input elements. Also notice the addition of the _method field.
 
 Example 8-7. The Edit view template file, with data prepopulated
 
@@ -771,7 +771,7 @@ rows="5"><%= widget.desc %></textarea>
 
 </body>
 
-[Figure 8-4](\l) shows the page with a widget loaded. All you need to do is edit the field values, and then click Submit to submit the changes.
+Figure 8-4 shows the page with a widget loaded. All you need to do is edit the field values, and then click Submit to submit the changes.
 
 ![](Chapter%208/image4.png)
 
@@ -789,7 +789,7 @@ res.render('widgets/edit', {title : 'Edit Widget', widget : widgets[indx]});
 
 };
 
-The code to process the update is very close to what we had in [Chapter 7](\l), except that instead of sending a message that the object is updated, we’re using a view. We’re not creating a new view, though. Instead, we’re using the *widgets/added.ejs* view we used earlier. Since both just display the object’s properties and can take a title passed in as data, we can easily repurpose the view just by changing the title:
+The code to process the update is very close to what we had in Chapter 7, except that instead of sending a message that the object is updated, we’re using a view. We’re not creating a new view, though. Instead, we’re using the *widgets/added.ejs* view we used earlier. Since both just display the object’s properties and can take a title passed in as data, we can easily repurpose the view just by changing the title:
 
 // update a widget
 
@@ -815,7 +815,7 @@ res.render('widgets/added', {title: 'Widget Edited', widget : widgets[indx]})
 
 Again, the view used doesn’t impact what route (URL) is shown, so it doesn’t matter if we reuse a view. Being able to reuse a view can save us a lot of work as the application increases in difficulty.
 
-You’ve had a chance to see pieces of the controller code throughout these sections as we convert it to use templates. [Example 8-8](\l) is an entire copy of the changed file, which you can compare to [Example 7-6](\l) in [Chapter 7](\l) to see how easily views incorporate into the code, and how much work they can save us.
+You’ve had a chance to see pieces of the controller code throughout these sections as we convert it to use templates. Example 8-8 is an entire copy of the changed file, which you can compare to Example 7-6 in Chapter 7 to see how easily views incorporate into the code, and how much work they can save us.
 
 Example 8-8. The widget controller implemented with views
 
@@ -1145,7 +1145,7 @@ Express 3.x completely changed its handling of views, including how it implement
 
 app.set('view options', {layout: false});
 
-[Example 8-9](\l) contains the complete *layout.jade* file. It uses the HTML5 doctype, adds a head element with title and meta elements, adds the body element, and then references a block called content. That’s how you include blocks of content defined in other template files.
+Example 8-9 contains the complete *layout.jade* file. It uses the HTML5 doctype, adds a head element with title and meta elements, adds the body element, and then references a block called content. That’s how you include blocks of content defined in other template files.
 
 Example 8-9. Simple layout template in Jade
 
@@ -1223,7 +1223,7 @@ Now is also the time you might consider swapping the static Add Widget form file
 
 ## Converting the Widget Views into Jade Templates
 
-The first view to convert from EJS to Jade is the *added.ejs* template, which provides feedback for the successful addition of a new widget. The template file is named *added.jade* (the name must be the same, though the extension different, to work with the existing controller code), and it makes use of the newly defined *layout.jade* file, as shown in [Example 8-10](\l).
+The first view to convert from EJS to Jade is the *added.ejs* template, which provides feedback for the successful addition of a new widget. The template file is named *added.jade* (the name must be the same, though the extension different, to work with the existing controller code), and it makes use of the newly defined *layout.jade* file, as shown in Example 8-10.
 
 Example 8-10. The “Widget added” confirmation page converted to Jade
 
@@ -1275,7 +1275,7 @@ a(href='/widgets/#{widget.id}') Delete
 
 Each link *must* be included on a separate line; otherwise, we lose the nesting indication with the indentation.
 
-The main *index.jade* file that references the newly created row template is shown in [Example 8-11](\l). This template introduces two new Jade constructs: a conditional test and an iteration. The conditional is used to test for the length property on the widgets object, assuring us we’re dealing with an array. The iteration construct uses an abbreviated form of the Array.forEach method, where the array is traversed and each instance is assigned to the new variable, widget.
+The main *index.jade* file that references the newly created row template is shown in Example 8-11. This template introduces two new Jade constructs: a conditional test and an iteration. The conditional is used to test for the length property on the widgets object, assuring us we’re dealing with an array. The iteration construct uses an abbreviated form of the Array.forEach method, where the array is traversed and each instance is assigned to the new variable, widget.
 
 Example 8-11. The index template for creating a table of widgets
 
@@ -1313,7 +1313,7 @@ Converting the edit and deletion forms
 
 The next two conversions are working with forms.
 
-First, we’ll convert the edit template into one using Jade. The only really tricky part of the conversion is handling all the various attributes. Though you can separate them by a space, I find it helps to list each on a separate line. This way, you can see that you’ve properly included all the attributes and can easily double-check their values. [Example 8-12](\l) contains the rather long template for the Edit Widget form.
+First, we’ll convert the edit template into one using Jade. The only really tricky part of the conversion is handling all the various attributes. Though you can separate them by a space, I find it helps to list each on a separate line. This way, you can see that you’ve properly included all the attributes and can easily double-check their values. Example 8-12 contains the rather long template for the Edit Widget form.
 
 Example 8-12. Jade template for the Edit Widget form
 
@@ -1397,7 +1397,7 @@ id="reset"
 
 value="reset")
 
-During the conversion of the Show Widget page, I noticed that the top of the page is basically a repeat of what is displayed in the *added.jade* template from [Example 8-10](\l): an unordered list with all of the widget’s properties. Another opportunity to simplify!
+During the conversion of the Show Widget page, I noticed that the top of the page is basically a repeat of what is displayed in the *added.jade* template from Example 8-10: an unordered list with all of the widget’s properties. Another opportunity to simplify!
 
 I created a new template, *widget.jade*, that just displays the widget information as an unordered list:
 
@@ -1411,7 +1411,7 @@ li Price: $#{widget.price.toFixed(2)}
 
 li Desc: #{widget.desc}
 
-I then modified the *added.jade* file from [Example 8-10](\l) to use this new template:
+I then modified the *added.jade* file from Example 8-10 to use this new template:
 
 extends layout
 
@@ -1421,7 +1421,7 @@ h1 #{title} | #{widget.name}
 
 include widget
 
-The new Show Widget template also makes use of the new *widget.jade* template, as demonstrated in [Example 8-13](\l).
+The new Show Widget template also makes use of the new *widget.jade* template, as demonstrated in Example 8-13.
 
 Example 8-13. The new Show Widget template in Jade
 
@@ -1461,7 +1461,7 @@ With the newly modularized template, we can now show and delete a specific widge
 
 In the widget application, when widgets are deleted, they are deleted *in place*. This means the array element is basically set to null, so that the widget location in the array is maintained relative to its identifier. This in-place maintenance doesn’t cause a problem when we add and delete widgets and display them in the index page in EJS, but it *does* cause a problem with Jade: we get an error about missing properties, because it doesn’t filter out null array elements like the EJS template processing does.
 
-This is trivially easy to fix. As shown in [Example 8-11](\l), just add another conditional test to the Jade markup in the *index.jade* file to make sure the widget object exists (i.e., is not null):
+This is trivially easy to fix. As shown in Example 8-11, just add another conditional test to the Jade markup in the *index.jade* file to make sure the widget object exists (i.e., is not null):
 
 extends layout
 
@@ -1493,7 +1493,7 @@ if widget
 
 include row
 
-And now, all of the template views have been converted to Jade, and the application is complete. (Well, until we add in the data portion in [Chapter 10](\l).)
+And now, all of the template views have been converted to Jade, and the application is complete. (Well, until we add in the data portion in Chapter 10.)
 
 But while the application is complete, it’s not very attractive. Of course, it’s easy enough to add a stylesheet into the header to modify the presentation of all the elements, but we’ll also briefly take a look at another approach: using Stylus.
 
@@ -1533,7 +1533,7 @@ Stylus is not like the Jade template system. It doesn’t create dynamic CSS vie
 
 Read more about Stylus at http://learnboost.github.com/stylus/docs/js.html.
 
-To incorporate Stylus into the widget application, we have to include the module within the main application file’s (*app.js*) require section. Then we have to include the Stylus middleware along with the others in the configure method call, passing in an option with the source for the Stylus templates, and the destination where the compiled stylesheets are to be placed. [Example 8-14](\l) shows the newly modified *app.js* file with these changes in bold text.
+To incorporate Stylus into the widget application, we have to include the module within the main application file’s (*app.js*) require section. Then we have to include the Stylus middleware along with the others in the configure method call, passing in an option with the source for the Stylus templates, and the destination where the compiled stylesheets are to be placed. Example 8-14 shows the newly modified *app.js* file with these changes in bold text.
 
 Example 8-14. Adding Stylus CSS template support to the widget application
 
@@ -1678,7 +1678,7 @@ There’s more to working with Stylus, but I’ll leave that to you as an off-bo
 
 Specifically, we’ll add a border and spacing to the HTML table element in the index widget listing page. We’re also going to change the font for the headers and remove the bullet indicators for the unordered list. These are small changes, but they’ll be a start in refining the appearance of the widget application.
 
-The new stylesheet template is shown in [Example 8-15](\l). It’s not terribly big and doesn’t use any involved CSS. It’s basic stuff, but it does improve—smooth out a bit—the overall appearance of the application.
+The new stylesheet template is shown in Example 8-15. It’s not terribly big and doesn’t use any involved CSS. It’s basic stuff, but it does improve—smooth out a bit—the overall appearance of the application.
 
 Example 8-15. Stylus template for widget application
 
@@ -1722,7 +1722,7 @@ margin 20px
 
 padding 20px
 
-[Figure 8-5](\l) shows the index page after several widgets have been added. Again, it’s nothing fancy, but the data content is a lot easier to read with the new stylesheet.
+Figure 8-5 shows the index page after several widgets have been added. Again, it’s nothing fancy, but the data content is a lot easier to read with the new stylesheet.
 
 ![](Chapter%208/image5.png)
 

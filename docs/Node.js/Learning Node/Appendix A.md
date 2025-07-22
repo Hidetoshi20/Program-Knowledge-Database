@@ -23,13 +23,13 @@ git config --global user.email "*your email*"
 
 Since you’re going to be working with GitHub, the hosting service that houses most (if not all) Node modules, you’re also going to need to set up a GitHub account. You can use whatever GitHub username you want—it doesn’t have to match the username you just specified. You’ll also need to generate an SSH (secure shell) key to provide GitHub, following the documentation outlined in the GitHub help documentation.
 
-Most Git tutorials start you out by creating a simple *repository* (or *repo* to use common terminology) of your own work. Since we’re interested mainly in Git with Node, we’ll start out by cloning an existing repository rather than creating our own. Before you can clone the source, though, you must first *fork* (obtain a working snapshot) the repository at the GitHub website by clicking the Fork button located on the upper-right side of the repository’s main GitHub web page, as shown in [Figure A-1](\l).
+Most Git tutorials start you out by creating a simple *repository* (or *repo* to use common terminology) of your own work. Since we’re interested mainly in Git with Node, we’ll start out by cloning an existing repository rather than creating our own. Before you can clone the source, though, you must first *fork* (obtain a working snapshot) the repository at the GitHub website by clicking the Fork button located on the upper-right side of the repository’s main GitHub web page, as shown in Figure A-1.
 
 ![](Appendix%20A/image1.png)
 
 Figure A-1. Forking an existing Node module in GitHub
 
-Then you can access the forked repository in your profile. You’ll also access the Git URL in the newly forked repository web page. For instance, when I forked the node-canvas module (covered in [Chapter 12](\l)), the URL was git@github.com:shelleyp/node-canvas.git. The command to clone the forked repository is git clone URL:
+Then you can access the forked repository in your profile. You’ll also access the Git URL in the newly forked repository web page. For instance, when I forked the node-canvas module (covered in Chapter 12), the URL was git@github.com:shelleyp/node-canvas.git. The command to clone the forked repository is git clone URL:
 
 git clone git@github.com:shelleyp/node-canvas.git
 
@@ -67,7 +67,7 @@ If you want to see if the file is staged and ready to commit, you can type the g
 
 git status
 
-If you want to submit the changes to be included back as part of the original repository, you’ll issue a *pull request*. To do so, open the forked repository on which you want to issue the request in your browser, and look for the button labeled Pull Request, as shown in [Figure A-2](\l).
+If you want to submit the changes to be included back as part of the original repository, you’ll issue a *pull request*. To do so, open the forked repository on which you want to issue the request in your browser, and look for the button labeled Pull Request, as shown in Figure A-2.
 
 ![](Appendix%20A/image2.png)
 

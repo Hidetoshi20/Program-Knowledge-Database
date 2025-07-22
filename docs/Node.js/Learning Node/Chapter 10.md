@@ -2,7 +2,7 @@
 
 Chapter 10. Node and MongoDB: Document-Centric Data
 
-[Chapter 9](\l) covered one popular NoSQL database structure (key/value pairs via Redis), and this chapter covers another: document-centric data stores via MongoDB.
+Chapter 9 covered one popular NoSQL database structure (key/value pairs via Redis), and this chapter covers another: document-centric data stores via MongoDB.
 
 Where MongoDB differs from relational database systems, such as MySQL, is in its support for storing structured data as documents, rather than implementing the more traditional tables. These documents are encoded as BSON, a binary form of JSON, which probably explains its popularity among JavaScript developers. Instead of a table row, you have a BSON document; instead of a table, you have a collection.
 
@@ -84,7 +84,7 @@ Note that all of these methods are asynchronous, and are dependent on nested cal
 
 Before getting into the mechanics of adding data to a collection, and looking at fully operational examples, I want to take a moment to discuss data types. More specifically, I want to repeat what the MongoDB driver mentions about data types, because the use of JavaScript has led to some interesting negotiations between the driver and the MongoDB.
 
-[Table 10-1](\l) shows the conversions between the data types supported by MongoDB and their JavaScript equivalents. Note that most conversions occur cleanly—no potentially unexpected effects. Some, though, do require some behind-the-scenes finagling that you should be aware of. Additionally, some data types are provided by the MongoDB Native Node.js Driver, but don’t have an equivalent value in MongoDB. The driver converts the data we provide into data the MongoDB can accept.
+Table 10-1 shows the conversions between the data types supported by MongoDB and their JavaScript equivalents. Note that most conversions occur cleanly—no potentially unexpected effects. Some, though, do require some behind-the-scenes finagling that you should be aware of. Additionally, some data types are provided by the MongoDB Native Node.js Driver, but don’t have an equivalent value in MongoDB. The driver converts the data we provide into data the MongoDB can accept.
 
 Table 10-1. Node.js MongoDB driver to MongoDB data type mapping
 
@@ -109,7 +109,7 @@ Table 10-1. Node.js MongoDB driver to MongoDB data type mapping
 
 Once you have a reference to a collection, you can add documents to it. The data is structured as JSON, so you can create a JSON object and then insert it directly into the collection.
 
-To demonstrate all of the code to this point, in addition to adding data to a collection, [Example 10-1](\l) creates a first collection (named Widgets) in MongoDB and then adds two documents. Since you might want to run the example a couple of times, it first removes the collection documents using the remove method. The remove method takes three optional parameters:
+To demonstrate all of the code to this point, in addition to adding data to a collection, Example 10-1 creates a first collection (named Widgets) in MongoDB and then adds two documents. Since you might want to run the example a couple of times, it first removes the collection documents using the remove method. The remove method takes three optional parameters:
 
 - Selector for the document(s); if none is provided, all documents are removed
 - An optional safe mode indicator, safe {true | {w:n, wtimeout:n} | {fsync:true}, default:false}
@@ -273,9 +273,9 @@ findAndModify
 
 Finds a document and then performs an action (such as remove or upsert)
 
-In this section, I’ll demonstrate collection.find and collection.findOne, and reserve the other two methods for the next section, [Using Updates, Upserts, and Find and Remove](\l).
+In this section, I’ll demonstrate collection.find and collection.findOne, and reserve the other two methods for the next section, Using Updates, Upserts, and Find and Remove.
 
-Both collection.find and collection.findOne support three arguments: the query, options, and a callback. The options object and the callback are optional, and the list of possible options to use with both methods is quite extensive. [Table 10-2](\l) shows all the options, their default setting, and a description of each.
+Both collection.find and collection.findOne support three arguments: the query, options, and a callback. The options object and the callback are optional, and the list of possible options to use with both methods is quite extensive. Table 10-2 shows all the options, their default setting, and a description of each.
 
 Table 10-2. Find options
 
@@ -302,7 +302,7 @@ Table 10-2. Find options
 
 The options allow for a great deal of flexibility with queries, though most queries will most likely need only a few of them. I’ll cover some of the options in the examples, but I recommend you try the others with your example MongoDB installation.
 
-The simplest query for all documents in the collection is to use the find method without any parameters. You immediately convert the results to an array using toArray, passing in a callback function that takes an error and an array of documents. [Example 10-2](\l) shows the application that performs this functionality.
+The simplest query for all documents in the collection is to use the find method without any parameters. You immediately convert the results to an array using toArray, passing in a callback function that takes an error and an array of documents. Example 10-2 shows the application that performs this functionality.
 
 Example 10-2. Inserting four documents and then retrieving them with the find method
 
@@ -546,7 +546,7 @@ price: 60.00,
 
 type: 'B'}
 
-and you want to modify the title, you can use the update method to do so, as shown in [Example 10-3](\l). You can supply all of the fields, and MongoDB does a replacement of the document, but you’re better off using one of the MongoDB modifiers, such as $set. The $set modifier instructs the database to just modify whatever fields are passed as properties to the modifier.
+and you want to modify the title, you can use the update method to do so, as shown in Example 10-3. You can supply all of the fields, and MongoDB does a replacement of the document, but you’re better off using one of the MongoDB modifiers, such as $set. The $set modifier instructs the database to just modify whatever fields are passed as properties to the modifier.
 
 Example 10-3. Updating a MongoDB document
 
@@ -652,7 +652,7 @@ Though we used none in the example, the update method takes four options:
 
 If you’re unsure whether a document already exists in the database, set the upsert option to true.
 
-[Example 10-3](\l) did a find on the modified record to ensure that the changes took effect. A better approach would be to use findAndModify. The parameters are close to what’s used with the update, with the addition of a sort array as the second parameter. If multiple documents are returned, updates are performed in sort order:
+Example 10-3 did a find on the modified record to ensure that the changes took effect. A better approach would be to use findAndModify. The parameters are close to what’s used with the update, with the addition of a sort array as the second parameter. If multiple documents are returned, updates are performed in sort order:
 
 //update
 
@@ -710,7 +710,7 @@ console.log(doc);
 
 I’ve covered the basic CRUD (create, read, update, delete) operations you can perform from a Node application with the Native driver, but there are considerably more capabilities, including working with capped collections, indexes, and the other MongoDB modifiers; sharding (partitioning data across machines); and more. The Native driver documentation covers all of these and provides good examples.
 
-The examples demonstrate some of the challenges associated with handling data access in an asynchronous environment, discussed more fully in the sidebar [Challenges of Asynchronous Data Access](\l).
+The examples demonstrate some of the challenges associated with handling data access in an asynchronous environment, discussed more fully in the sidebar Challenges of Asynchronous Data Access.
 
 ### Challenges of Asynchronous Data Access
 
@@ -884,7 +884,7 @@ app.del(prefix + '/:sn', prefixObj.destroy);
 
 If we don’t make this change, the controller code expects sn as a parameter but gets id instead.
 
-The next code is an addition, not a modification. In the *models* subdirectory, a new file is created, named *widgets.js*. This is where the widget model is defined. To make the model accessible outside the file, it’s exported, as shown in [Example 10-4](\l).
+The next code is an addition, not a modification. In the *models* subdirectory, a new file is created, named *widgets.js*. This is where the widget model is defined. To make the model accessible outside the file, it’s exported, as shown in Example 10-4.
 
 Example 10-4. The new widget model definition
 
@@ -910,7 +910,7 @@ price : Number
 
 module.exports = mongoose.model('Widget', Widget);
 
-The last change is to the widget controller code. We’re swapping out the in-memory data store for MongoDB, using a Mongoose model. Though the change is significant from a processing perspective, the code modification isn’t very extensive—just a few tweaks, having as much to do with changing id to sn as anything else. [Example 10-5](\l) contains the complete code for the widget controller code.
+The last change is to the widget controller code. We’re swapping out the in-memory data store for MongoDB, using a Mongoose model. Though the change is significant from a processing perspective, the code modification isn’t very extensive—just a few tweaks, having as much to do with changing id to sn as anything else. Example 10-5 contains the complete code for the widget controller code.
 
 Example 10-5. The newly modified widget controller code
 

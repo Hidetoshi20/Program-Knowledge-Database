@@ -14,7 +14,7 @@ I’m going to take a break from the more tutorial style of technology coverage 
 - Creating a message queue
 - Tracking web page statistics
 
-These applications also make use of modules and technologies covered in earlier chapters, such as the Jade template system (covered in [Chapter 8](\l)), the Async module (covered in [Chapter 5](\l)), and Express (covered in [Chapter 7](\l) and [Chapter 8](\l)).
+These applications also make use of modules and technologies covered in earlier chapters, such as the Jade template system (covered in Chapter 8), the Async module (covered in Chapter 5), and Express (covered in Chapter 7 and Chapter 8).
 
 ### Note
 
@@ -122,15 +122,15 @@ The Redis *hash* and the *sorted set* are the most appropriate data structures f
 
 The sorted set is the best data structure for tracking just the scores and username, and being able to quickly access the highest 10 or 100 scores.
 
-To create the application that updates the Redis database, I converted the TCP client/server application I created in [Chapter 3](\l) to send data from the TCP client to the server, which then updates Redis. It wouldn’t be unusual for a gaming application to store the data via TCP socket rather than HTTP or other means.
+To create the application that updates the Redis database, I converted the TCP client/server application I created in Chapter 3 to send data from the TCP client to the server, which then updates Redis. It wouldn’t be unusual for a gaming application to store the data via TCP socket rather than HTTP or other means.
 
-The TCP client takes whatever we type at the command line and sends it to the server. The code is exactly the same as that shown in [Example 3-3](\l), so I won’t repeat it. When I run the TCP client, unlike previous testing, instead of just sending through plain-text messages, I send JSON representing the information being stored in the Redis database. An example is the following:
+The TCP client takes whatever we type at the command line and sends it to the server. The code is exactly the same as that shown in Example 3-3, so I won’t repeat it. When I run the TCP client, unlike previous testing, instead of just sending through plain-text messages, I send JSON representing the information being stored in the Redis database. An example is the following:
 
 {"member" : 400, "first_name" : "Ada", "last_name" : "Lovelace", "score" : 53455,
 
 "date" : "10/10/1840"}
 
-The server is modified to convert the data string it receives into a JavaScript object, and to access the individual members to store into a hash. The member identifier and score are also added to a sorted set, with the game score used as the set score. [Example 9-1](\l) shows the modified TCP server application.
+The server is modified to convert the data string it receives into a JavaScript object, and to access the individual members to store into a hash. The member identifier and score are also added to a sorted set, with the game score used as the set score. Example 9-1 shows the modified TCP server application.
 
 Example 9-1. TCP server that updates the Redis data store
 
@@ -200,7 +200,7 @@ client.quit();
 
 console.log('listening on port 8124');
 
-The Redis connection is established when the server is created, and closed when the server is closed. Another approach is to create a static client connection that persists across requests, but this has disadvantages. For more on when to create the Redis client, see the upcoming sidebar [When to Create the Redis Client](\l). The object conversion and persistence of the data to Redis is enclosed in exception handling to prevent the server from failing if we fat-finger the input.
+The Redis connection is established when the server is created, and closed when the server is closed. Another approach is to create a static client connection that persists across requests, but this has disadvantages. For more on when to create the Redis client, see the upcoming sidebar When to Create the Redis Client. The object conversion and persistence of the data to Redis is enclosed in exception handling to prevent the server from failing if we fat-finger the input.
 
 As mentioned earlier, two different data stores are being updated: the individual’s score information (including name, score, and date) is stored in a hash, and the member ID and score are stored in a sorted set. The member ID is used as the key in the hash, while the game score is used as the score for the member ID in the sorted set. The critical component to making the application work is the member ID appearing in both data stores.
 
@@ -210,7 +210,7 @@ To display the top five game players, this time we’ll create an HTTP server th
 
 To use Jade outside of express, you read in the primary template file and then call the compile method, passing in the template file string and options. The only option I’m providing is filename, because in the template file I’m using the include directive, and this requires filename. I’m actually using the template filename and location, but you’ll want to use any filename that returns a directory location relative to the files included in the Jade template.
 
-As for the template itself, [Example 9-2](\l) has the contents of the Jade file. Note that I’m using the include directive to embed the CSS directly in the file. Since I’m not utilizing a static file server in this application, the application can’t serve up the CSS file if I just embed a link to the CSS file. Also note the use of the pipe (|) with the style opening and ending tags, which are in HTML rather than Jade syntax. That’s because Jade does not process the include file if it’s listed within a style tag.
+As for the template itself, Example 9-2 has the contents of the Jade file. Note that I’m using the include directive to embed the CSS directly in the file. Since I’m not utilizing a static file server in this application, the application can’t serve up the CSS file if I just embed a link to the CSS file. Also note the use of the pipe (|) with the style opening and ending tags, which are in HTML rather than Jade syntax. That’s because Jade does not process the include file if it’s listed within a style tag.
 
 Example 9-2. Jade template file for displaying the five highest scores
 
@@ -276,13 +276,13 @@ The top scores application is using two Redis calls: zrevrange to get a range of
 
 You can easily combine results from multiple tables when you’re using a relational database, but the same doesn’t hold true when you’re accessing data from a key/value data store such as Redis. It’s doable, but since this is a Node application, we have the extra complexity of each Redis call being asynchronous.
 
-This is where a library such as Async comes in handy. I covered Async in [Chapter 5](\l), and demonstrated a couple of the Async methods (waterfall and parallel). One method I didn’t demonstrate was series, which is the ideal function for our use here. The Redis functions need to be called in order, so the data is returned in order, but each interim step doesn’t need the data from previous steps. The Async parallel functionality would run all the calls at once, which is fine, but then the results from each are returned in a random order—not guaranteed to return highest score first. The waterfall functionality isn’t necessary, because again, each step doesn’t need data from the previous step. The Async series functionality ensures that each Redis hgetall call is made in sequence and the data is returned in sequence, but takes into account that each functional step doesn’t care about the others.
+This is where a library such as Async comes in handy. I covered Async in Chapter 5, and demonstrated a couple of the Async methods (waterfall and parallel). One method I didn’t demonstrate was series, which is the ideal function for our use here. The Redis functions need to be called in order, so the data is returned in order, but each interim step doesn’t need the data from previous steps. The Async parallel functionality would run all the calls at once, which is fine, but then the results from each are returned in a random order—not guaranteed to return highest score first. The waterfall functionality isn’t necessary, because again, each step doesn’t need data from the previous step. The Async series functionality ensures that each Redis hgetall call is made in sequence and the data is returned in sequence, but takes into account that each functional step doesn’t care about the others.
 
 So we now have a way for the Redis commands to get called in order and ensure the data is returned in proper sequence, but the code to do so is clumsy: we have to add a separate step in the Async series for each hgetall Redis call and return the result once for each score returned. Working with 5 values isn’t a problem, but what if we want to return 10? Or 100? Having to manually code each Redis call into the Async series is going to become more than tedious—the code is error prone and difficult to maintain.
 
 What the scores application does is loop through the array of values returned from the zrevrange Redis call, passing each value as a parameter to a function named makeCallbackFunc. All this helper function does is return a callback function that invokes Redis hgetall, using the parameter to get the data for a specific member, and then call the callback function as the last line of its callback—an Async requirement for being able to chain results. The callback function returned from makeCallbackFunc is pushed onto an array, and it’s this array that gets sent as a parameter to the Async series method. Additionally, since the redis module returns the hgetall result as an object, and the Async series function inserts each object into an array as it finishes, when all of this functionality is complete we can just take the final result and pass it into the template engine to generate the text to return to the server.
 
-[Example 9-3](\l) is the complete code for the top scores server application. Though it sounds like a lot of work, there isn’t that much code, thanks to the elegance and usability of both the Redis and Async modules.
+Example 9-3 is the complete code for the top scores server application. Though it sounds like a lot of work, there isn’t that much code, thanks to the elegance and usability of both the Redis and Async modules.
 
 Example 9-3. The game top score service
 
@@ -404,7 +404,7 @@ console.log('Server running on 3000/');
 
 Before the HTTP server is created, we set up the Jade template function and also establish a running client to the Redis data store. When a new request is made of the server, we filter out all requests for the *favicon.ico* file (no need to call Redis for a *favicon.ico* request), and then access the top five scores using zrevrange. Once the application has the scores, it uses the Async series method to process the Redis hash requests one at a time and in sequence so it can get an ordered result back. This resulting array is passed to the Jade template engine.
 
-[Figure 9-1](\l) shows the application after I’ve added in several different scores for different folks.
+Figure 9-1 shows the application after I’ve added in several different scores for different folks.
 
 ![](Chapter%209/image1.png)
 
@@ -422,7 +422,7 @@ All the message queue application does is listen for incoming messages on port 3
 
 The third part of the demonstration application is a web server that listens for requests on port 8124. With each request, it accesses the Redis database and pops off the front entry in the image data store, returning it via the response object. If the Redis database returns a null for the image resource, it prints out a message that the application has reached the end of the message queue.
 
-The first part of the application, which processes the web log entries, is shown in [Example 9-4](\l). The Unix tail command is a way of displaying the last few lines of a text file (or piped data). When used with the -f flag, the utility displays a few lines of the file and then sits, listening for new file entries. When one occurs, it returns the new line. The tail -f command can be used on several different files at the same time, and manages the content by labeling where the data comes from each time it comes from a different source. The application isn’t concerned about which access log is generating the latest tail response—it just wants the log entry.
+The first part of the application, which processes the web log entries, is shown in Example 9-4. The Unix tail command is a way of displaying the last few lines of a text file (or piped data). When used with the -f flag, the utility displays a few lines of the file and then sits, listening for new file entries. When one occurs, it returns the new line. The tail -f command can be used on several different files at the same time, and manages the content by labeling where the data comes from each time it comes from a different source. The application isn’t concerned about which access log is generating the latest tail response—it just wants the log entry.
 
 Once the application has the log entry, it performs a couple of regular expression matches on the data to look for image resource access (files with a *.jpg*, *.gif*, *.svg*, or *.png* extension). If a pattern match is found, the application sends the resource URL to the message queue application (a TCP server).
 
@@ -518,7 +518,7 @@ Typical console log entries for this application are given in the following bloc
 /feed/atom/**/images/visitmologo.jpg/images/canvas.png/sites/default/files/paws.png**
 /feeds/atom.xml
 
-[Example 9-5](\l) contains the code for the message queue. It’s a simple application that starts a TCP server and listens for incoming messages. When it receives a message, it extracts the data from the message and stores it in the Redis database. The application uses the Redis rpush command to push the data on the end of the images list (bolded in the code).
+Example 9-5 contains the code for the message queue. It’s a simple application that starts a TCP server and listens for incoming messages. When it receives a message, it extracts the data from the message and stores it in the Redis database. The application uses the Redis rpush command to push the data on the end of the images list (bolded in the code).
 
 Example 9-5. Message queue that takes incoming messages and pushes them onto a Redis list
 
@@ -578,7 +578,7 @@ connected
 
 /sites/default/files/paws.png from 173.255.206.103 39519
 
-The last piece of the message queue demonstration application is the HTTP server that listens on port 8124 for requests, shown in [Example 9-6](\l). As the HTTP server receives each request, it accesses the Redis database, pops off the next entry in the images list, and prints out the entry in the response. If there are no more entries in the list (i.e., if Redis returns null as a reply), it prints out a message that the message queue is empty.
+The last piece of the message queue demonstration application is the HTTP server that listens on port 8124 for requests, shown in Example 9-6. As the HTTP server receives each request, it accesses the Redis database, pops off the next entry in the images list, and prints out the entry in the response. If there are no more entries in the list (i.e., if Redis returns null as a reply), it prints out a message that the message queue is empty.
 
 Example 9-6. HTTP server that pops off messages from the Redis list and returns to the user
 
@@ -666,7 +666,7 @@ What I expected to find was that the application that persisted the client conne
 
 Of course, what most likely happened is that the queued requests for the Redis database eventually blocked the Node application, at least temporarily, until the queue was freed up. I didn’t run into this same situation when opening and closing the connections with each request, because the extra overhead required for this process slowed the application just enough so that it didn’t hit the upper end of concurrent users.
 
-I’ll have more on this test, as well as other tests with ApacheBench and other performance and debugging tools, in [Chapter 14](\l) and [Chapter 16](\l).
+I’ll have more on this test, as well as other tests with ApacheBench and other performance and debugging tools, in Chapter 14 and Chapter 16.
 
 # Adding a Stats Middleware to an Express Application
 
@@ -676,7 +676,7 @@ In this section, we’re going to use Redis to add statistics for the widget app
 
 The first step of the application is to add new middleware that records access information to the Redis database. The middleware function uses a Redis set and the sadd method to add each IP address, because a set ensures that an existing value isn’t recorded twice. We’re collecting a set of IP addresses for visitors, but we’re not keeping track of each time the visitor accesses a resource. The function is also using one of the Redis incremental functions, but not incr, which increments a string; instead, it uses hincrby, because the resource URL and its associated access counter are stored as a hash.
 
-[Example 9-7](\l) displays the code for the middleware, located in a file named *stats.js*. The second Redis database is used for the application, the IPs are stored in a set identified by ip, and the URL/access counter hash is stored in a hash identified by myurls.
+Example 9-7 displays the code for the middleware, located in a file named *stats.js*. The second Redis database is used for the application, the IPs are stored in a set identified by ip, and the URL/access counter hash is stored in a hash identified by myurls.
 
 Example 9-7. The Redis stats middleware
 
@@ -724,7 +724,7 @@ app.get('/', routes.index);
 
 app.get('/stats',routes.stats);
 
-The controller code for the statistic application makes use of the Redis transaction control, accessible via the multi function call. Two sets of data are accessed: the set of unique IP addresses, returned by smembers, and the URL/count hash, returned with hgetall. Both functions are invoked, in sequence, when the exec method is called, and both sets of returned data are appended as array elements in the exec function’s callback method, as shown in [Example 9-8](\l). Once the data is retrieved, it’s passed in a render call to a new view, named stats. The new functionality for the *index.js* file appears in bold text.
+The controller code for the statistic application makes use of the Redis transaction control, accessible via the multi function call. Two sets of data are accessed: the set of unique IP addresses, returned by smembers, and the URL/count hash, returned with hgetall. Both functions are invoked, in sequence, when the exec method is called, and both sets of returned data are appended as array elements in the exec function’s callback method, as shown in Example 9-8. Once the data is retrieved, it’s passed in a render call to a new view, named stats. The new functionality for the *index.js* file appears in bold text.
 
 Example 9-8. The routes index file with the new controller code for the statistics application
 
@@ -776,7 +776,7 @@ Warning
 
 There’s no locking the data down during the transaction, either, as you’d also expect with a relational database transaction. So any changes to the Redis database during the query can impact the results.
 
-The last piece of the application is the view, created as a Jade template. The template is very simple: the IP addresses displayed in an unordered list, and the URL/counter statistics displayed in a table. The Jade for...in syntax is used to loop through the IP array, while the each...in syntax is used to access the property names and values of the object that’s returned with the Redis hgetall. The template is shown in [Example 9-9](\l).
+The last piece of the application is the view, created as a Jade template. The template is very simple: the IP addresses displayed in an unordered list, and the URL/counter statistics displayed in a table. The Jade for...in syntax is used to loop through the IP array, while the each...in syntax is used to access the property names and values of the object that’s returned with the Redis hgetall. The template is shown in Example 9-9.
 
 Example 9-9. The Jade template for the stats application
 
@@ -806,7 +806,7 @@ td #{key}
 
 td #{val}
 
-[Figure 9-2](\l) shows the statistics page after several widget application resource pages have been accessed from a couple of different IP addresses.
+Figure 9-2 shows the statistics page after several widget application resource pages have been accessed from a couple of different IP addresses.
 
 ![](Chapter%209/image2.png)
 

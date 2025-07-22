@@ -14,7 +14,7 @@ In this chapter, we’re going to look more closely at exactly what we mean by t
 
 In the earlier days of Node, asynchronous functionality was facilitated through the use of *promises*, a concept that arose in the 1970s. A promise is an object that represents the result of an asynchronous action. It’s also known as a *future*, a *delay*, or simply *deferred*. The CommonJS design model embraced the concept of the promise.
 
-In the earlier Node implementation, a promise was an object that emitted exactly two events: success and error. Its use was simple: if an asynchronous operation succeeded, the success event was emitted; otherwise, the error event was emitted. No other events were emitted, and the object would emit one or the other, but not both, and no more than once. [Example 5-1](\l) incorporates a previously implemented promise into a function that opens and reads in a file.
+In the earlier Node implementation, a promise was an object that emitted exactly two events: success and error. Its use was simple: if an asynchronous operation succeeded, the success event was emitted; otherwise, the error event was emitted. No other events were emitted, and the object would emit one or the other, but not both, and no more than once. Example 5-1 incorporates a previously implemented promise into a function that opens and reads in a file.
 
 Example 5-1. Using a previously implemented Node promise
 
@@ -72,7 +72,7 @@ The promise object ensured that the proper functionality was performed whenever 
 
 ### Note
 
-The code for [Example 5-1](\l) is one of a number of examples of possible asynchronous function techniques documented at http://groups.google.com/group/nodejs/browse_thread/thread/8dab9f0a5ad753d5 as part of the discussions about how Node would handle this concept in the future.
+The code for Example 5-1 is one of a number of examples of possible asynchronous function techniques documented at http://groups.google.com/group/nodejs/browse_thread/thread/8dab9f0a5ad753d5 as part of the discussions about how Node would handle this concept in the future.
 
 The promise object was pulled from Node in version 0.1.30. As Ryan Dahl noted at the time, the reasoning was:
 
@@ -80,7 +80,7 @@ Because many people (myself included) only want a low-level interface to file sy
 
 Rather than the promise object, Node incorporated the *last argument callbacks* we’ve used in previous chapters. All asynchronous methods feature a callback function as the last argument. The first argument in this callback function is always an error object.
 
-To demonstrate the fundamental structure of the callback functionality, [Example 5-2](\l) is a complete Node application that creates an object with one method, someMethod. This method takes three arguments, the second of which must be a string, and the third being the callback. In the method, if the second argument is missing or is not a string, the object creates a new Error object, which is passed to the callback function. Otherwise, whatever the result of the method is gets passed to the callback function.
+To demonstrate the fundamental structure of the callback functionality, Example 5-2 is a complete Node application that creates an object with one method, someMethod. This method takes three arguments, the second of which must be a string, and the third being the callback. In the method, if the second argument is missing or is not a string, the object creates a new Error object, which is passed to the callback function. Otherwise, whatever the result of the method is gets passed to the callback function.
 
 Example 5-2. The fundamental structure of the last callback functionality
 
@@ -111,7 +111,7 @@ The first key functionality is to ensure the last argument is a callback functio
 - Create a Node Error and return it if an error occurs.
 - If no error occurs, invoke the callback function, passing the method’s result.
 
-With the existing code in [Example 5-1](\l), the application output is the following error message printed out to the console:
+With the existing code in Example 5-1, the application output is the following error message printed out to the console:
 
 [Error: second argument missing or not a string]
 
@@ -141,7 +141,7 @@ val3 = callFunctionC(val2);
 
 The functions are called, in turn, passing the results from the earlier function to each subsequent function. Since all the functions are synchronous, we don’t have to worry about the function calls getting out of sequence—no unexpected results.
 
-[Example 5-3](\l) shows a relatively common case of this type of sequential programming. The application uses synchronous versions of Node’s File System methods to open a file and get its data, modify the data by replacing all references to “apple” with “orange,” and output the resulting string to a new file.
+Example 5-3 shows a relatively common case of this type of sequential programming. The application uses synchronous versions of Node’s File System methods to open a file and get its data, modify the data by replacing all references to “apple” with “orange,” and output the resulting string to a new file.
 
 Example 5-3. A sequential synchronous application
 
@@ -207,9 +207,9 @@ In the example, we’re going to have expected results because each function cal
 
 Converting this synchronous sequential application pattern to an asynchronous implementation requires a couple of modifications. First, we have to replace all functions with their asynchronous counterparts. However, we also have to account for the fact that each function doesn’t block when called, which means we can’t guarantee the proper sequence if the functions are called independently of each other. The only way to ensure that each function is called in its proper sequence is to use *nested callbacks*.
 
-[Example 5-4](\l) is an asynchronous version of the application from [Example 5-3](\l). All of the File System function calls have been replaced by their asynchronous versions, and the functions are called in the proper sequence via a nested callback.
+Example 5-4 is an asynchronous version of the application from Example 5-3. All of the File System function calls have been replaced by their asynchronous versions, and the functions are called in the proper sequence via a nested callback.
 
-Example 5-4. Application from [Example 5-3](\l) converted into asynchronous nested callbacks
+Example 5-4. Application from Example 5-3 converted into asynchronous nested callbacks
 
 var fs = require('fs');
 
@@ -235,7 +235,7 @@ console.error(err);
 
 }
 
-In [Example 5-4](\l), the input file is opened and read, and only when both actions are finished does the callback function passed as the last parameter get called. In this function, the error is checked to make sure it’s null. If not, the error is thrown for catching in the outer exception-handling block.
+In Example 5-4, the input file is opened and read, and only when both actions are finished does the callback function passed as the last parameter get called. In this function, the error is checked to make sure it’s null. If not, the error is thrown for catching in the outer exception-handling block.
 
 ### Note
 
@@ -261,7 +261,7 @@ console.log(err.stack);
 
 }
 
-Including another sequential function call adds another level of callback nesting. In [Example 5-5](\l), we access a listing of files for a directory. In each of the files, we replace a generic domain name with a specific domain name using the string replace method, and the result is written *back* to the original file. A log is maintained of each changed file, using an open write stream.
+Including another sequential function call adds another level of callback nesting. In Example 5-5, we access a listing of files for a directory. In each of the files, we replace a generic domain name with a specific domain name using the string replace method, and the result is written *back* to the original file. A log is maintained of each changed file, using an open write stream.
 
 Example 5-5. Retrieving directory listing for files to modify
 
@@ -419,7 +419,7 @@ if (err) throw err;
 
 Error: EISDIR, illegal operation on a directory
 
-[Example 5-6](\l) prevents this type of error by using the fs.stats method to return an object representing the data from a Unix stat command. This object contains information about the object, including whether it’s a file or not. The fs.stats method is, of course, another asynchronous method, requiring yet more callback nesting.
+Example 5-6 prevents this type of error by using the fs.stats method to return an object representing the data from a Unix stat command. This object contains information about the object, including whether it’s a file or not. The fs.stats method is, of course, another asynchronous method, requiring yet more callback nesting.
 
 Example 5-6. Adding in a stats check of each directory object to make sure it’s a file
 
@@ -509,7 +509,7 @@ Another approach is to provide a named function as a callback function for each 
 
 # Asynchronous Patterns and Control Flow Modules
 
-The application in [Example 5-6](\l) is an example of an asynchronous pattern, where each function is called in turn and passes its results to the next function, and the entire chain stops only if an error occurs. There are several such patterns, though some are variations of others, and not everyone uses the exact same terminology.
+The application in Example 5-6 is an example of an asynchronous pattern, where each function is called in turn and passes its results to the next function, and the entire chain stops only if an error occurs. There are several such patterns, though some are variations of others, and not everyone uses the exact same terminology.
 
 One Node module, Async, provides names and support for the most extensive list of asynchronous control flow patterns:
 
@@ -563,7 +563,7 @@ Step is a focused utility module that enables simplified control flow for serial
 
 npm install step
 
-The Step module exports exactly one object. To use the object for serial execution, wrap your asynchronous function calls within functions that are then passed as parameters to the object. For instance, in [Example 5-7](\l), Step is used to read the contents of a file, modify the contents, and write them back to the file.
+The Step module exports exactly one object. To use the object for serial execution, wrap your asynchronous function calls within functions that are then passed as parameters to the object. For instance, in Example 5-7, Step is used to read the contents of a file, modify the contents, and write them back to the file.
 
 Example 5-7. Using Step to perform serial asynchronous tasks
 
@@ -627,9 +627,9 @@ we’d never know that the write failed.
 
 Even though the second function isn’t asynchronous, every function but the first in Step requires the error object as the first parameter for consistency. It’s just null by default in a synchronous function.
 
-[Example 5-7](\l) performs part of the functionality of the application in [Example 5-6](\l). Could it do the rest of the functionality, especially handling modification to multiple files? The answer is yes, and no. Yes, it can do the work, but only if we throw in some kludgy code.
+Example 5-7 performs part of the functionality of the application in Example 5-6. Could it do the rest of the functionality, especially handling modification to multiple files? The answer is yes, and no. Yes, it can do the work, but only if we throw in some kludgy code.
 
-In [Example 5-8](\l), I added in the readir asynchronous function to get a list of files in a given subdirectory. The array of files is processed with a forEach command, like in [Example 5-6](\l), but the end of the call to readFile isn’t a callback function or this. In Step, the call to create the group object signals to reserve a parameter for a group result; the call to the group object in the readFile asynchronous function results in each of the callbacks being called in turn, and the results being grouped into an array for the next function.
+In Example 5-8, I added in the readir asynchronous function to get a list of files in a given subdirectory. The array of files is processed with a forEach command, like in Example 5-6, but the end of the call to readFile isn’t a callback function or this. In Step, the call to create the group object signals to reserve a parameter for a group result; the call to the group object in the readFile asynchronous function results in each of the callbacks being called in turn, and the results being grouped into an array for the next function.
 
 Example 5-8. Using Step’s group() capability to handle grouped asynchronous processes
 
@@ -691,7 +691,7 @@ console.log(err);
 
 To preserve the filenames, the readdir result is assigned to a global variable, files. In the last Step function, a regular for loop cycles through the data to modify it, and then cycles through the files variable to get the filename. Both the filename and modified data are used in the last asynchronous call to writeFile.
 
-One other approach we could have used if we wanted to hardcode the change to each file is to use the Step parallel feature. [Example 5-9](\l) performs a readFile on a couple of different files, passing in this.parallel() as the last parameter. This results in a parameter being passed to the next function for each readFile in the first function. The parallel function call also has to be used in the writeFile function in the second function, to ensure that each callback is processed in turn.
+One other approach we could have used if we wanted to hardcode the change to each file is to use the Step parallel feature. Example 5-9 performs a readFile on a couple of different files, passing in this.parallel() as the last parameter. This results in a parameter being passed to the next function for each readFile in the first function. The parallel function call also has to be used in the writeFile function in the second function, to ensure that each callback is processed in turn.
 
 Example 5-9. Reading and writing to a group of files using Step’s group functionality
 
@@ -759,7 +759,7 @@ npm install async
 
 As mentioned earlier, Async provides control flow capability for a variety of asynchronous patterns, including serial, parallel, and waterfall. Like Step, it gives us a tool to tame the wild nested callback pyramid, but its approach is quite different. For one, we don’t insert ourselves between each function and its callback. Instead, we incorporate the callback as part of the process.
 
-As an example, we’ve already identified that the pattern of the earlier application matches with Async’s waterfall, so we’ll be using the async.waterfall method. In [Example 5-10](\l), I used async.waterfall to open and read a data file using fs.readFile, perform the synchronous string substitution, and then write the string back to the file using fs.writeFile. Pay particular attention to the callback function used with each step in the application.
+As an example, we’ve already identified that the pattern of the earlier application matches with Async’s waterfall, so we’ll be using the async.waterfall method. In Example 5-10, I used async.waterfall to open and read a data file using fs.readFile, perform the synchronous string substitution, and then write the string back to the file using fs.writeFile. Pay particular attention to the callback function used with each step in the application.
 
 Example 5-10. Using async.waterfall to read, modify, and write a file’s contents asynchronously
 
@@ -819,9 +819,9 @@ The readData function wraps our fs.readFile call, which checks for an error, fir
 
 ### Note
 
-[Example 5-10](\l) uses named functions, while the Async documentation shows anonymous functions. However, named functions can simplify debugging and error handling. Both work equally well.
+Example 5-10 uses named functions, while the Async documentation shows anonymous functions. However, named functions can simplify debugging and error handling. Both work equally well.
 
-The processing is very similar to what we had in [Example 5-4](\l), but without the nesting (and having to test for an error in each function). It may seem more complicated than what we had in [Example 5-4](\l), and I wouldn’t necessarily recommend its use for such simple nesting, but look what it can do with a more complex nested callback. [Example 5-11](\l) duplicates the exact functionality from [Example 5-6](\l), but without the callback nesting and excessive indenting.
+The processing is very similar to what we had in Example 5-4, but without the nesting (and having to test for an error in each function). It may seem more complicated than what we had in Example 5-4, and I wouldn’t necessarily recommend its use for such simple nesting, but look what it can do with a more complex nested callback. Example 5-11 duplicates the exact functionality from Example 5-6, but without the callback nesting and excessive indenting.
 
 Example 5-11. Get objects from directory, test to look for files, read file test, modify, and write back out log results
 
@@ -927,7 +927,7 @@ console.log(err);
 
 }
 
-Every last bit of functionality is present from [Example 5-6](\l). The fs.readdir method is used to get an array of directory objects. The Node forEach method (not the Async forEach) is used to access each specific object. The fs.stats method is used to get the stats for each object. stats is used to check for files, and when a file is found, it’s opened and its data accessed. The data is then modified, and passed on to be written back to the file via fs.writeFile. The operation is logged in the logfile and also echoed to the console.
+Every last bit of functionality is present from Example 5-6. The fs.readdir method is used to get an array of directory objects. The Node forEach method (not the Async forEach) is used to access each specific object. The fs.stats method is used to get the stats for each object. stats is used to check for files, and when a file is found, it’s opened and its data accessed. The data is then modified, and passed on to be written back to the file via fs.writeFile. The operation is logged in the logfile and also echoed to the console.
 
 Note that there is more data passed in some of the callbacks. Most of the functions need the filename as well as the text, so this is passed in the last several methods. Any amount of data can be passed in the methods, as long as the first parameter is the error object (or null, if no error object) and the last parameter in each function is the callback function.
 
@@ -937,9 +937,9 @@ The other Async control flow methods, such as async.parallel and async.serial, p
 
 ### Note
 
-We use the async.serial method with a Redis application in [Chapter 9](\l), in the section [Building a Game Leaderboard](\l).
+We use the async.serial method with a Redis application in Chapter 9, in the section Building a Game Leaderboard.
 
-The async.parallel method calls all of the asynchronous functions at once, and when they are each finished, calls the optional final callback. [Example 5-12](\l) uses async.parallel to read in the contents of three files in parallel. However, rather than an array of functions, this example uses an alternative approach that Async supports: passing in an object with each asynchronous task listed as a property of the object. The results are then printed out to the console when all three tasks have finished.
+The async.parallel method calls all of the asynchronous functions at once, and when they are each finished, calls the optional final callback. Example 5-12 uses async.parallel to read in the contents of three files in parallel. However, rather than an array of functions, this example uses an alternative approach that Async supports: passing in an object with each asynchronous task listed as a property of the object. The results are then printed out to the console when all three tasks have finished.
 
 Example 5-12. Opening three files in parallel and reading in their contents
 
@@ -1001,7 +1001,7 @@ The results are returned as an array of objects, with each result tied to each o
 - data2.txt: oranges
 - data3.txt: peaches
 
-the result of running [Example 5-12](\l) is:
+the result of running Example 5-12 is:
 
 { data1: 'apples\n', data2: 'oranges\n', data3: 'peaches\n' }
 
