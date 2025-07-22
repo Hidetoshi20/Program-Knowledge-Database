@@ -1,19 +1,5 @@
 # JS
 
-[resource](JS/resource.md)
-
-[asynchronism](JS/asynchronism.md)
-
-[ES6](JS/ES6.md)
-
-[interview summary](JS/interview%20summary.md)
-
-[object inherit](JS/object%20inherit.md)
-
-[scenario](JS/scenario.md)
-
-[this](JS/this.md)
-
 # 数据遍历
 
 | 方法 | 自身 可枚举属性 | 自身 不可枚举属性 | 继承属性 | Symbol属性 | 描述 |
