@@ -1,3 +1,3 @@
 # Bywork
 
-![IMG_0595.jpeg](Bywork/IMG_0595.jpeg)
+![IMG_0595.jpeg](Bywork/IMG_0595.jpeg) 

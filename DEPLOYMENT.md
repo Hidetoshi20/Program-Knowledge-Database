@@ -145,18 +145,46 @@
 2.  **在浏览器中打开**：
     命令执行后，您会看到类似 `Serving on http://127.0.0.1:8000` 的输出。在浏览器中访问这个地址，即可看到您的知识库网站。当您修改并保存 Markdown 文件或 `mkdocs.yml` 配置后，网站会自动刷新。
 
-### 第 4 步：构建并部署到 GitHub Pages
+### 第 4 步：通过 GitHub Actions 自动部署
 
-当您对本地预览的效果满意后，就可以一键部署了。
+我们已经配置了一个 GitHub Actions 工作流，它会在您每次推送到 `main` 分支时自动构建和部署您的知识库。
 
-1.  **运行部署命令**：
-    ```bash
-    mkdocs gh-deploy --clean
+1.  **创建工作流文件**：
+    在您的项目根目录下创建一个名为 `.github/workflows/main.yml` 的文件，并填入以下内容：
+    ```yaml
+    name: Deploy Knowledge Base
+
+    on:
+      push:
+        branches:
+          - main # 或者您的默认分支
+
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v3
+
+          - name: Set up Python
+            uses: actions/setup-python@v4
+            with:
+              python-version: 3.x
+
+          - name: Install dependencies
+            run: pip install mkdocs mkdocs-material
+
+          - name: Deploy to GitHub Pages
+            run: mkdocs gh-deploy --force --clean --remote-name origin
     ```
-    这个命令会自动完成以下工作：
-    - 构建所有静态 HTML 文件。
-    - 创建一个名为 `gh-pages` 的新分支（如果不存在）。
-    - 将构建好的网站内容推送到 `gh-pages` 分支。
+
+2.  **推送代码**：
+    将您的代码（包括新的 `.github/workflows/main.yml` 文件）推送到 GitHub 仓库的 `main` 分支。
+    ```bash
+    git add .
+    git commit -m "Add GitHub Actions workflow for deployment"
+    git push origin main
+    ```
 
 ### 第 5 步：配置 GitHub 仓库
 
@@ -168,11 +196,11 @@
 4.  在 **Build and deployment** 部分，将 **Source** (源) 设置为 **Deploy from a branch**。
 5.  在 **Branch** (分支) 部分，选择 `gh-pages` 分支和 `/(root)` 目录，然后点击 **Save**。
 
-等待几分钟后，您的知识库网站就应该可以通过您在 `mkdocs.yml` 中配置的 `site_url` 地址公开访问了。
+等待几分钟后，GitHub Actions 会自动完成构建和部署。您的知识库网站应该就可以通过您在 `mkdocs.yml` 中配置的 `site_url` 地址公开访问了。
 
 ---
 
 部署完成后，您未来的更新流程将非常简单：
 1.  在本地修改您的 Markdown 笔记。
-2.  运行 `mkdocs gh-deploy --clean` 命令。
-3.  网站将自动更新。
+2.  将更改推送到 `main` 分支。
+3.  GitHub Actions 会自动为您更新网站。
