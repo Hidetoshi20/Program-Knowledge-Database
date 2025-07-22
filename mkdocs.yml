@@ -29,7 +29,6 @@ theme:
         icon: material/brightness-4
         name: 切换到日间模式
   features:
-    - navigation.tabs # 使用顶部标签页作为一级导航
     - navigation.sections # 在侧边栏中将内容分组
     - navigation.expand # 自动展开当前页面的导航
     - navigation.top # "返回顶部" 按钮
@@ -38,59 +37,7 @@ theme:
     - content.code.annotate # 代码块注释功能
     - content.tabs.link # 可链接到具体标签页
 
-# Markdown 扩展
-markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - admonition
-  - toc:
-      permalink: true
-
-
-
-nav:
-  - '首页': 'README.md'
-  - '编程语言':
-    - '总览': 'Program Language/Program Language.md'
-    - 'JavaScript':
-        - 'Index': 'Program Language/JS/index.md'
-        - 'Asynchronism': 'Program Language/JS/asynchronism.md'
-        - 'ES6': 'Program Language/JS/ES6.md'
-        - 'Interview Summary': 'Program Language/JS/interview summary.md'
-        - 'Object Inherit': 'Program Language/JS/object inherit.md'
-        - 'Resource': 'Program Language/JS/resource.md'
-        - 'Scenario': 'Program Language/JS/scenario.md'
-        - 'This': 'Program Language/JS/this.md'
-    - 'TypeScript': 'Program Language/TS/'
-    - 'CSS': 'Program Language/CSS/'
-    - 'HTML': 'Program Language/Html/'
-  - '数据库系统':
-    - '总览': 'Database Systems/Database.md'
-    - '设计、实现与管理': 'Database Systems/Database Systems Design Implementation & Management/'
-  - '网络':
-    - '总览': 'network/network.md'
-    - '计算机网络自顶向下': 'network/Computer Networking A Top-Down Approach/'
-    - '运营商网络': 'network/network carrier/'
-  - 'Node.js':
-    - '总览': 'Node.js/Node.md'
-    - 'Learning Node': 'Node.js/Learning Node/'
-    - 'Learning Node (服务器端)': 'Node.js/Learning Node Moving The Server Side/'
-  - 'Web 前端':
-    - '总览': 'Web Front End/Web Front End.md'
-    - '浏览器': 'Web Front End/Browser/'
-    - 'Web 框架': 'Web Front End/Web Framework/'
-    - 'Web 安全': 'Web Front End/Web Security/'
-    - '其他':
-      - '模块化': 'Web Front End/Web Module/'
-      - '性能': 'Web Front End/Web Performance.md'
-      - '场景': 'Web Front End/Web Scenario/'
-      - '测试': 'Web Front End/Web Test.md'
-  - '操作系统':
-    - '总览': 'carrier OS/Os.md'
-    - 'Carrier OS': 'carrier OS/OS/'
-  - 'Web 3':
-    - '待探索领域': 'Web 3/Areas to be explored.md'
-    - '探索内容': 'Web 3/Areas to be explored/'
+# Plugins
+plugins:
+  - search
+  - awesome-pages
