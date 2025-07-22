@@ -1,3 +1,4 @@
 mkdocs
 mkdocs-material
 pymdown-extensionsmkdocs-awesome-pages-plugin
+mkdocs-tags-plugin
