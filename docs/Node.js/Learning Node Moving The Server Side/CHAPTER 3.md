@@ -317,7 +317,7 @@ An In-Depth Exploration of NPM
 
 npm not only installs Request, it also discovers its module dependencies and installs them, too. And the more sophisticated the module, the more de-pendencies are installed. Figure 3-1 shows a partial listing from installing Re-quest in my Windows machine.
 
-![](CHAPTER%203%20d70188724522434d9ae2f6ecf2c5b268/image1.jpeg)
+![](CHAPTER%203/image1.jpeg)
 
 FIGURE 3-1
 
@@ -807,7 +807,7 @@ If you’re looking for modules to support the OAuth protocol, enter this as sea
 
 You will want to check out the module statistics. The biggest challenge when searching for Node modules at npm, is that many of the modules are no longer supported, or aren’t considered best in breed. The only way you can tell which modules are actively supported and most widely used are the statistics listed in the right side of the page. Figure 3-2 is an example, for the OAuth module.
 
-![](CHAPTER%203%20d70188724522434d9ae2f6ecf2c5b268/image2.jpeg)
+![](CHAPTER%203/image2.jpeg)
 
 FIGURE 3-2
 

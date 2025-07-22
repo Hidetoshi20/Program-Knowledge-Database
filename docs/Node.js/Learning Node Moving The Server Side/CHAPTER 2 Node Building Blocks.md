@@ -286,7 +286,7 @@ endian format
 
 endian format
 
-![](CHAPTER%202%20Node%20Building%20Blocks%20b907bb70daf84d29b4cc6636f508677d/image1.jpeg)
+![](CHAPTER%202%20Node%20Building%20Blocks/image1.jpeg)
 
 You can also write 8-bit integers directly using an array-like format: var buf = new Buffer(4);
 
@@ -474,7 +474,7 @@ To demonstrate the fundamental structure of the callback functionality,
 
 is a complete Node application that creates an object with one function, doSomething() . The function takes three arguments: the first of which
 
-![](CHAPTER%202%20Node%20Building%20Blocks%20b907bb70daf84d29b4cc6636f508677d/image2.jpeg)
+![](CHAPTER%202%20Node%20Building%20Blocks/image2.jpeg)
 
 is returned as data if no error occurs, the second of which must be a string, and the third is the callback function. In doSomething() , if the second argument is missing or is not a string, the object creates a new Error object, which gets re-turned in the callback function. If no error occurs, the callback function is called, the error is set to null , and the function data gets returned (in this case, the first argument).
 
@@ -561,11 +561,11 @@ The use of a callback function is simple, but generates its own challeng-es, inc
 
 Earlier I mentioned that the http.Server object inherits from another ob-ject, and that’s where we get the event emitting capability. This object is named, appropriately enough, EventEmitter, and we’ll cover it next.
 
-![](CHAPTER%202%20Node%20Building%20Blocks%20b907bb70daf84d29b4cc6636f508677d/image3.jpeg)
+![](CHAPTER%202%20Node%20Building%20Blocks/image3.jpeg)
 
 Node’s Callback and Asynchronous Event Handling
 
-![](CHAPTER%202%20Node%20Building%20Blocks%20b907bb70daf84d29b4cc6636f508677d/image4.jpeg)
+![](CHAPTER%202%20Node%20Building%20Blocks/image4.jpeg)
 
 EventEmitter
 

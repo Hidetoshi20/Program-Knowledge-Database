@@ -212,7 +212,7 @@ http://examples.burningbird.net:8080/debug?port=5858
 
 In the browser, the client-side debugger (part of the developer toolset) opens, and stops at the first breakpoint. Now you can use the tools you’re probably already familiar with from your client-side JavaScript development efforts, such as stepping over a couple of lines of code and examining an object’s properties, as shown in [Figure 14-1](\l).
 
-![](Chapter%2014%20170a14c450874de2a05710dbd01cef5e/image1.png)
+![](Chapter%2014/image1.png)
 
 Figure 14-1. Running Node Inspector in Chrome on a Node application running on a remote server
 
@@ -958,7 +958,7 @@ results/selenium-server.log
 
 You can access the results directly, or you can log into Sauce Labs and see the results of all your tests, as shown in [Figure 14-2](\l).
 
-![](Chapter%2014%20170a14c450874de2a05710dbd01cef5e/image2.png)
+![](Chapter%2014/image2.png)
 
 Figure 14-2. Results of running Soda test against Sauce Labs Selenium core
 
@@ -1311,7 +1311,7 @@ Help
 
 What’s fun about Nodeload is the live graphics that are displayed while the test is running. If you access port 8000 of the test server (http://localhost:8000 or via domain), you can see a graphic display of the results as they are happening. [Figure 14-3](\l) shows a snapshot of the display during one test.
 
-![](Chapter%2014%20170a14c450874de2a05710dbd01cef5e/image3.png)
+![](Chapter%2014/image3.png)
 
 Figure 14-3. Live graphics of ongoing Nodeload test
 

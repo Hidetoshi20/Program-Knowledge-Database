@@ -60,9 +60,9 @@ However, each audience brings a diferent perspective, and skills, to the learnin
 
 One thing I’m not going to do is force rote memorization on you. We’ll get into the core module APIs, but I’m not going to cover every object and function, because these are documented at the Node web site. What I’ll do instead is touch on important aspects of each core module or specific Node functionality I think is essential in order to, hopefully, give you a baseline so you can hold your own with other Node developers. Of course, practice makes mastery, and this book is a learning tool. Once you’re finished with the book you’ll need to con-tinue on for more in-depth introductions to specific types of functionality, such as working the MEAN (Mongo-Express-Angular-Node) stack. But you’ll have the grounding you need to branch out in any of the many Node directions.
 
-![](Preface%200101b1d1629d401e97442da626d14971/image2.jpeg)
+![](Preface/image2.jpeg)
 
-![](Preface%200101b1d1629d401e97442da626d14971/image3.jpeg)
+![](Preface/image3.jpeg)
 
 N O D E . J S B E C O M E S N O D E
 
@@ -172,7 +172,7 @@ Server running at http://127.0.0.1:8124/
 
 Now open a browser and type either http://localhost:8124/ or http://127.0.0.1:8124 into the address bar (or your domain, if you’re host-ing Node on your server). What appears is a simple unadorned web page with “Hello World” in text at the top, as shown in Figure 1-1.
 
-![](Preface%200101b1d1629d401e97442da626d14971/image4.jpeg)
+![](Preface/image4.jpeg)
 
 FIGURE 1-1
 
@@ -180,7 +180,7 @@ Figure 1-1: Your first Node application
 
 If you’re running your application in Windows, you’ll most likely receive a Windows Firewall alert, as shown in Figure 1-2. Uncheck the Public Network op-tion, check the Private network option, and then click the button to Allow ac-cess.
 
-![](Preface%200101b1d1629d401e97442da626d14971/image5.jpeg)
+![](Preface/image5.jpeg)
 
 FIGURE 1-2
 
@@ -273,7 +273,7 @@ console.log('Server running at port 8124/');
 
 The result of accessing the web-based application with a query string of ? name=burningbird is shown in Figure 1-3.
 
-![](Preface%200101b1d1629d401e97442da626d14971/image6.jpeg)
+![](Preface/image6.jpeg)
 
 FIGURE 1-3
 
@@ -381,7 +381,7 @@ Nowadays, an application is just as likely to reside in a cloud server rather th
 
 When you host a Node application in the cloud, what you’re really doing, typically, is creating the application on your own server or PC, testing it, making sure it’s what you want, and then pushing the application out to the cloud serv-er. A cloud server for Node allows you to create the Node application you want to create, using the resources of whatever database system or other system you wish, but without having to manage the server, directly. You can focus specifi-cally on the Node application without having to worry about FTP or email servers, or general server maintenance.
 
-![](Preface%200101b1d1629d401e97442da626d14971/image7.jpeg)
+![](Preface/image7.jpeg)
 
 The Node LTS and Upgrading Node
 

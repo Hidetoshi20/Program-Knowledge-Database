@@ -442,11 +442,11 @@ Cloud9 is a web-based IDE that can, among other things, interface with your GitH
 
 From the project management page, clicking on a project opens it into a separate page, where you can select any of the project files for editing, as shown in [Figure 16-2](\l). You can clone an existing project in GitHub directly from the IDE.
 
-![](Chapter%2016%20be3b022fae3c47c7818c96b42a095c1f/image1.jpeg)
+![](Chapter%2016/image1.jpeg)
 
 Figure 16-1. Cloud9 IDE project management page
 
-![](Chapter%2016%20be3b022fae3c47c7818c96b42a095c1f/image2.png)
+![](Chapter%2016/image2.png)
 
 Figure 16-2. Cloud9 IDE project editing page
 

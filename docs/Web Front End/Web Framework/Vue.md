@@ -759,8 +759,8 @@ Element-UI特点：
 - 用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；
 - 结果可控：用户可以自由的进行操作，包括撤销、回退和终止当前操作等。
 
-[Router](Vue%20609bec0ea78f40f1905d8e1504c92265/Router%202dbf7a0598b449fcba48d09fb764c73b.md)
+[Router](Vue/Router.md)
 
-[resource](Vue%20609bec0ea78f40f1905d8e1504c92265/resource%20d091a48926d64a15a5aed12107faab0d.md)
+[resource](Vue/resource.md)
 
-[Vitest](Vue%20609bec0ea78f40f1905d8e1504c92265/Vitest%20d3f50820ed0c4dd5833bb25aa8c2b266.md)
+[Vitest](Vue/Vitest.md)

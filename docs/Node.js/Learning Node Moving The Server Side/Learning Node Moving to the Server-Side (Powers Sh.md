@@ -426,7 +426,7 @@ https://examples.burningbird.net:3000
 
 Accessing the page demonstrates what happens when we use a self-signed certificate, as shown in **Figure 7-1** . It’s easy to see why a self-signed certificate should be used only during testing. Accessing the page using localhost also dis-ables the security warning.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image1.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image1.jpeg)
 
 FIGURE 7-1
 
@@ -444,7 +444,7 @@ certifcate
 
 The browser address bar demonstrates another way that the browser sig-nals that the site’s certificate can’t be trusted, as shown in **Figure 7-2** . Rather than displaying a lock indicating that the site is being accessed via HTTPS, it displays a lock with a red *x showing that the certificate can’t be trusted. Click-*ing the icon opens an information window with more details about the certifi-cate.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image2.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image2.jpeg)
 
 FIGURE 7-2
 
@@ -1952,7 +1952,7 @@ You can see the records in the MongoDB using the command-line tool. Use the foll
 
 2. Type use exampleDb to change to the exampleDb database
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image3.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image3.jpeg)
 
 3. Type show collections to see all collections
 
@@ -2300,11 +2300,11 @@ Accessing the HTTP server application with a web browser returns a URL for the i
 
 The data involved is very simple, and possibly prolific, which is why Redis is so ideally suited for this type of application. It’s a fast, uncomplicated data store that doesn’t take a great deal of efort in order to incorporate its use into a Node application.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image4.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image4.jpeg)
 
 AngularJS and Other Full-Stack Frameworks
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image5.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image5.jpeg)
 
 **AngularJS and Other Full-Stack Frameworks** First of all, framework is a grossly over-used term. We see it used for front-end libraries, such as jQuery, graphics libraries such as D3, Express, as well as a host of more modern full-stack applications. In this chapter, when I use framework, I mean the full-stack frameworks, such as AngularJS, Ember, Backbone, and Re-act.
 
@@ -2338,7 +2338,7 @@ There’s nothing esoteric about the structure, and resembles what we found for 
 
 To demonstrate lets look at some of the code for a couple of the frameworks: AngularJS and Backbone.js. I’m not going to replicate much of the code be-cause it’s a sure bet that the code will change by the time you read this. I’ll start with AngularJS, and focus on the optimized application—the site features sev-eral diferent implementations featuring AngularJS. Figure 10-1 shows the ap-plication afer three to-do items have been added.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image6.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image6.jpeg)
 
 FIGURE 10-1
 
@@ -2871,7 +2871,7 @@ There is some documentation on Node Inspector at its **GitHub reposito-ry** . St
 
 I opened my debugtest.js file created in the last section in Node Inspector. Figure 11-1 shows the debugger with the file first loaded, and afer clicking the run button, located in the upper right-hand corner of the tool. Node Inspector honors the debugger command, which becomes the first breakpoint for the application. The watch variables are shown just below the buttons to control program execution.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image7.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image7.jpeg)
 
 FIGURE 11-1
 
@@ -2891,7 +2891,7 @@ tion call, step into the function, step out of the current function, clear all b
 
 What’s new with this wonderful visual interface is the listing of applications/ modules in the lef window, a Call Stack, a listing of Scope Variables (both local and global), and the set breakpoints, in windows on the right. If we want to add a breakpoint in the imported module, external.js, it’s just a simple matter of opening the file from the list in the lef, and inserting a breakpoint. Figure 11-2 shows the debugger with the module loaded and breakpoint reached.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image8.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image8.jpeg)
 
 FIGURE 11-2
 
@@ -3625,13 +3625,13 @@ Raspberry Pi
 
 Foundation , used
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image9.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image9.jpeg)
 
 via CC license CC-
 
 BY-SA
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image10.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image10.jpeg)
 
 As you might note, the pin number doesn’t reflect it’s actual physical loca-tion in the board. The number appearing in the pin label is the *GPIO number* . Some APIs, including Samsung’s IoT.js, expect the GPIO number when it asks for a pin number.
 
@@ -3723,7 +3723,7 @@ CHAPTER 12: Node in New Environments
 
 families in the tool to the right. In Figure 12-2, you can see the sketch I made for the Arduino blinking LED example, in the next section. It consists of an Arduino Uno dragged from the right, an LED from the same parts list, with the color of the LED changed from red to yellow. The parts description is what shows at the bottom right. You can manually edit most anything you want in this section.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image11.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image11.jpeg)
 
 FIGURE 12-2
 
@@ -3739,7 +3739,7 @@ In the example, the LED has two legs, called *leads* , one longer than the other
 
 Instead of plugging the LED into the board, directly, I could use a bread-board. That’s the only option with the Raspberry Pi. The Fritzing sketch for the Raspberry Pi project is shown in Fire 12-3.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image12.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image12.jpeg)
 
 FIGURE 12-3
 
@@ -3769,7 +3769,7 @@ To program an Arduino Uno, you’ll need to install **Arduino sofware** on your 
 
 Next you’ll need to upload firmata to the Arduino in order to use Node. In the Arduino application, select File->Examples->Firmata->StandardFirmata. Figure 12-4 show the firmata loaded into the application. There’s a right-pointing ar-row at the top of the window. Click it to upload the firmata to the Arduino.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image13.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image13.jpeg)
 
 FIGURE 12-4
 
@@ -3809,7 +3809,7 @@ led.blink(500);
 
 The app loads the Johnny-Five module. It then creates a new board, repre-senting the Arduino. When the board is ready, the app creates a new Led, using the pin number of 13. Note, this is not the same as the GPIO number: Johnny-Five uses a physical numbering system reflecting pin locations marked on the card. Once the Led object is created, its blink() function is called, and the re-sult is shown in Figure 12-5.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image14.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image14.jpeg)
 
 FIGURE 12-5
 
@@ -3823,7 +3823,7 @@ Node for Microcontrollers and Microcomputers
 
 The application opens a REPL. To terminate the application, type .exit . The LED will continue to blink until you terminate the application, and if the LED is lit when you do, it will stay lit until you power of the device.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image15.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image15.jpeg)
 
 The blinky LED is fun, but now that we have this shiny, new toy, let’s take it for a real spin. The LED object supports several interesting sounding functions like pulse() and faceIn() . However, these functions require a *pwm* (Pulse Width Modulation) pin. The 13 pin is not pwm. However, the 11 pin is, which you can determine by the tilde (~) character that proceeds it on the board (~11).
 
@@ -3988,7 +3988,7 @@ led.blink();
 
 Run the program and the LED should be blinking, just as it did with the Ardu-ino, and as shown in Figure 12-6.
 
-![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh%20b7da6e73689e48ab98be8963b2bd03e1/image16.jpeg)
+![](Learning%20Node%20Moving%20to%20the%20Server-Side%20(Powers%20Sh/image16.jpeg)
 
 FIGURE 12-6
 

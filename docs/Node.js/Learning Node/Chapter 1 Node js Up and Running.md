@@ -111,7 +111,7 @@ The other approach to using Node on Windows—in this case, Windows 7—is by in
 
 You install WebMatrix using the Microsoft Web Platform Installer, as shown in [Figure 1-1](\l). The tool also installs IIS Express, which is a developer version of Microsoft’s web server. Download WebMatrix from http://www.microsoft.com/web/webmatrix/.
 
-![](Chapter%201%20Node%20js%20Up%20and%20Running%2078992b3ab2d14115bef1f203f11e6ef9/image1.png)
+![](Chapter%201%20Node%20js%20Up%20and%20Running/image1.png)
 
 Figure 1-1. Installing WebMatrix in Windows 7
 
@@ -119,13 +119,13 @@ Once the WebMatrix installation is finished, install the latest version of Node 
 
 For Node to work with IIS in Windows, install iisnode, a native IIS 7.x module created and maintained by Tomasz Janczuk. As with Node, installation is a snap using the prebuilt installation package, available at https://github.com/tjanczuk/iisnode. There are x86 and x64 installations, but for x64, you’ll need to install both.
 
-![](Chapter%201%20Node%20js%20Up%20and%20Running%2078992b3ab2d14115bef1f203f11e6ef9/image2.png)
+![](Chapter%201%20Node%20js%20Up%20and%20Running/image2.png)
 
 Figure 1-2. Testing in the Command window to ensure Node is properly installed
 
 During the iisnode installation, a window may pop up telling you that you’re missing the Microsoft Visual C++ 2010 Redistributable Package, as shown in [Figure 1-3](\l). If so, you’ll need to install this package, making sure you get the one that matches the version of iisnode you’re installing—either the x86 package (available at http://www.microsoft.com/download/en/details.aspx?id=5555) or the x64 package (available at http://www.microsoft.com/download/en/details.aspx?id=14632), or both. Once you’ve installed the requisite package, run the iisnode installation again.
 
-![](Chapter%201%20Node%20js%20Up%20and%20Running%2078992b3ab2d14115bef1f203f11e6ef9/image3.png)
+![](Chapter%201%20Node%20js%20Up%20and%20Running/image3.png)
 
 Figure 1-3. Message warning us that we need to install the C++ redistributable package
 
@@ -135,7 +135,7 @@ To complete the WebMatrix/Node setup, download and install the Node templates fo
 
 You can test that everything works by running WebMatrix, and in the opening pages, select the “Site from Template” option. In the page that opens, shown in [Figure 1-4](\l), you’ll see two Node template options: one for Express (introduced in [Chapter 7](\l)) and one for creating a basic, empty site configured for Node. Choose the latter option, giving the site a name of First Node Site, or whatever you want to use.
 
-![](Chapter%201%20Node%20js%20Up%20and%20Running%2078992b3ab2d14115bef1f203f11e6ef9/image4.png)
+![](Chapter%201%20Node%20js%20Up%20and%20Running/image4.png)
 
 Figure 1-4. Creating a new Node site using a template in WebMatrix
 
@@ -143,11 +143,11 @@ Figure 1-4. Creating a new Node site using a template in WebMatrix
 
 If you’re running the Windows Firewall, the first time you run a Node application, you may get a warning like that shown in [Figure 1-6](\l). You need to let the Firewall know this application is acceptable by checking the “Private networks” option and then the “Allow access” button. You want to restrict communication to just your private network on your development machine.
 
-![](Chapter%201%20Node%20js%20Up%20and%20Running%2078992b3ab2d14115bef1f203f11e6ef9/image5.png)
+![](Chapter%201%20Node%20js%20Up%20and%20Running/image5.png)
 
 Figure 1-5. Newly generated Node site in WebMatrix
 
-![](Chapter%201%20Node%20js%20Up%20and%20Running%2078992b3ab2d14115bef1f203f11e6ef9/image6.png)
+![](Chapter%201%20Node%20js%20Up%20and%20Running/image6.png)
 
 Figure 1-6. Warning that the Windows Firewall blocked Node application, and the option to bypass
 

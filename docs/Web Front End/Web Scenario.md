@@ -144,7 +144,7 @@ const [base64Header, base64Payload, base64Signature] = token.split('.')const sig
 
 用户首次访问时，需要在认证中心登录：
 
-![82E092FA5CA6D0E1884F6A9F516E040D.png](Web%20Scenario%20a0172f81b73f4e3aad81c6c039a0a9ad/82E092FA5CA6D0E1884F6A9F516E040D.png)
+![82E092FA5CA6D0E1884F6A9F516E040D.png](Web%20Scenario/82E092FA5CA6D0E1884F6A9F516E040D.png)
 
 1. 用户访问网站`a.com`下的 `pageA` 页面。
 2. 由于没有登录，则会重定向到认证中心，并带上回调地址[`www.sso.com?return_uri=a.com/pageA`](http://www.sso.com/?return_uri=a.com/pageA) ，以便登录后直接进入对应页面。
@@ -155,13 +155,13 @@ const [base64Header, base64Payload, base64Signature] = token.split('.')const sig
 
 认证中心登录完成之后，继续访问`a.com`下的其他页面：
 
-![EA63CCF307263553C943A742039F6381.png](Web%20Scenario%20a0172f81b73f4e3aad81c6c039a0a9ad/EA63CCF307263553C943A742039F6381.png)
+![EA63CCF307263553C943A742039F6381.png](Web%20Scenario/EA63CCF307263553C943A742039F6381.png)
 
 这个时候，由于`a.com`存在已登录的 `Cookie` 信息，所以服务器端直接认证成功。
 
 如果认证中心登录完成之后，访问b.com下的页面：
 
-![47A6D02F8A83077A265364DBB7DE240D.png](Web%20Scenario%20a0172f81b73f4e3aad81c6c039a0a9ad/47A6D02F8A83077A265364DBB7DE240D.png)
+![47A6D02F8A83077A265364DBB7DE240D.png](Web%20Scenario/47A6D02F8A83077A265364DBB7DE240D.png)
 
 这个时候，由于认证中心存在之前登录过的 Cookie，所以也不用再次输入账号密码，直接返回第 4 步，下发 ticket 给b.com即可。
 
@@ -185,7 +185,7 @@ OAuth 机制实现流程
 
 这里以微信开放平台的接入流程为例：
 
-![Untitled](Web%20Scenario%20a0172f81b73f4e3aad81c6c039a0a9ad/Untitled.png)
+![Untitled](Web%20Scenario/Untitled.png)
 
 1. 首先，a.com的运营者需要在微信开放平台注册账号，并向微信申请使用微信登录功能。
 2. 申请成功后，得到申请的 appid、appsecret。

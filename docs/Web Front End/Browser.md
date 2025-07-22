@@ -69,7 +69,7 @@ chat
 - 将需要实现localStorage跨域通信的页面嵌入这个iframe
 - 接入对应的SDK操作共享域，从而实现localStorage的跨域存储
 
-![3249E83F169E79A33FEC19E76D6080F6.png](Browser%2085b42a490dba4879a88d9dc2d992bb64/3249E83F169E79A33FEC19E76D6080F6.png)
+![3249E83F169E79A33FEC19E76D6080F6.png](Browser/3249E83F169E79A33FEC19E76D6080F6.png)
 
 ### memory cache 如何开启
 
@@ -156,7 +156,7 @@ Session是一种在服务器端存储信息的机制，它可以在服务器端�
 
 token认证流程
 
-![A15371DCA92780086ECA57869EEE4AA4.png](Browser%2085b42a490dba4879a88d9dc2d992bb64/A15371DCA92780086ECA57869EEE4AA4.png)
+![A15371DCA92780086ECA57869EEE4AA4.png](Browser/A15371DCA92780086ECA57869EEE4AA4.png)
 
 1. 客户端使用用户名跟密码请求登录
 2. 服务端收到请求，去验证用户名与密码
@@ -227,11 +227,11 @@ token认证流程
 
 不同的浏览器内核不同，所以渲染过程不太一样。
 
-![Untitled](Browser%2085b42a490dba4879a88d9dc2d992bb64/Untitled.png)
+![Untitled](Browser/Untitled.png)
 
 WebKit 主流程
 
-![Untitled](Browser%2085b42a490dba4879a88d9dc2d992bb64/Untitled%201.png)
+![Untitled](Browser/Untitled%201.png)
 
 Mozilla 的 Gecko 呈现引擎主流程
 
@@ -360,13 +360,13 @@ David大叔主要介绍了2个优化方案，而这也是最主要的2个优化�
 
 1. **分代回收**（Generation GC） 这个和Java回收策略思想是一致的，也是V8所主要采用的。目的是通过区分“临时”与“持久”对象；多回收“临时对象”区（young generation），少回收“持久对象”区（tenured generation），减少每次需遍历的对象，从而减少每次GC的耗时。如图：
     
-    ![7D4522C51A49ACD678DF8741491B5402.png](Browser%2085b42a490dba4879a88d9dc2d992bb64/7D4522C51A49ACD678DF8741491B5402.png)
+    ![7D4522C51A49ACD678DF8741491B5402.png](Browser/7D4522C51A49ACD678DF8741491B5402.png)
     
     这里需要补充的是：对于tenured generation对象，有额外的开销：把它从young generation迁移到tenured generation，另外，如果被引用了，那引用的指向也需要修改。
     
 2. **增量GC** 这个方案的思想很简单，就是“每次处理一点，下次再处理一点，如此类推”。如图：
     
-    ![A00ABEC86286C7CA07246A7E6B1A60A0.png](Browser%2085b42a490dba4879a88d9dc2d992bb64/A00ABEC86286C7CA07246A7E6B1A60A0.png)
+    ![A00ABEC86286C7CA07246A7E6B1A60A0.png](Browser/A00ABEC86286C7CA07246A7E6B1A60A0.png)
     
     这种方案，虽然耗时短，但中断较多，带来了上下文切换频繁的问题。
     
@@ -403,4 +403,4 @@ David大叔主要介绍了2个优化方案，而这也是最主要的2个优化�
     
     **需要注意的是:当前执行栈执行完毕时会立刻先处理所有微任务队列中的事件, 然后再去宏任务队列中取出一个 事件。同一次事件循环中, 微任务永远在宏任务之前执行。**
     
-    ![DE88DFB52F0F1F3211E88086388C6597.png](Browser%2085b42a490dba4879a88d9dc2d992bb64/DE88DFB52F0F1F3211E88086388C6597.png)
+    ![DE88DFB52F0F1F3211E88086388C6597.png](Browser/DE88DFB52F0F1F3211E88086388C6597.png)

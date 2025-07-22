@@ -1,8 +1,8 @@
 # Web Resource
 
-![Screenshot 2024-04-03 at 21.28.23.png](Web%20Resource%20b8dc125d5749419f9044db89e6c1a670/Screenshot_2024-04-03_at_21.28.23.png)
+![Screenshot 2024-04-03 at 21.28.23.png](Web%20Resource/Screenshot_2024-04-03_at_21.28.23.png)
 
-![IMG_0437.jpeg](Web%20Resource%20b8dc125d5749419f9044db89e6c1a670/IMG_0437.jpeg)
+![IMG_0437.jpeg](Web%20Resource/IMG_0437.jpeg)
 
 # Comprehensive knowledge website
 

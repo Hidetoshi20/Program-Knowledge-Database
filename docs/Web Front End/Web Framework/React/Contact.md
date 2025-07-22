@@ -2,7 +2,7 @@
 
 # 组件之间通信
 
-![Untitled](Contact%2093e808a4ee7a47edaece6f8f1dbdc793/Untitled.png)
+![Untitled](Contact/Untitled.png)
 
 我们将组件间通信可以拆分为两个词：
 

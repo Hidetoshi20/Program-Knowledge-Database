@@ -30,4 +30,4 @@
 
 [两个月学前端能学完吗? - 知乎](https://www.zhihu.com/question/582777565/answer/2906665863)
 
-[resource](TS%2029d49915c6314acf9345f42d3fc03b16/resource%2019751baa7ebb48ddb4937b0163f53cbd.md)
+[resource](TS/resource.md)

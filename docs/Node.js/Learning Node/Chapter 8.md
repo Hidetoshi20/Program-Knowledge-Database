@@ -537,7 +537,7 @@ Warning
 
 The code to process a new widget doesn’t do any validation of the data or check for authority or SQL injection hacks. Data validation, security, and authorization are covered in [Chapter 15](\l).
 
-![](Chapter%208%20764f915f68a046a1ac7ba7ba412f2764/image1.png)
+![](Chapter%208/image1.png)
 
 Figure 8-1. Confirmation of the added widget
 
@@ -613,7 +613,7 @@ res.render('widgets/index', {title : 'Widgets', widgets : widgets});
 
 In [Example 8-5](\l), if the object has a length property (is an array), its element objects are traversed and their properties are printed out as table data, in addition to the links to edit and delete the object. [Figure 8-2](\l) shows the table after several widgets have been added to our in-memory data store.
 
-![](Chapter%208%20764f915f68a046a1ac7ba7ba412f2764/image2.png)
+![](Chapter%208/image2.png)
 
 Figure 8-2. Widget display table after the addition of several widgets
 
@@ -705,7 +705,7 @@ res.render('widgets/show', {title : 'Show Widget', widget : widgets[indx]});
 
 [Figure 8-3](\l) demonstrates what the Show Widget page looks like, complete with the Delete Widget button at the bottom.
 
-![](Chapter%208%20764f915f68a046a1ac7ba7ba412f2764/image3.png)
+![](Chapter%208/image3.png)
 
 Figure 8-3. The Show Widget page with delete button
 
@@ -773,7 +773,7 @@ rows="5"><%= widget.desc %></textarea>
 
 [Figure 8-4](\l) shows the page with a widget loaded. All you need to do is edit the field values, and then click Submit to submit the changes.
 
-![](Chapter%208%20764f915f68a046a1ac7ba7ba412f2764/image4.png)
+![](Chapter%208/image4.png)
 
 Figure 8-4. The Edit widget view
 
@@ -1724,6 +1724,6 @@ padding 20px
 
 [Figure 8-5](\l) shows the index page after several widgets have been added. Again, it’s nothing fancy, but the data content is a lot easier to read with the new stylesheet.
 
-![](Chapter%208%20764f915f68a046a1ac7ba7ba412f2764/image5.png)
+![](Chapter%208/image5.png)
 
 Figure 8-5. Widget application index page with Stylus styling

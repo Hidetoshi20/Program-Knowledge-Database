@@ -25,7 +25,7 @@ Since you’re going to be working with GitHub, the hosting service that houses 
 
 Most Git tutorials start you out by creating a simple *repository* (or *repo* to use common terminology) of your own work. Since we’re interested mainly in Git with Node, we’ll start out by cloning an existing repository rather than creating our own. Before you can clone the source, though, you must first *fork* (obtain a working snapshot) the repository at the GitHub website by clicking the Fork button located on the upper-right side of the repository’s main GitHub web page, as shown in [Figure A-1](\l).
 
-![](Appendix%20A%20519feae44ed74423bb29992967ffa56e/image1.png)
+![](Appendix%20A/image1.png)
 
 Figure A-1. Forking an existing Node module in GitHub
 
@@ -69,7 +69,7 @@ git status
 
 If you want to submit the changes to be included back as part of the original repository, you’ll issue a *pull request*. To do so, open the forked repository on which you want to issue the request in your browser, and look for the button labeled Pull Request, as shown in [Figure A-2](\l).
 
-![](Appendix%20A%20519feae44ed74423bb29992967ffa56e/image2.png)
+![](Appendix%20A/image2.png)
 
 Figure A-2. Click the Pull Request button at GitHub to initiate a pull request
 

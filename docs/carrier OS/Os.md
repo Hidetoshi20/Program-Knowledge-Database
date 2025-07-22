@@ -1,3 +1,3 @@
 # Os
 
-[carrier OS](Os%20f53852e228ff40518e866c218286128c/carrier%20OS%205964370c0d114ded9d86002028d2a7a5.md)
+[carrier OS](Os/carrier%20OS.md)

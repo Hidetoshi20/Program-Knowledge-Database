@@ -102,13 +102,13 @@ The public key and certificate are opened, and their contents are read synchrono
 
 Accessing the page demonstrates what happens when we use a self-signed certificate, as shown in [Figure 15-1](\l). It’s easy to see why a self-signed certificate should be used only during testing.
 
-![](Chapter%2015%204abe06181fea4112aa2f3e9a9dc49c16/image1.png)
+![](Chapter%2015/image1.png)
 
 Figure 15-1. What happens when you use Chrome to access a website using HTTPS with a self-signed certificate
 
 The browser address bar demonstrates another way that the browser signals that the site’s certificate can’t be trusted, as shown in [Figure 15-2](\l). Rather than displaying a lock indicating that the site is being accessed via HTTPS, it displays a lock with a red *x* showing that the certificate can’t be trusted. Clicking the icon opens an information window with more details about the certificate.
 
-![](Chapter%2015%204abe06181fea4112aa2f3e9a9dc49c16/image2.png)
+![](Chapter%2015/image2.png)
 
 Figure 15-2. More information about the certificate is displayed when the lock icon is clicked
 
@@ -827,7 +827,7 @@ a(href='/auth/twitter') Login with Twitter
 
 If the person isn’t logged into Twitter, she’s presented a login page like the one shown in [Figure 15-3](\l).
 
-![](Chapter%2015%204abe06181fea4112aa2f3e9a9dc49c16/image3.png)
+![](Chapter%2015/image3.png)
 
 Figure 15-3. Twitter login and authorization page for the Node application
 
@@ -847,7 +847,7 @@ img(src='#{user.img}',alt='avatar')
 
 This data is some of what’s stored when the person first authenticates. If you look into your Twitter account settings page and then click through to the Apps, you’ll see the application among those listed, as shown in [Figure 15-4](\l).
 
-![](Chapter%2015%204abe06181fea4112aa2f3e9a9dc49c16/image4.jpeg)
+![](Chapter%2015/image4.jpeg)
 
 Figure 15-4. Twitter Apps Settings displaying the entry for our Node application
 

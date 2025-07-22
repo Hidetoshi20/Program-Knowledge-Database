@@ -1,18 +1,18 @@
 # React
 
-[Contact](React%20519ec452907447a6a0276c1745a029c9/Contact%2093e808a4ee7a47edaece6f8f1dbdc793.md)
+[Contact](React/Contact.md)
 
-[Virtual Dom](React%20519ec452907447a6a0276c1745a029c9/Virtual%20Dom%207ba17342ab8e44cfa9090316613b0c8f.md)
+[Virtual Dom](React/Virtual%20Dom.md)
 
-[Router](React%20519ec452907447a6a0276c1745a029c9/Router%2067da49f8b68341cab5f64d4ceb37fff2.md)
+[Router](React/Router.md)
 
-[component](React%20519ec452907447a6a0276c1745a029c9/component%20a12592c2808b48feb8e19b72c42e952f.md)
+[component](React/component.md)
 
-[performence](React%20519ec452907447a6a0276c1745a029c9/performence%203502622b16ec451b97a1e6ced50f15d3.md)
+[performence](React/performence.md)
 
-[Life circle](React%20519ec452907447a6a0276c1745a029c9/Life%20circle%20d863163697ba4bff9a0b9c5c5f5615fc.md)
+[Life circle](React/Life%20circle.md)
 
-[hooks](React%20519ec452907447a6a0276c1745a029c9/hooks%20ab50e9da7e594080accae65a762a6813.md)
+[hooks](React/hooks.md)
 
 # vue vs react
 
@@ -892,4 +892,4 @@ function insertMovie() {
 
 [react中key的作用](https://segmentfault.com/a/1190000017511836)
 
-[resource](React%20519ec452907447a6a0276c1745a029c9/resource%20b0d65721b8934ca4b49a55eccc9c72e4.md)
+[resource](React/resource.md)

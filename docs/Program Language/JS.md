@@ -1,18 +1,18 @@
 # JS
 
-[resource](JS%2011815029ee8741d9be304a5ac08950b4/resource%206ffc12ecac704d2481fb083f72bf4167.md)
+[resource](JS/resource.md)
 
-[asynchronism](JS%2011815029ee8741d9be304a5ac08950b4/asynchronism%2077487ca7fcd4497785c1b3b3db110d45.md)
+[asynchronism](JS/asynchronism.md)
 
-[ES6](JS%2011815029ee8741d9be304a5ac08950b4/ES6%20c655efe6a44b459295281e46a6d563a5.md)
+[ES6](JS/ES6.md)
 
-[interview summary](JS%2011815029ee8741d9be304a5ac08950b4/interview%20summary%2019707adebffb4d708e408357dd1f0728.md)
+[interview summary](JS/interview%20summary.md)
 
-[object inherit](JS%2011815029ee8741d9be304a5ac08950b4/object%20inherit%20af9227517ad348a29c6f05f50b38d867.md)
+[object inherit](JS/object%20inherit.md)
 
-[scenario](JS%2011815029ee8741d9be304a5ac08950b4/scenario%2024049d777d8246b99d8b67489d791fda.md)
+[scenario](JS/scenario.md)
 
-[this](JS%2011815029ee8741d9be304a5ac08950b4/this%20846c12628f0c490d80757ad4d5f3f57e.md)
+[this](JS/this.md)
 
 # 数据遍历
 

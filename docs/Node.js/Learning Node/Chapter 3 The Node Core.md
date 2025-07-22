@@ -16,14 +16,14 @@ Topics covered in this chapter include:
 Node.js documentation for the current stable release is available at http://nodejs.org/api/.
 > 
 
-[Globals: global, process, and Buffer](Chapter%203%20The%20Node%20Core%2023b90f3c075f4d9fbf20d741aba50e8b/Globals%20global,%20process,%20and%20Buffer%207ebe1a50f9e04928aa997abba186c37b.md)
+[Globals: global, process, and Buffer](Chapter%203%20The%20Node%20Core/Globals%20global,%20process,%20and%20Buffer.md)
 
-[The Timers: setTimeout, clearTimeout, setInterval, and clearInterval](Chapter%203%20The%20Node%20Core%2023b90f3c075f4d9fbf20d741aba50e8b/The%20Timers%20setTimeout,%20clearTimeout,%20setInterval,%20%209d4e168c4ba141dead72da32b7c1744b.md)
+[The Timers: setTimeout, clearTimeout, setInterval, and clearInterval](Chapter%203%20The%20Node%20Core/The%20Timers%20setTimeout,%20clearTimeout,%20setInterval,%20.md)
 
-[Servers, Streams, and Sockets](Chapter%203%20The%20Node%20Core%2023b90f3c075f4d9fbf20d741aba50e8b/Servers,%20Streams,%20and%20Sockets%2035d5b25d6a994dfe8138729b10b8b283.md)
+[Servers, Streams, and Sockets](Chapter%203%20The%20Node%20Core/Servers,%20Streams,%20and%20Sockets.md)
 
-[Domain Resolution and URL Processing](Chapter%203%20The%20Node%20Core%2023b90f3c075f4d9fbf20d741aba50e8b/Domain%20Resolution%20and%20URL%20Processing%2096e542b54f6e411ea926b74f77dee659.md)
+[Domain Resolution and URL Processing](Chapter%203%20The%20Node%20Core/Domain%20Resolution%20and%20URL%20Processing.md)
 
-[The Utilities Module and Object Inheritance](Chapter%203%20The%20Node%20Core%2023b90f3c075f4d9fbf20d741aba50e8b/The%20Utilities%20Module%20and%20Object%20Inheritance%20d8773255c5d840dc9e0e82a706654f03.md)
+[The Utilities Module and Object Inheritance](Chapter%203%20The%20Node%20Core/The%20Utilities%20Module%20and%20Object%20Inheritance.md)
 
-[Events and EventEmitter](Chapter%203%20The%20Node%20Core%2023b90f3c075f4d9fbf20d741aba50e8b/Events%20and%20EventEmitter%201d0a2427ce0a4652bfb52850730669fd.md)
+[Events and EventEmitter](Chapter%203%20The%20Node%20Core/Events%20and%20EventEmitter.md)

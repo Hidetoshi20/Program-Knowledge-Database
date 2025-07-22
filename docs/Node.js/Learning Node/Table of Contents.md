@@ -456,7 +456,7 @@ Shelley Powers
 
 Published by O’Reilly Media
 
-![](Table%20of%20Contents%20fff0b46574ef8111b986eb1c9bd5a596/image1.jpeg)
+![](Table%20of%20Contents/image1.jpeg)
 
 Beijing ⋅ Cambridge ⋅ Farnham ⋅ Köln ⋅ Sebastopol ⋅ Tokyo
 

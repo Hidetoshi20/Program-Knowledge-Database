@@ -351,7 +351,7 @@ video/mp4
 
 Note the proper handling of the content types. [Figure 6-1](\l) shows one web page that contains a video element loaded into Chrome, and the network access displayed in the browser’s console.
 
-![](Chapter%206%20cc6fd5abc0ad470992ce22a3fcd223f3/image1.jpeg)
+![](Chapter%206/image1.jpeg)
 
 Figure 6-1. Displaying the browser console while loading a web page served by the simple static file server from [Example 6-2](\l)
 
@@ -717,7 +717,7 @@ console.log('Server listening on port 8124');
 
 [Figure 6-2](\l) shows a web page accessed through the server application in [Example 6-8](\l). The JavaScript console is open to display both cookies. Note that the response cookie, unlike the request, is encrypted.
 
-![](Chapter%206%20cc6fd5abc0ad470992ce22a3fcd223f3/image2.png)
+![](Chapter%206/image2.png)
 
 Figure 6-2. JavaScript console open in Chrome, displaying request and response cookies
 
