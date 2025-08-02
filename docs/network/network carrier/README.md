@@ -22,8 +22,8 @@ GET 和 POST 的区别
 
 URL 输入的过程 DNS 解析过程 HTTPS 加密过程 TCP 三次握手过程
 
-[Application layer](network%20carrier/Application%20layer.md)
+[Application layer](./Application%20layer.md)
 
-[Transport layer](network%20carrier/Transport%20layer.md)
+[Transport layer](./Transport%20layer.md)
 
-[Network layer](network%20carrier/Network%20layer.md)
+[Network layer](./Network%20layer.md)

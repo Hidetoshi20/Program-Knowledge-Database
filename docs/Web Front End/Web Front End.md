@@ -6,11 +6,11 @@
 
 [Web Net](./Web%20Net.md)
 
-[Browser](./Browser.csv)
+[Browser](./Browser.md)
 
 [Web Security](./Web%20Security.md)
 
-[Web Framework](./Web%20Framework.md)
+[Web Framework](./Web%20Framework/index.md)
 
 [Web Module](./Web%20Module.md)
 

@@ -551,7 +551,7 @@ CSS选择器的解析是从右向左解析的。若从左向右的匹配，发�
 }
 ```
 
-![Untitled](CSS/Untitled.png)
+![Untitled](Untitled.png)
 
 **2.3 块级元素垂直居中**
 
@@ -588,7 +588,7 @@ CSS选择器的解析是从右向左解析的。若从左向右的匹配，发�
 </div>
 ```
 
-![bV7on3.png](CSS/bV7on3.png)
+![bV7on3.png](bV7on3.png)
 
 **方法3：利用position和top/bottom和margin:auto**（注意不是margin:0 auto） 
 
@@ -621,7 +621,7 @@ CSS选择器的解析是从右向左解析的。若从左向右的匹配，发�
 </div>
 ```
 
-![Untitled](CSS/Untitled%201.png)
+![Untitled](Untitled%201.png)
 
 方法4：利用position和top和transform
 
@@ -869,7 +869,7 @@ CSS中使用**rotate**方法来实现对元素的旋转，在参数中加入角�
 <style>    .hr.scale-half {    height: 1px;    transform: scaleY(0.5);    }</style><p>1px + scaleY(0.5)</p><div class="hr scale-half"></div>
 ```
 
-![Untitled](CSS/Untitled%202.png)
+![Untitled](Untitled%202.png)
 
 Chrome/Safari都变虚了，只有Firefox比较完美看起来是实的而且还很细，效果和直接设置0.5px一样。所以通过transform: scale会导致Chrome变虚了，而粗细几乎没有变化。但是如果加上transform-origin: 50% 100%：
 
@@ -879,7 +879,7 @@ Chrome/Safari都变虚了，只有Firefox比较完美看起来是实的而且还
 
 chrome现在的效果如下
 
-![Untitled](CSS/Untitled%203.png)
+![Untitled](Untitled%203.png)
 
 ### 线性渐变linear-gradient
 
@@ -2215,4 +2215,4 @@ class EventEmitter {    constructor() {        this._envents = {}    }    on(eve
 var lowestCommonAncestor = function (root, p, q) {    if (!root || root === p || root === q) return root    let left = lowestCommonAncestor(root.left, p, q)    let right = lowestCommonAncestor(root.right, p, q)    if (!left) return right    if (!right) return left    return root}
 ```
 
-[resource](CSS/resource.md)
+[resource](resource.md)
