@@ -12,9 +12,9 @@ edit_uri: ""
 # Copyright
 copyright: "Copyright &copy; 2024 Hidetoshi Dekisugi"
 
-# Theme Configuration
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   logo: material/book-open-page-variant
   favicon: material/book-open-page-variant
