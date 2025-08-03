@@ -1,98 +1,108 @@
-
 # TypeScript 面试题
 
-## 基础概念
+## TypeScript 基础
 
 ### 1. 什么是TypeScript？
 
 TypeScript是一种由微软开发的开源编程语言，它是JavaScript的超集。TypeScript通过添加静态类型、类、接口和模块等功能，使得在大型应用程序中更容易进行维护和扩展。它可以被编译为纯JavaScript，从而能够在任何支持JavaScript的地方运行。使用TypeScript可以帮助开发人员在编码过程中避免一些常见的错误，并提供更好的代码编辑功能和工具支持。
 
-### 2. 体验TypeScript
+### 2. TypeScript的优势是什么?
 
-TypeScript 提供了以下主要优势：
-
-*   **静态类型检查**: 在编译时捕获错误，而不是在运行时。
-*   **更好的代码可读性和可维护性**: 类型注解使代码更易于理解和重构。
-*   **强大的工具支持**: 自动补全、代码导航和重构等功能。
+*   **静态类型检查**: 在编译时捕获错误，而不是在运行时，提高了代码的健壮性。
+*   **更好的代码可读性和可维护性**: 类型注解使代码意图更清晰，更易于理解和重构。
+*   **强大的工具支持**: 自动补全、代码导航和重构等功能，提升开发效率。
 *   **面向对象编程**: 支持类、接口和继承等面向对象特性。
 
-### 3. 类型的两个好处
+### 3. 静态类型和动态类型的区别?
 
-*   **减少错误**: 静态类型检查可以在开发阶段捕获许多常见的错误，例如拼写错误、类型不匹配等。
-*   **提高代码质量**: 类型注解使代码更易于阅读、理解和维护，从而提高了代码的整体质量。
+*   **静态类型**: 在 **编译期间** 进行类型检查。变量的类型在声明后是固定的。
+*   **动态类型**: 在 **运行时** 才确定变量的类型。变量的类型可以随时改变。
 
-### 4. TS支持的JS类型
+## 核心类型
 
-TypeScript 支持所有 JavaScript 的基本类型，包括：
+### 1. TS支持哪些JS类型?
 
-*   `number`
-*   `string`
-*   `boolean`
-*   `null`
-*   `undefined`
-*   `symbol`
-*   `bigint`
+TypeScript 支持所有 JavaScript 的基本类型，包括：`number`, `string`, `boolean`, `null`, `undefined`, `symbol`, `bigint`，以及 `object`。
 
-### 5. TS中的any、unknown、void、never、enum、tuple
+### 2. any, unknown, void, never, enum, tuple 各是什么？
 
-*   **`any`**: 表示任意类型。使用 `any` 会跳过类型检查，应谨慎使用。
-*   **`unknown`**: 表示未知类型。比 `any` 更安全，因为在使用之前必须进行类型检查或类型断言。
-*   **`void`**: 表示没有返回值的函数。
-*   **`never`**: 表示永远不会有返回值的函数，例如抛出异常或无限循环的函数。
+*   **`any`**: 任意类型，完全跳过类型检查。应避免使用。
+*   **`unknown`**: 未知类型。比 `any` 更安全，在使用前必须进行类型检查或类型断言来缩小范围。
+*   **`void`**: 表示函数没有返回值。
+*   **`never`**: 表示函数永远不会返回，例如抛出异常或无限循环的函数。
 *   **`enum`**: 枚举类型，用于为一组数值常量赋予友好的名字。
 *   **`tuple`**: 元组类型，允许表示一个已知元素数量和类型的数组。
 
-### 6. 如何给不同数据加type
+### 3. `any` 类型的作用是什么，滥用会有什么后果？
 
-可以使用类型注解（`: type`）为变量、函数参数和函数返回值添加类型。
+`any` 类型的作用是允许我们在编写代码时不指定具体的类型，从而可以接受任何类型的值。使用 `any` 类型相当于放弃了对该值的静态类型检查。
+
+**滥用的后果:**
+
+*   **降低代码可读性**: 其他开发者难以理解变量的具体类型。
+*   **潜在的运行时错误**: 编译器不会对 `any` 类型的值进行类型检查，可能导致在运行时出现 `TypeError`。
+*   **类型安全受损**: 失去了 TypeScript 强大的类型检查功能。
+
+因此，在实际开发中，应尽量避免过度使用 `any` 类型。
+
+### 4. 如何处理可空类型 (nullable types)？
+
+使用联合类型来显式声明一个变量可以为 `null` 或 `undefined`。配合严格空检查 (`strictNullChecks: true`)，可以强制开发者处理这些潜在的空值，避免运行时错误。
 
 ```typescript
-let name: string = "Hidetoshi";
-let age: number = 25;
-let isStudent: boolean = true;
+let name: string | null = "Hidetoshi";
+name = null; // OK
+```
 
-function greet(name: string): void {
-    console.log("Hello, " + name);
+## 高级类型系统
+
+### 1. 类型声明和类型推断的区别?
+
+*   **类型声明**: 显式地为变量或函数指定类型。 `let x: number;`
+*   **类型推断**: TypeScript根据赋值语句右侧的值自动推断变量的类型。 `let y = 20;` (y被推断为 `number`)
+
+### 2. 联合类型 (Union Types) 与交叉类型 (Intersection Types)
+
+*   **联合类型 (`|`)**: 表示一个值可以是多种类型中的一种。
+*   **交叉类型 (`&`)**: 将多个类型合并为一个类型，它包含了所有类型的特性。
+
+### 3. 接口 (interface) 和类型别名 (type) 的区别
+
+*   **扩展性**: `interface` 可以通过 `extends` 来扩展，并且支持声明合并（多个同名 `interface` 会自动合并）。`type` 不支持声明合并，但可以通过交叉类型 (`&`) 来扩展。
+*   **实现**: `class` 可以 `implements` 一个 `interface`，但不能 `implements` 一个 `type` (尽管可以实现 `type` 定义的结构)。
+*   **复杂类型**: `type` 支持更复杂的操作，如联合类型、交叉类型、映射类型等。
+
+### 4. 如何声明HTML元素的类型？
+
+对于HTML元素，TypeScript 提供了内置的类型定义。例如，要声明一个 `div` 元素，可以使用 `HTMLDivElement` 类型。
+
+```typescript
+const myDiv: HTMLDivElement | null = document.querySelector('#myDiv');
+```
+
+### 5. 类型守卫 (Type Guards) 是什么？
+
+类型守卫是一种在运行时检查类型的技术，它允许开发人员在特定的作用域内缩小变量的范围，以确保正确推断类型。常见的类型守卫有 `typeof`, `instanceof`, `in` 和自定义类型守卫函数。
+
+```typescript
+function isString(test: any): test is string {
+    return typeof test === "string";
 }
 ```
 
-### 7. 联合类型与区分联合类型
+### 6. 什么是类型断言 (Type Assertion)？
 
-*   **联合类型 (Union Types)**: 使用 `|` 分隔符，表示一个值可以是几种类型之一。
+类型断言允许程序员手动指定一个值的类型，告诉编译器“相信我，我知道这个值的类型”。它有两种语法：`<Type>value` 或 `value as Type`。
 
-    ```typescript
-    let id: string | number;
-    id = 101;
-    id = "101";
-    ```
+### 7. 索引类型 (Index Types) 和映射类型 (Mapped Types)
 
-*   **区分联合类型 (Discriminated Unions)**: 也称为标签联合类型或代数数据类型。它结合了联合类型和字面量类型，通过一个共同的属性来区分不同的类型。
+**索引类型 (Index Types)**
 
-    ```typescript
-    interface Square {
-        kind: "square";
-        size: number;
-    }
+索引类型允许我们使用一个类型的键来查询另一个类型的属性。`keyof` 操作符是索引类型查询的核心，它可以获取一个类型的所有公共属性名的联合类型。
 
-    interface Rectangle {
-        kind: "rectangle";
-        width: number;
-        height: number;
-    }
+**`keyof` 操作符**
 
-    type Shape = Square | Rectangle;
-
-    function area(s: Shape) {
-        switch (s.kind) {
-            case "square": return s.size * s.size;
-            case "rectangle": return s.width * s.height;
-        }
-    }
-    ```
-
-### 8. 交叉类型
-
-交叉类型是将多个类型合并为一个类型。这让我们可以把现有的多种类型叠加到一起成为一种类型，它包含了所需的所有类型的特性。
+`keyof T` 会返回一个由 `T` 的所有公共属性名组成的字符串或数字字面量的联合类型。
 
 ```typescript
 interface Person {
@@ -100,400 +110,311 @@ interface Person {
     age: number;
 }
 
-interface Employee {
-    employeeId: string;
-}
-
-type EmployeeProfile = Person & Employee;
-
-const employee: EmployeeProfile = {
-    name: "Hidetoshi",
-    age: 25,
-    employeeId: "12345"
-};
+type PersonKeys = keyof Person; // "name" | "age"
 ```
 
-### 9. 怎么声明div的类型
+**索引访问操作符 `[]`**
 
-可以使用 `HTMLDivElement` 类型来声明一个 `div` 元素。
+我们可以使用 `T[K]` 的语法来获取类型 `T` 的属性 `K` 的类型。
 
 ```typescript
-const myDiv: HTMLDivElement = document.getElementById('myDiv') as HTMLDivElement;
+type PersonNameType = Person["name"]; // string
+```
+
+**结合泛型使用**
+
+索引类型最强大的地方在于和泛型结合使用，可以创建出类型安全的代码，用于处理对象的属性。
+
+```typescript
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+    return obj[key];
+}
+
+let person: Person = { name: "Hidetoshi", age: 25 };
+let personName = getProperty(person, "name"); // string
+let personAge = getProperty(person, "age"); // number
+```
+
+**映射类型 (Mapped Types)**
+
+映射类型允许我们根据一个现有类型创建新类型，通过遍历现有类型的键来创建新类型的属性。这在创建现有类型的变体时非常有用，例如将所有属性变为只读或可选。
+
+**基本语法**
+
+`{ [P in K]: T }`
+
+*   `K`: 一个字符串或数字字面量的联合类型。
+*   `P in K`: 遍历 `K` 中的每一个键。
+*   `T`: 新属性的类型。
+
+**示例：创建只读类型**
+
+TypeScript 内置的 `Readonly<T>` 工具类型就是一个很好的映射类型示例。
+
+```typescript
+type Readonly<T> = {
+    readonly [P in keyof T]: T[P];
+};
+
+interface Person {
+    name: string;
+    age: number;
+}
+
+type ReadonlyPerson = Readonly<Person>;
+/*
+相当于:
+type ReadonlyPerson = {
+    readonly name: string;
+    readonly age: number;
+}
+*/
+```
+
+**示例：创建可选类型**
+
+TypeScript 内置的 `Partial<T>` 工具类型是另一个示例。
+
+```typescript
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+};
+
+type PartialPerson = Partial<Person>;
+/*
+相当于:
+type PartialPerson = {
+    name?: string;
+    age?: number;
+}
+*/
+```
+
+**示例：创建选择性类型**
+
+TypeScript 内置的 `Pick<T, K>` 工具类型允许我们从一个类型中选择一部分属性来创建新类型。
+
+```typescript
+type Pick<T, K extends keyof T> = {
+    [P in K]: T[P];
+};
+
+type PersonNameOnly = Pick<Person, "name">;
+/*
+相当于:
+type PersonNameOnly = {
+    name: string;
+}
+*/
+```
+
+### 8. 条件类型 (Conditional Types) 是什么？
+
+条件类型允许类型根据一个条件进行选择，语法为 `T extends U ? X : Y`。它使得类型可以像代码逻辑一样具有分支。
+
+### 9. 协变、逆变、双变和抗变是什么？
+
+这些概念描述了当类型A是类型B的子类型时，`Generic<A>` 和 `Generic<B>` 之间的关系。这在处理函数、数组等泛型类型时非常重要。
+
+假设我们有以下基类和子类：
+
+```typescript
+class Animal {}
+class Dog extends Animal { bark() {} }
+```
+
+**协变 (Covariance)**
+
+如果 `Dog` 是 `Animal` 的子类型，那么 `Generic<Dog>` 也是 `Generic<Animal>` 的子类型。类型的子类型关系保持不变。
+
+*   **场景**: 主要用于**只读**的位置，例如函数返回值或只读数组。
+*   **示例**: TypeScript 中的数组（和元组）是协变的。如果你需要一个动物数组，那么提供一个狗数组是完全安全的，因为每只狗都是动物。
+
+```typescript
+// 协变示例
+let dogs: Dog[] = [new Dog()];
+let animals: Animal[] = dogs; // OK: Dog[] 是 Animal[] 的子类型
+```
+
+**逆变 (Contravariance)**
+
+如果 `Dog` 是 `Animal` 的子类型，那么 `Generic<Animal>` 反而是 `Generic<Dog>` 的子类型。类型的子类型关系被**逆转**了。
+
+*   **场景**: 主要用于**只写**的位置，最典型的就是函数参数。
+*   **示例**: 如果一个函数能处理任何 `Animal`，那么它肯定能处理 `Dog`。因此，一个接受 `Animal` 类型参数的函数可以被赋值给一个要求接受 `Dog` 类型参数的函数变量。
+
+```typescript
+// 逆变示例
+let processAnimal: (animal: Animal) => void = (animal) => { console.log("Processing an animal"); };
+let processDog: (dog: Dog) => void = (dog) => { dog.bark(); };
+
+// processAnimal = processDog; // 错误: 不能将一个更具体的函数赋值给一个更通用的函数变量
+processDog = processAnimal;    // OK: 逆变。能处理所有动物的函数，当然也能处理狗。
+```
+
+**双变 (Bivariance)**
+
+如果 `Dog` 是 `Animal` 的子类型，那么 `Generic<Dog>` 和 `Generic<Animal>` 可以互相赋值。既是协变又是逆变。
+
+*   **场景**: 这是 TypeScript 为了灵活性在某些情况下采取的一种不完全类型安全的策略。在 `strictFunctionTypes: false` (默认是 `true`) 的情况下，函数参数是双变的。
+*   **示例**: 在非严格函数类型模式下，上面逆变的例子中两个方向的赋值都会通过。
+
+```typescript
+// 双变示例 (需要设置 "strictFunctionTypes": false)
+// let processAnimal: (animal: Animal) => void = (animal) => {};
+// let processDog: (dog: Dog) => void = (dog) => {};
+
+// processAnimal = processDog; // OK
+// processDog = processAnimal;    // OK
+```
+
+**抗变 (Invariance)**
+
+如果 `Dog` 是 `Animal` 的子类型，`Generic<Dog>` 和 `Generic<Animal>` 之间没有任何赋值关系。类型必须**完全匹配**。
+
+*   **场景**: 主要用于**可读可写**的位置，因为同时支持读（协变）和写（逆变）会产生冲突，所以 TypeScript 强制类型必须完全一致来保证安全。
+*   **示例**: 想象一个既可以设置也可以获取值的泛型接口。
+
+```typescript
+// 抗变示例
+interface Invariant<T> {
+  value: T;
+  setValue: (value: T) => void;
+}
+
+let animalInvariant: Invariant<Animal> = { value: new Animal(), setValue: (val) => {} };
+let dogInvariant: Invariant<Dog> = { value: new Dog(), setValue: (val) => {} };
+
+// animalInvariant = dogInvariant; // 错误
+// dogInvariant = animalInvariant; // 错误
 ```
 
 ## 泛型
 
-### 10. 泛型是什么？
+### 1. 泛型是什么？
 
-泛型是一种创建可重用组件的方式，这些组件可以处理多种数据类型，而不仅仅是单一的数据类型。
+泛型是一种创建可重用组件的方式，这些组件可以处理多种数据类型，而不仅仅是单一的数据类型，从而增强了代码的灵活性和重用性。
 
-### 11. 泛型的实际使用
+### 2. 如何用泛型封装网络请求库？
 
-泛型在创建可重用的函数、类和接口时非常有用。例如，我们可以创建一个泛型函数来反转任何类型的数组：
-
-```typescript
-function reverse<T>(items: T[]): T[] {
-    return items.reverse();
-}
-
-const numbers = [1, 2, 3, 4, 5];
-const reversedNumbers = reverse(numbers); // [5, 4, 3, 2, 1]
-
-const strings = ["a", "b", "c"];
-const reversedStrings = reverse(strings); // ["c", "b", "a"]
-```
-
-### 12. 重载
-
-函数重载允许我们为同一个函数定义多个不同的签名。这使得我们可以根据传入的参数类型和数量来执行不同的操作。
-
-```typescript
-function add(a: number, b: number): number;
-function add(a: string, b: string): string;
-function add(a: any, b: any): any {
-    return a + b;
-}
-
-const sum1 = add(1, 2); // 3
-const sum2 = add("Hello", " World"); // "Hello World"
-```
-
-### 13. 如何用泛型封装网络请求库
-
-我们可以使用泛型来创建一个可重用的网络请求库，该库可以处理不同类型的响应数据。
+我们可以使用泛型来创建一个可重用的网络请求函数，该函数可以处理任何类型的响应数据。
 
 ```typescript
 interface ApiResponse<T> {
     data: T;
     status: number;
+    message: string;
 }
 
 async function fetchData<T>(url: string): Promise<ApiResponse<T>> {
     const response = await fetch(url);
     const data = await response.json();
-    return {
-        data: data,
-        status: response.status
-    };
+    return data;
 }
 
+// 使用
 interface User {
     id: number;
     name: string;
 }
 
 async function getUser() {
-    const response = await fetchData<User>('/api/user');
-    const user = response.data;
-    console.log(user.name);
+    const userResponse = await fetchData<User>('/api/user/1');
+    console.log(userResponse.data.name);
 }
 ```
 
-## 其他
+### 3. 如何约束泛型参数的类型范围？
 
-### 14. 枚举类型编译后
-
-TypeScript 的枚举类型在编译后会生成一个对象，该对象包含枚举成员的名称和值。
+使用 `extends` 关键字来创建泛型约束。
 
 ```typescript
-enum Color {
-    Red,
-    Green,
-    Blue
+interface Lengthwise {
+  length: number;
 }
-
-// 编译后的 JavaScript 代码
-var Color;
-(function (Color) {
-    Color[Color["Red"] = 0] = "Red";
-    Color[Color["Green"] = 1] = "Green";
-    Color[Color["Blue"] = 2] = "Blue";
-})(Color || (Color = {}));
-```
-
-### 15. interface继承的限制
-
-*   一个接口可以继承多个接口。
-*   接口只能继承接口，不能继承类。
-
-### 16. unknown never any
-
-1. `unknown` 表示未知类型。与 `any` 类型不同，`unknown` 类型的变量不能直接赋值给其他类型的变量，需要先进行类型检查或类型断言。
-2. `never` 表示不存在的值的类型。通常在函数返回类型声明为 `never` 时，表示该函数永远不会正常返回。
-3. `any` 表示任意类型。与 `unknown` 类型不同，`any` 类型的变量可以直接赋值给其他类型的变量，也可以调用任何函数和方法。使用 `any` 类型时，编译器将不会对变量类型进行检查，因此可能会导致类型不安全。尽量避免使用 `any` 类型，以提高代码的可读性和可维护性
-
-### 17. interface type
-
-1. `interface` 可以被合并，而 `type` 不能被合并。当多个同名的 `interface` 定义出现在同一个作用域中时，它们会自动合并成一个接口。
-2. `type` 支持更多的类型操作符，例如 `|`、`&` 等。`type` 还支持使用类型操作符定义联合类型、交叉类型等复杂类型。
-3. `interface` 支持定义类和函数的类型，而 `type` 不支持。`interface` 可以用于定义类的实例类型和函数的参数类型、返回值类型等。
-
-## 更多面试题
-
-### 1. 类型声明和类型推断的区别，并举例应用
-
-类型声明是显式地为变量或函数指定类型，而类型推断是TypeScript根据赋值语句右侧的值自动推断变量的类型。例如：
-
-```typescript
-// 类型声明
-let x: number;
-x = 10;
-// 类型推断
-let y = 20; // TypeScript会自动推断y的类型为number
-```
-
-### 2. 什么是接口（interface），它的作用，接口的使用场景。接口和类型别名（Type Alias）的区别
-
-接口是用于描述对象的形状的结构化类型。它定义了对象应该包含哪些属性和方法。在TypeScript中，接口可以用来约束对象的结构，以提高代码的可读性和维护性。例如：
-
-```typescript
-interface Person {
-    name: string;
-    age: number;
-}
-
-function greet(person: Person) {
-    return `Hello, ${person.name}!`;
+function loggingIdentity<T extends Lengthwise>(arg: T): T {
+  console.log(arg.length); // Now we know it has a .length property
+  return arg;
 }
 ```
 
-**接口和类型别名的区别：**
+### 4. `keyof` 在泛型约束中的用法？
 
-*   接口定义了一个契约，描述了对象的形状（属性和方法），以便在多个地方共享。它可以被类、对象和函数实现。
-*   类型别名给一个类型起了一个新名字，便于在多处使用。它可以用于原始值、联合类型、交叉类型等。与接口不同，类型别名可以用于原始类型、联合类型、交叉类型等，而且还可以为任意类型指定名字。
-
-### 3. 什么是泛型（generic），如何创建泛型函数和泛型类，实际用途
-
-泛型是一种在定义函数、类或接口时使用类型参数的方式，以增加代码的灵活性和重用性。在TypeScript中，可以使用来创建泛型。例如：
+`keyof` 可以获取一个对象类型的所有键，并与 `extends` 结合使用，以确保函数只能访问对象上存在的属性。
 
 ```typescript
-function identity<T>(arg: T): T {
-    return arg;
-}
-// 调用泛型函数
-let output = identity<string>("hello");
-```
-
-### 4. 枚举（enum）是什么，它的优势，应用案例。枚举和常量枚举的区别
-
-枚举是一种对数字值集合进行命名的方式。它们可以增加代码的可读性，并提供一种便捷的方式来使用一组有意义的常量。例如：
-
-```typescript
-enum Color {
-    Red,
-    Green,
-    Blue
-}
-
-let selectedColor: Color = Color.Red;
-```
-
-**枚举和常量枚举的区别:**
-
-*   枚举可以包含计算得出的值，而常量枚举则在编译阶段被删除，并且不能包含计算得出的值，它只能包含常量成员。
-*   常量枚举在编译后会被删除，而普通枚举会生成真实的对象。
-
-### 5. 如何处理可空类型（nullable types）和undefined类型，如何正确处理这些类型以避免潜在错误
-
-在TypeScript中，可空类型是指一个变量可以存储特定类型的值，也可以存储null或undefined。（通过使用可空类型，开发者可以明确表达一个变量可能包含特定类型的值，也可能不包含值（即为null或undefined）。这有助于提高代码的可读性，并使得变量的可能取值范围更加清晰明了）。
-为了声明一个可空类型，可以使用联合类型（Union Types），例如 number | null 或 string | undefined。
-例如：
-
-```typescript
-let numberOrNull: number | null = 10; 
-numberOrNull = null; // 可以赋值为null 
-    
-let stringOrUndefined: string | undefined = "Hello"; 
-stringOrUndefined = undefined; // 可以赋值为undefined
-```
-
-### 6. 什么是TypeScript中的声明文件（Declaration Files）
-
-声明文件（通常以 .d.ts 扩展名结尾）用于描述已有 JavaScript 代码库的类型信息。它们提供了类型定义和元数据，以便在 TypeScript 项目中使用这些库时获得智能感知和类型安全。
-
-### 7. 什么是命名空间（Namespace）和模块（Module）
-
-*   **模块**: 在一个大型项目中，可以将相关的代码组织到单独的文件，并使用模块来导入和导出这些文件中的功能。在一个 Node.js 项目中，可以使用 `import` 和 `export` 关键字来创建模块，从而更好地组织代码并管理依赖关系。
-*   **命名空间**: 在面向对象的编程中，命名空间可以用于将具有相似功能或属性的类、接口等进行分组，以避免全局命名冲突。这在大型的 JavaScript 或 TypeScript 应用程序中特别有用，可以确保代码结构清晰，并且不会意外地重复定义相同的名称。
-
-模块提供了一种组织代码的方式，使得我们可以轻松地在多个文件中共享代码，命名空间则提供了一种在全局范围内组织代码的方式，防止命名冲突。
-
-**模块示例:**
-
-```typescript
-// greeter.ts
-export function sayHello(name: string) {
-    return `Hello, ${name}!`;
-}
-
-// app.ts
-import { sayHello } from './greeter';
-console.log(sayHello('John'));
-```
-
-**命名空间示例:**
-
-```typescript
-// greeter.ts
-namespace Greetings {
-    export function sayHello(name: string) {
-        return `Hello, ${name}!`;
-    }
-}
-
-// app.ts
-/// <reference path="greeter.ts" />
-console.log(Greetings.sayHello('John'));
-```
-
-### 8. 什么是类型断言（Type Assertion）
-
-类型断言允许程序员手动指定一个值的类型。这在需要明确告诉编译器某个值的类型时非常有用。
-
-```typescript
-let someValue: any = "this is a string";
-let strLength: number = (someValue as string).length;
-```
-
-### 9. TypeScript中的可选参数和默认参数是什么
-
-*   **可选参数** 允许函数中的某些参数不传值，在参数后面加上问号?表示可选。
-*   **默认参数** 允许在声明函数时为参数指定默认值，这样如果调用时未提供参数值，则会使用默认值。
-
-**可选参数示例：**
-
-```typescript
-function greet(name: string, greeting?: string) {
-    if (greeting) {
-        return `${greeting}, ${name}!`;
-    } else {
-        return `Hello, ${name}!`;
-    }
+function getProperty<T, K extends keyof T>(obj: T, key: K) {
+  return obj[key];
 }
 ```
 
-**默认参数示例：**
+## 函数与类
 
-```typescript
-function greet(name: string, greeting: string = "Hello") {
-    return `${greeting}, ${name}!`;
-}
-```
+### 1. 可选参数和默认参数是什么？
 
-### 10. 类型守卫（Type Guards）是什么
+*   **可选参数 (`?`)**: 允许函数中的某些参数不传值。
+*   **默认参数 (`=`)**: 为参数指定默认值，如果调用时未提供该参数，则使用默认值。
 
-类型守卫是一种用于在运行时检查类型的技术，它允许开发人员在特定的作用域内缩小变量的范围，以确保正确推断类型。
+### 2. 函数重载
 
-```typescript
-function isString(test: any): test is string {
-    return typeof test === "string";
-}
+函数重载允许我们为同一个函数定义多个不同的签名，以根据不同的参数类型和数量提供不同的行为。
 
-function example(input: any) {
-    if (isString(input)) {
-        // input 在此代码块中被收窄为 string 类型
-        console.log(input.toUpperCase());
-    }
-}
-```
+### 3. `const` 和 `readonly` 的区别
 
-### 11. 索引类型（Index Types）是什么，好处有什么
+*   **`const`**: 用于声明一个常量 **变量**，其值不能被重新赋值。
+*   **`readonly`**: 用于标记类的 **属性**，表明该属性只能在声明时或构造函数中被赋值。
 
-索引类型允许我们在 TypeScript 中创建具有动态属性名称的对象，并且能够根据已知的键来获取相应的属性类型。
+### 4. `this` 在TypeScript中有什么需要注意的？
 
-**好处：**
+TypeScript 提供了更严格的 `this` 检查。可以使用 `noImplicitThis` 编译器选项来强制为 `this` 提供类型注解。箭头函数会捕获其定义时所在的上下文的 `this` 值。
 
-*   **动态属性访问**: 在处理动态属性名的对象时，可以使用索引类型来实现类型安全的属性访问。例如，当从服务器返回的 JSON 数据中提取属性时，可以利用索引类型来确保属性名存在并获取其对应的类型。
-*   **代码重用**: 当需要创建通用函数来操作对象属性时，索引类型可以帮助我们实现更加通用和灵活的代码。例如，一个通用的函数可能需要根据传入的属性名称获取属性值，并进行特定的处理。
-*   **动态扩展对象**: 当需要处理来自外部来源（比如 API 响应或数据库查询）的动态数据时，索引类型可以让我们轻松地处理这种情况，而不必为每个可能的属性手动定义类型。
-*   **类型安全性**: 索引类型可以增强代码的类型安全性，因为它们可以捕获可能的属性名拼写错误或键不存在的情况。
-*   **映射类型**: TypeScript 还提供了映射类型（Mapped Types）的概念，它们利用索引类型可以根据现有类型自动生成新类型。这在创建新类型时非常有用，特别是当需要在现有类型的基础上添加或修改属性时。
+### 5. `interface` 如何为函数、数组和类做声明？
 
-### 12. const和readonly的区别
+*   **函数**: `interface MyFunc { (x: number, y: number): number; }`
+*   **数组**: `interface StringArray { [index: number]: string; }`
+*   **类 (索引签名)**: `interface StringDictionary { [index: string]: string; }`
 
-*   **`const`**: 用于声明常量值。一旦被赋值后，其值将不能被重新赋值或修改。常量必须在声明时就被赋值，并且该值不可改变。常量通常用于存储不会发生变化的值，例如数学常数或固定的配置值。
-*   **`readonly`**: 关键字用于标记类的属性，表明该属性只能在类的构造函数或声明时被赋值，并且不能再次被修改。`readonly` 属性可以在声明时或构造函数中被赋值，但之后不能再被修改。`readonly` 属性通常用于表示对象的某些属性是只读的，防止外部代码修改这些属性的值。
+### 6. interface继承的限制
 
-### 13. TypeScript 中 any 类型的作用是什么，滥用会有什么后果
+一个接口可以继承多个接口，但如果继承的接口中有相同的属性但类型不兼容，则会产生编译错误。
 
-在TypeScript中，`any` 类型的作用是允许我们在编写代码时不指定具体的类型，从而可以接受任何类型的值。使用 `any` 类型相当于放弃了对该值的静态类型检查，使得代码在编译阶段不会对这些值进行类型检查。
+## 模块与生态
 
-**滥用的后果：**
+### 1. 命名空间 (Namespace) 和模块 (Module) 的区别？
 
-*   **代码可读性下降**: 难以理解某些变量或参数的具体类型。
-*   **潜在的运行时错误**: 编译器无法捕获类型相关的错误。
-*   **类型安全受损**: 失去了 TypeScript 强大的类型检查功能。
+*   **模块**: 每个文件都是一个模块，有自己的作用域。使用 `import` 和 `export` 进行导入导出。这是现代JavaScript/TypeScript推荐的方式。
+*   **命名空间**: 一个早期的组织代码的方式，用于避免全局命名冲突。现在主要用于大型应用或提供一个全局API。
 
-### 14. TypeScript中的this有什么需要注意的
+### 2. 什么是声明文件 (Declaration Files)？
 
-在TypeScript中，与JavaScript相比，`this` 的行为基本上是一致的。然而，TypeScript提供了类型注解和类型检查，可以帮助开发者更容易地理解和处理 `this` 关键字的使用。
+以 `.d.ts` 结尾的文件，用于为已有的JavaScript库提供类型信息，使得TypeScript项目可以安全地使用这些库。
 
-*   在 `noImplicitThis` 为 `true` 的情况下，必须声明 `this` 的类型，才能在函数或者对象中使用 `this`。
-*   TypeScript中箭头函数的 `this` 和 ES6 中箭头函数中的 `this` 是一致的。
+### 3. 枚举类型编译后是什么？
 
-### 15. TypeScript数据类型
+一个标准的TypeScript枚举会编译成一个双向映射的JavaScript对象，同时包含数字到字符串和字符串到数字的映射。
 
-在TypeScript中，常见的数据类型包括以下几种：
+### 4. 什么是装饰器 (Decorators)？
 
-*   **基本类型**: `number`, `string`, `boolean`, `null`, `undefined`, `symbol`, `bigint`
-*   **复合类型**: `array`, `tuple`, `enum`
-*   **对象类型**: `object`, `interface`
-*   **函数类型**: `function`, `void`, `any`
-*   **高级类型**: `union types`, `intersection types`
+装饰器是一种特殊类型的声明，可以附加到类、方法、访问符、属性或参数上，以修改其行为。它是一种在声明时元编程的方式。
 
-### 16. interface可以给Function/Array/Class（Indexable)做声明吗
+### 5. 类装饰器和方法装饰器的执行顺序是怎样的？
 
-在TypeScript中，`interface` 可以用来声明函数、数组和类（具有索引签名的类）。
+当有多个装饰器应用于同一个声明时，它们将按照自下而上的顺序应用。对于类中的方法，方法装饰器会先于类装饰器执行。
 
-### 17. TypeScript中的协变、逆变、双变和抗变是什么
-
-*   **协变（Covariance）**: 子类型可以赋值给父类型。数组类型是协变的。
-*   **逆变（Contravariance）**: 超类型可以赋值给子类型。函数参数类型是逆变的。
-*   **双变（Bivariance）**: 允许参数类型既是协变又是逆变的。对象类型是双变的。
-*   **抗变（Invariance）**: 不允许类型之间的任何赋值关系。通常情况下，基本类型和类类型是抗变的。
-
-### 18. TypeScript中的静态类型和动态类型有什么区别
-
-*   **静态类型**: 在编译期间进行类型检查，可以在编辑器或 IDE 中发现大部分类型错误。
-*   **动态类型**: 在运行时才确定变量的类型，通常与动态语言相关联。
-
-### 19. 介绍TypeScript中的可选属性、只读属性和类型断言
-
-*   **可选属性**: 使用 `?` 来标记一个属性可以存在，也可以不存在。
-*   **只读属性**: 使用 `readonly` 关键字来标记一个属性是只读的。
-*   **类型断言**: 允许将一个实体强制指定为特定的类型，使用 `<Type>` 或 `value as Type`。
-
-### 20. TypeScript 中的模块化是如何工作的，举例说明
-
-TypeScript 中使用 ES6 模块系统，可以使用 `import` 和 `export` 关键字来导入和导出模块。
-
-### 21. 如何约束泛型参数的类型范围
-
-可以使用泛型约束（`extends`关键字）来限制泛型参数的类型范围，确保泛型参数符合某种特定的条件。
-
-### 22. 什么是泛型约束中的 keyof 关键字，举例说明其用法。
-
-`keyof` 是 TypeScript 中用来获取对象类型所有键（属性名）的操作符。可以使用 `keyof` 来定义泛型约束，限制泛型参数为某个对象的键。
-
-### 23. 什么是条件类型（conditional types），能够举例说明其使用场景吗
-
-条件类型是 TypeScript 中的高级类型操作符，可以根据一个类型关系判断结果类型。例如，可以使用条件类型实现一个类型过滤器，根据输入类型输出不同的结果类型。
-
-### 24. 什么是装饰器，有什么作用，如何在TypeScript中使用类装饰器
-
-装饰器是一种特殊类型的声明，可以附加到类、方法、访问符、属性或参数上，以修改其行为。在 TypeScript 中，装饰器提供了一种在声明时定义如何处理类的方法、属性或参数的机制。
-
-### 25. 类装饰器和方法装饰器的执行顺序是怎样的
-
-当有多个装饰器应用于同一个声明时（比如一个类中的方法），它们将按照自下而上的顺序应用。对于方法装饰器，从顶层方法开始依次向下 递归调用方法装饰器函数。
-
-### 26. 装饰器工厂是什么，请给出一个装饰器工厂的使用示例
+### 6. 什么是装饰器工厂？
 
 装饰器工厂是一个返回装饰器的函数。它可以接受参数，并根据参数动态生成装饰器。
+
+```typescript
+function color(value: string) { // this is the decorator factory
+  return function (target: any, propertyKey: string) { // this is the decorator
+    // ...
+  };
+}
+```
 
 ## 参考资料
 
 *   [TypeScript 官方文档](https://www.typescriptlang.org/docs/)
 *   [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
-*   [两个月学前端能学完吗? - 知乎](https://www.zhihu.com/question/582777565/answer/2906665863)
 *   [TypeScript面试题（2024最新版）](https://juejin.cn/post/7321542773076082699)
