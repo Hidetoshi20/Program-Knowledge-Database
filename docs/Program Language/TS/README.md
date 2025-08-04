@@ -1,4 +1,4 @@
-# TypeScript 面试题
+# TypeScript questions d'entretien
 
 ## TypeScript 基础
 
@@ -417,4 +417,4 @@ function color(value: string) { // this is the decorator factory
 
 *   [TypeScript 官方文档](https://www.typescriptlang.org/docs/)
 *   [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/)
-*   [TypeScript面试题（2024最新版）](https://juejin.cn/post/7321542773076082699)
+*   [TypeScript questions d'entretien（2024最新版）](https://juejin.cn/post/7321542773076082699)

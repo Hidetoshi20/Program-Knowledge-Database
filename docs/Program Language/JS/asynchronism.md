@@ -1,6 +1,6 @@
 # asynchronism
 
-[【建议星星】要就来45道Promise面试题一次爽到底(1.1w字用心整理) - 掘金](https://juejin.cn/post/6844904077537574919)
+[【建议星星】要就来45道Promise questions d'entretien一次爽到底(1.1w字用心整理) - 掘金](https://juejin.cn/post/6844904077537574919)
 
 ### JS 异步执行顺序
 
