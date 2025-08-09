@@ -1,6 +1,6 @@
-# Preface
+# preface
 
-Preface
+preface
 
 # Not Your Ordinary JavaScript
 

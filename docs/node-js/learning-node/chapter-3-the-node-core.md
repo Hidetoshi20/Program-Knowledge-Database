@@ -16,14 +16,14 @@ Topics covered in this chapter include:
 Node.js documentation for the current stable release is available at http://nodejs.org/api/.
 > 
 
-[Globals: global, process, and Buffer](Chapter%203%20The%20Node%20Core/Globals%20global,%20process,%20and%20Buffer.md)
+[Globals: global, process, and Buffer](chapter-3-the-node-core/Globals%20global,%20process,%20and%20Buffer.md)
 
-[The Timers: setTimeout, clearTimeout, setInterval, and clearInterval](Chapter%203%20The%20Node%20Core/The%20Timers%20setTimeout,%20clearTimeout,%20setInterval,%20.md)
+[The Timers: setTimeout, clearTimeout, setInterval, and clearInterval](chapter-3-the-node-core/The%20Timers%20setTimeout,%20clearTimeout,%20setInterval,%20.md)
 
-[Servers, Streams, and Sockets](Chapter%203%20The%20Node%20Core/Servers,%20Streams,%20and%20Sockets.md)
+[Servers, Streams, and Sockets](chapter-3-the-node-core/Servers,%20Streams,%20and%20Sockets.md)
 
-[Domain Resolution and URL Processing](Chapter%203%20The%20Node%20Core/Domain%20Resolution%20and%20URL%20Processing.md)
+[Domain Resolution and URL Processing](chapter-3-the-node-core/Domain%20Resolution%20and%20URL%20Processing.md)
 
-[The Utilities Module and Object Inheritance](Chapter%203%20The%20Node%20Core/The%20Utilities%20Module%20and%20Object%20Inheritance.md)
+[The Utilities Module and Object Inheritance](chapter-3-the-node-core/The%20Utilities%20Module%20and%20Object%20Inheritance.md)
 
-[Events and EventEmitter](Chapter%203%20The%20Node%20Core/Events%20and%20EventEmitter.md)
+[Events and EventEmitter](chapter-3-the-node-core/Events%20and%20EventEmitter.md)

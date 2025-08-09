@@ -941,7 +941,7 @@ console.log(JSON.stringify(test, null, 4));
 
 The result is show in Figure 4-1, so you can see the color efects. I use a white background for my terminal window, with black text.
 
-![](CHAPTER%204/image1.jpeg)
+![](chapter-4/image1.jpeg)
 
 FIGURE 4-1
 

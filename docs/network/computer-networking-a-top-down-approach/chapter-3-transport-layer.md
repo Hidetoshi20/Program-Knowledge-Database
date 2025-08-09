@@ -1,15 +1,15 @@
 # Chapter 3: Transport Layer
 
-[3.1 Introduction and Transport-Layer Services](Chapter%203%20Transport%20Layer/3%201%20Introduction%20and%20Transport-Layer%20Services.md)
+[3.1 Introduction and Transport-Layer Services](chapter-3-transport-layer/3-1-introduction-and-transport-layer-services.md)
 
-[3.2 Multiplexing and Demultiplexing](Chapter%203%20Transport%20Layer/3%202%20Multiplexing%20and%20Demultiplexing.md)
+[3.2 Multiplexing and Demultiplexing](chapter-3-transport-layer/3-2-multiplexing-and-demultiplexing.md)
 
-[3.3 Connectionless Transport: UDP](Chapter%203%20Transport%20Layer/3%203%20Connectionless%20Transport%20UDP.md)
+[3.3 Connectionless Transport: UDP](chapter-3-transport-layer/3-3-connectionless-transport-udp.md)
 
-[3.4 Principles of Reliable Data Transfer](Chapter%203%20Transport%20Layer/3%204%20Principles%20of%20Reliable%20Data%20Transfer.md)
+[3.4 Principles of Reliable Data Transfer](chapter-3-transport-layer/3-4-principles-of-reliable-data-transfer.md)
 
-[3.5 Connection-Oriented Transport: TCP](Chapter%203%20Transport%20Layer/3%205%20Connection-Oriented%20Transport%20TCP.md)
+[3.5 Connection-Oriented Transport: TCP](chapter-3-transport-layer/3-5-connection-oriented-transport-tcp.md)
 
-[3.6 Principles of Congestion Control](Chapter%203%20Transport%20Layer/3%206%20Principles%20of%20Congestion%20Control.md)
+[3.6 Principles of Congestion Control](chapter-3-transport-layer/3-6-principles-of-congestion-control.md)
 
-[3.7 TCP Congestion Control](Chapter%203%20Transport%20Layer/3%207%20TCP%20Congestion%20Control.md)
+[3.7 TCP Congestion Control](chapter-3-transport-layer/3-7-tcp-congestion-control.md)

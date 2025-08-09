@@ -1,4 +1,4 @@
-# Preface
+# preface
 
 Learning Node Second Edition Author Name
 
@@ -34,7 +34,7 @@ The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. Learning
 
 While the publisher and the author(s) have used good faith eforts to ensure that the information and instructions contained in this work are accurate, the publisher and the author(s) disclaim all responsibility for errors or omissions, including without limitation responsibility for damages resulting from the use of or reliance on this work. Use of the information and instructions contained in this work is at your own risk. If any code samples or other technology this work contains or describes is subject to open source licenses or the intellectual prop-erty rights of others, it is your responsibility to ensure that your use thereof complies with such licenses and/or rights.
 
-# Preface
+# preface
 
 Node.js has been around long enough to have achieved adoption by some ma-jor players (LinkedIn, Yahoo!, and Netflix), but is still young enough to be cause for concern from your typical corporate middle manager. It’s become a driving force for a more sophisticated JavaScript, as well as the only safe place one can then use the newly improved scripting language. And, since turn-about is fair play, the cutting edge JavaScript has now become the driver for a newly re-vamped Node.js organization and release paradigm.
 
@@ -60,9 +60,9 @@ However, each audience brings a diferent perspective, and skills, to the learnin
 
 One thing I’m not going to do is force rote memorization on you. We’ll get into the core module APIs, but I’m not going to cover every object and function, because these are documented at the Node web site. What I’ll do instead is touch on important aspects of each core module or specific Node functionality I think is essential in order to, hopefully, give you a baseline so you can hold your own with other Node developers. Of course, practice makes mastery, and this book is a learning tool. Once you’re finished with the book you’ll need to con-tinue on for more in-depth introductions to specific types of functionality, such as working the MEAN (Mongo-Express-Angular-Node) stack. But you’ll have the grounding you need to branch out in any of the many Node directions.
 
-![](Preface/image2.jpeg)
+![](preface/image2.jpeg)
 
-![](Preface/image3.jpeg)
+![](preface/image3.jpeg)
 
 N O D E . J S B E C O M E S N O D E
 
@@ -172,7 +172,7 @@ Server running at http://127.0.0.1:8124/
 
 Now open a browser and type either http://localhost:8124/ or http://127.0.0.1:8124 into the address bar (or your domain, if you’re host-ing Node on your server). What appears is a simple unadorned web page with “Hello World” in text at the top, as shown in Figure 1-1.
 
-![](Preface/image4.jpeg)
+![](preface/image4.jpeg)
 
 FIGURE 1-1
 
@@ -180,7 +180,7 @@ Figure 1-1: Your first Node application
 
 If you’re running your application in Windows, you’ll most likely receive a Windows Firewall alert, as shown in Figure 1-2. Uncheck the Public Network op-tion, check the Private network option, and then click the button to Allow ac-cess.
 
-![](Preface/image5.jpeg)
+![](preface/image5.jpeg)
 
 FIGURE 1-2
 
@@ -273,7 +273,7 @@ console.log('Server running at port 8124/');
 
 The result of accessing the web-based application with a query string of ? name=burningbird is shown in Figure 1-3.
 
-![](Preface/image6.jpeg)
+![](preface/image6.jpeg)
 
 FIGURE 1-3
 
@@ -381,7 +381,7 @@ Nowadays, an application is just as likely to reside in a cloud server rather th
 
 When you host a Node application in the cloud, what you’re really doing, typically, is creating the application on your own server or PC, testing it, making sure it’s what you want, and then pushing the application out to the cloud serv-er. A cloud server for Node allows you to create the Node application you want to create, using the resources of whatever database system or other system you wish, but without having to manage the server, directly. You can focus specifi-cally on the Node application without having to worry about FTP or email servers, or general server maintenance.
 
-![](Preface/image7.jpeg)
+![](preface/image7.jpeg)
 
 The Node LTS and Upgrading Node
 

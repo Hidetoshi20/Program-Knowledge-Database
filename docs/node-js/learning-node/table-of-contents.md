@@ -6,7 +6,7 @@ Learning Node
 
 A Note Regarding Supplemental Files
 
-Preface
+preface
 
 > Not Your Ordinary JavaScript
 > 
@@ -456,7 +456,7 @@ Shelley Powers
 
 Published by O’Reilly Media
 
-![](Table%20of%20Contents/image1.jpeg)
+![](table-of-contents/image1.jpeg)
 
 Beijing ⋅ Cambridge ⋅ Farnham ⋅ Köln ⋅ Sebastopol ⋅ Tokyo
 

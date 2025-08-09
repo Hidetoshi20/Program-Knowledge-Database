@@ -225,7 +225,7 @@ C:\Users\Shelley
 
 └── wordwrap@0.0.2
 
-![](Chapter%204/image1.png)
+![](chapter-4/image1.png)
 
 Figure 4-1. Installing Connect in Windows 7 using npm
 

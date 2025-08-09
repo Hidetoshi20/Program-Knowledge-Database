@@ -435,7 +435,7 @@ With this approach—providing acknowledgment to the user in an email—the user
 
 Of course, the user still has to spend time uploading the PDF file—this application doesn’t touch on the issues associated with large file uploads.
 
-![](Chapter%2012/image1.png)
+![](chapter-12/image1.png)
 
 Figure 12-1. End result of running PDF Toolkit burst on large uploaded PDF
 
@@ -682,7 +682,7 @@ var im = spawn('convert', opts);
 
 The bolded code in the example demonstrates how what appears to be a single argument on the command line becomes five arguments to the child process. The end result of running the application is shown in Figure 12-2.
 
-![](Chapter%2012/image2.jpeg)
+![](chapter-12/image2.jpeg)
 
 Figure 12-2. Result of running Node application to apply a Polaroid effect to a photo
 
@@ -1064,7 +1064,7 @@ console.log('saved png');
 
 Once you’ve run the Node application, access the *shadow.png* file from your favorite browser. Figure 12-3 shows the generated image.
 
-![](Chapter%2012/image3.png)
+![](chapter-12/image3.png)
 
 Figure 12-3. Image generated using node-canvas
 

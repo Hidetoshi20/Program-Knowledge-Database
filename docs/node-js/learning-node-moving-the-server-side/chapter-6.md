@@ -226,11 +226,11 @@ console.log('Server web running at 8124');
 
 Running the application starts up a web server that listens for web requests on the 8124 port.
 
-![](Chapter%206/image1.jpeg)
+![](chapter-6/image1.jpeg)
 
 CHAPTER 5: Node and the Web
 
-![](Chapter%206/image2.jpeg)
+![](chapter-6/image2.jpeg)
 
 Testing the application with an index.html file (for instance, http://blip-debit.com:8124/index.html ), you’ll see the following print out:
 
@@ -432,7 +432,7 @@ What doesn’t work, though, is when we access a directory instead of a file. Wh
 
 403 error, as shown in Figure 5-1, while Firefox and Chrome each display my generic “something is wrong” message. But there is a diference between not being able to access a subdirectory, and something wrong with the file.
 
-![](Chapter%206/image3.jpeg)
+![](chapter-6/image3.jpeg)
 
 FIGURE 5-1
 
@@ -570,7 +570,7 @@ You get a better feel for how the read stream works when you load a page that ha
 
 Using Apache to Proxy a Node Application
 
-![](Chapter%206/image4.jpeg)
+![](chapter-6/image4.jpeg)
 
 Though the application works when tested with several diferent docu-ments, it’s not perfect. It doesn’t handle many other types of web requests, it doesn’t handle security or caching, and it doesn’t properly handle the video re-quests. One web page application I tested that uses HTML video also makes use of the HTML5 video element API to output the state of the video load process. This application didn’t get the information it needed to work.
 

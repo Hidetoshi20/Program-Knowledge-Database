@@ -550,7 +550,7 @@ io.sockets.emit('chat', 'SERVER', socket.username + ' has left the building');
 
 Figure 13-1 shows the results of the application when I tested it from four different browsers (Chrome, Firefox, Opera, and IE).
 
-![](Chapter%2013/image1.png)
+![](chapter-13/image1.png)
 
 Figure 13-1. Trying out the chat application enabled by Socket.IO in several different browsers
 

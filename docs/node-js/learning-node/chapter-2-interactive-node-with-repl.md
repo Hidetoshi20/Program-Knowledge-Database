@@ -517,7 +517,7 @@ repl.start("node via TCP socket> ", socket);
 
 When you run the application, you get the standard input prompt where the Node application is running. However, you can also access REPL via TCP. I used PuTTY as a Telnet client to access this TCP-enabled version of REPL. It does work...to a point. I had to issue a .clear first, the formatting is off, and when I tried to use the underscore to reference the last expression, Node didn’t know what I was talking about, as shown in Figure 2-1.
 
-![](Chapter%202%20Interactive%20Node%20with%20REPL/image1.png)
+![](chapter-2-interactive-node-with-repl/image1.png)
 
 Figure 2-1. PuTTY and REPL via TCP don’t exactly like each other
 

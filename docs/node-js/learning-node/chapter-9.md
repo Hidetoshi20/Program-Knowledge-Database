@@ -406,7 +406,7 @@ Before the HTTP server is created, we set up the Jade template function and also
 
 Figure 9-1 shows the application after I’ve added in several different scores for different folks.
 
-![](Chapter%209/image1.png)
+![](chapter-9/image1.png)
 
 Figure 9-1. The Zowie! game top scorers
 
@@ -808,7 +808,7 @@ td #{val}
 
 Figure 9-2 shows the statistics page after several widget application resource pages have been accessed from a couple of different IP addresses.
 
-![](Chapter%209/image2.png)
+![](chapter-9/image2.png)
 
 Figure 9-2. The statistics page enabled by Redis
 

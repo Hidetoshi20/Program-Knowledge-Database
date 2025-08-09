@@ -6,12 +6,12 @@
 
 [2.3 Electronic Mail in the Internet](chapter-2-application-layer/2-3-electronic-mail-in-the-internet.md)
 
-[2.4 DNS-The Internet’s Directory Service](Chapter%202%20Application%20Layer/2%204%20DNS-The%20Internet%E2%80%99s%20Directory%20Service.md)
+[2.4 DNS-The Internet’s Directory Service](chapter-2-application-layer/2-4-dns-the-internets-directory-service.md)
 
-[2.5 Peer-to-Peer File Distribution](Chapter%202%20Application%20Layer/2%205%20Peer-to-Peer%20File%20Distribution.md)
+[2.5 Peer-to-Peer File Distribution](chapter-2-application-layer/2-5-peer-to-peer-file-distribution.md)
 
-[2.6 Video Streaming and Content Distribution Networks](Chapter%202%20Application%20Layer/2%206%20Video%20Streaming%20and%20Content%20Distribution%20Netwo.md)
+[2.6 Video Streaming and Content Distribution Networks](chapter-2-application-layer/2-6-video-streaming-and-content-distribution-netwo.md)
 
-[2.7 Socket Programing: Create Network Applications](Chapter%202%20Application%20Layer/2%207%20Socket%20Programing%20Create%20Network%20Applications.md)
+[2.7 Socket Programing: Create Network Applications](chapter-2-application-layer/2-7-socket-programing-create-network-applications.md)
 
-[2.8 Summary](Chapter%202%20Application%20Layer/2%208%20Summary.md)
+[2.8 Summary](chapter-2-application-layer/2-8-summary.md)
