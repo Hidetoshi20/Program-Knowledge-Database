@@ -31,7 +31,7 @@
 module，chunk 和 bundle 其实就是同一份逻辑代码在不同转换场景下的取了三个名字：
 我们直接写出来的是 module，webpack 处理时是 chunk，最后生成浏览器可以直接运行的 bundle。
 
-![Untitled](Web%20Module/Untitled.png)
+![Untitled](Untitled.png)
 
 ## webpack 的打包流程
 
@@ -43,7 +43,7 @@ Webpack的运行流程是一个串行的过程，从启动到结束依次执行�
 
 如果只执行一次构建，以上阶段将会按照顺序各执行一次。但在开启监听模式下，流程将变为如下：
 
-![9B823AC99AF889118D34D0CB72E7A28E.png](Web%20Module/9B823AC99AF889118D34D0CB72E7A28E.png)
+![9B823AC99AF889118D34D0CB72E7A28E.png](9B823AC99AF889118D34D0CB72E7A28E.png)
 
 下面具体介绍一下webpack的三个大阶段具体的小步。
 
@@ -631,4 +631,4 @@ TypeError: even is not a function
 
 [幽灵依赖所引出的知识！ - 掘金](https://juejin.cn/post/7226610046833442872)
 
-[resource](Web%20Module/resource.md)
+[resource](resource.md)

@@ -2,6 +2,16 @@
 
 This is a personal knowledge base for programming, networking, databases, and other related topics. It is built using MkDocs and the Material for MkDocs theme.
 
+## 📚 文档编写规范
+
+本项目遵循统一的文档编写规范，确保文档的一致性和可维护性。详细规范请参考：[文档编写规范](docs/WRITING_GUIDELINES.md)
+
+### 主要规范要点：
+- **文件命名**：使用 kebab-case（短横线分隔）
+- **目录结构**：按主题分类，层次清晰
+- **内容格式**：标准 Markdown 语法
+- **链接管理**：使用相对路径，定期检查
+
 ## View the Knowledge Base
 
 The knowledge base is automatically deployed to GitHub Pages and can be viewed at:

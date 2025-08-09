@@ -1,10 +1,10 @@
 # Chapter 2: Application Layer
 
-[2.1 Principles of Application Layer](Chapter%202%20Application%20Layer/2%201%20Principles%20of%20Application%20Layer.md)
+[2.1 Principles of Application Layer](chapter-2-application-layer/2-1-principles-of-application-layer.md)
 
-[2.2 The Web and HTTP](Chapter%202%20Application%20Layer/2%202%20The%20Web%20and%20HTTP.md)
+[2.2 The Web and HTTP](chapter-2-application-layer/2-2-the-web-and-http.md)
 
-[2.3 Electronic Mail in the Internet](Chapter%202%20Application%20Layer/2%203%20Electronic%20Mail%20in%20the%20Internet.md)
+[2.3 Electronic Mail in the Internet](chapter-2-application-layer/2-3-electronic-mail-in-the-internet.md)
 
 [2.4 DNS-The Internet’s Directory Service](Chapter%202%20Application%20Layer/2%204%20DNS-The%20Internet%E2%80%99s%20Directory%20Service.md)
 

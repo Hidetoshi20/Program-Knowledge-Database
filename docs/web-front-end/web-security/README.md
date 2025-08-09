@@ -399,4 +399,4 @@ integrity 属性分为两个部分，第一部分是指定哈希值的生成算�
 
 网站接受从 HTTP 请求跳转到 HTTPS 请求的做法，例如我们输入“[http://www.baidu.com](https://link.zhihu.com/?target=http%3A/www.baidu.com)”或“[www.baidu.com”最终都会被302重定向到“[https://www.baidu.com](https://link.zhihu.com/?target=https%3A//www.baidu.com)”。这就存在安全风险，当我们第一次通过](http://www.baidu.xn--com302%5Bhttps-149fka9451pilkvxhbu0b6i9b4n8fwnxb2izb35d//www.baidu.com%5D(https://link.zhihu.com/?target=https%3A/www.baidu.com)”。这就存在安全风险，当我们第一次通过) HTTP 或域名进行访问时，302重定向有可能会被劫持，篡改成一个恶意或钓鱼网站。 HSTS：通知浏览器此网站禁止使用 HTTP 方式加载，浏览器应该自动把所有尝试使用 HTTP 的请求自动替换为 HTTPS 进行请求。用户首次访问时并不受 HSTS 保护，因为第一次还未形成链接。我们可以通过 浏览器预置HSTS域名列表 或 将HSTS信息加入到域名系统记录中，来解决第一次访问的问题。
 
-[resource](Web%20Security/resource.md)
+[resource](resource.md)

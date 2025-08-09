@@ -9,7 +9,7 @@
 -   [组件 (Component)](./component.md)
 -   [生命周期 (Lifecycle)](./Life%20circle.md)
 -   [事件处理 (Event Handling)](./Event-Handling.md)
--   [Hooks](。/hooks.md)
+-   [Hooks](./hooks.md)
 
 ## 高级主题
 
@@ -21,5 +21,5 @@
 
 ## 其他
 
--   [React vs Vue 对比](.。/Comparisons.md)
+-   [React vs Vue 对比](../Comparisons.md)
 -   [相关资源](./resource.md)
