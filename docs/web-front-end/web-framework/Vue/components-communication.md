@@ -4,14 +4,14 @@
 
 这是最常用的父子组件通信方式。
 
--   **父 -> 子**: 父组件通过 `props` 向子组件传递数据。
--   **子 -> 父**: 子组件通过 `$emit` 触发事件，并携带数据，父组件监听该事件。
+- 父 -> 子: 父组件通过 `props` 向子组件传递数据。
+- 子 -> 父: 子组件通过 `$emit` 触发事件，并携带数据，父组件监听该事件。
 
 ```vue
 <!-- Parent.vue -->
 <template>
   <Child :message="parentMessage" @child-event="handleChildEvent" />
-</template>
+  </template>
 <script>
 export default {
   data() {
@@ -43,10 +43,10 @@ export default {
 
 用于多层嵌套组件的通信，可以实现 "隔代传参"。
 
--   `$attrs`: 包含了父作用域中不作为 prop 被识别 (且获取) 的特性绑定 (class 和 style 除外)。当一个组件没有声明任何 prop 时，这里会包含所有父作用域的绑定，并且可以通过 `v-bind="$attrs"` 传入内部组件。
--   `$listeners`: 包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 `v-on="$listeners"` 传入内部组件。
+- `$attrs`: 未作为 prop 被识别的 attribute 集合（class/style 除外）。
+- `$listeners`: 父作用域中的事件监听器集合。
 
-**场景**: A -> B -> C，A 想直接传数据给 C。
+场景: A -> B -> C，A 想直接传数据给 C。
 
 ```vue
 <!-- A.vue -->
@@ -106,7 +106,7 @@ export default {
 
 ## 4. `provide` / `inject`
 
-用于祖先组件向其所有后代组件注入一个依赖，不论组件层次有多深。
+用于祖先组件向其所有后代组件注入依赖。
 
 ```vue
 // Ancestor.vue
@@ -129,10 +129,6 @@ export default {
 
 用于任意两个组件之间的通信，特别是兄弟组件。
 
-1.  创建一个新的 Vue 实例作为事件总线。
-2.  在发送方组件中，使用 `bus.$emit('event-name', data)` 触发事件。
-3.  在接收方组件中，使用 `bus.$on('event-name', callback)` 监听事件。
-
 ```javascript
 // bus.js
 import Vue from 'vue';
@@ -151,7 +147,6 @@ export default {
     });
   },
   beforeDestroy() {
-    // 记得在组件销毁前移除监听器
     bus.$off('custom-event');
   }
 }
@@ -159,18 +154,12 @@ export default {
 
 ## 6. `$parent` / `$children` / `ref`
 
--   `$parent`: 访问父组件实例。
--   `$children`: 访问当前实例的直接子组件。
--   `ref`: 给子组件或 DOM 元素注册引用信息，通过 `this.$refs.refName` 访问。
-
-**注意**: 这些方式会造成组件之间的强耦合，应谨慎使用，通常只在封装组件库时考虑。
+- `$parent`: 访问父组件实例。
+- `$children`: 访问当前实例的直接子组件。
+- `ref`: 通过 `this.$refs` 访问子组件或 DOM。谨慎使用，容易造成强耦合。
 
 ## 7. Vuex
 
-当应用变得复杂，多个组件共享状态时，以上方法可能会导致状态管理混乱。Vuex 是官方的状态管理模式，将所有组件的共享状态抽取出来，以一个全局单例模式管理。
+当应用变得复杂、多个组件共享状态时，推荐采用集中式状态管理（见 `state-management.md`）。
 
--   **State**: 驱动应用的数据源。
--   **View**: 以声明方式将 state 映射到视图。
--   **Actions**: 响应在 view 上的用户输入导致的状态变化。
 
-这是最强大和可维护的跨组件通信方案，适用于中大型应用。

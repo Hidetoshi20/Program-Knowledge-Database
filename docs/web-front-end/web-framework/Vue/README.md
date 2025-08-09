@@ -1,28 +1,22 @@
 # Vue 学习笔记
 
-这是一个关于 Vue 的学习笔记集合，涵盖了从基础概念到高级特性的各个方面。
+聚焦 Vue 的基础概念、生态与实践，采用更聚合的结构与 kebab-case 命名，便于导航与检索。
 
-## 核心概念
+## 基础
 
-- [Vue 核心概念](./Core-Concepts.md)
-- [数据绑定](./Data-Binding.md)
-- [生命周期](./Lifecycle.md)
-- [组件通信](./Component-Communication.md)
+- [基础：核心概念 / 数据绑定 / 生命周期](./basics.md)
+- [组件通信](./components-communication.md)
 
 ## 生态系统
 
-- [路由 (Vue Router)](./Router.md)
-- [状态管理 (Vuex)](./Vuex.md)
+- [路由 (Vue Router)](./router.md)
+- [状态管理](./state-management.md)
 
-## 实践与技巧
+## 实践与工具
 
-- [Vue 实战技巧](./Vue-In-Practice.md)
-- [单元测试 (Vitest)](./Vitest.md)
+- [Vue 实战技巧](./vue-in-practice.md)
+- [工具与测试 (Vitest 等)](./tooling-and-testing.md)
 
 ## 对比
 
 - [React vs Vue 对比](../Comparisons.md)
-
-## 其他
-
-- [相关资源](./resource.md)
