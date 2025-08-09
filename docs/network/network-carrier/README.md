@@ -114,6 +114,6 @@ HTTP/2 本身不要求加密，但浏览器普遍要求HTTP/2必须运行在HTTP
 
 ## 参考资料
 
-*   [Application layer](./Application%20layer.md)
-*   [Transport layer](./Transport%20layer.md)
-*   [Network layer](./Network%20layer.md)
+*   [Application layer](./application-layer.md)
+*   [Transport layer](./transport-layer.md)
+*   [Network layer](./network-layer.md)

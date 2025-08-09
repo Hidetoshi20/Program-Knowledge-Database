@@ -19,4 +19,4 @@
 
 ## 对比
 
-- [React vs Vue 对比](../Comparisons.md)
+- [React vs Vue 对比](../comparisons-renamed.md)

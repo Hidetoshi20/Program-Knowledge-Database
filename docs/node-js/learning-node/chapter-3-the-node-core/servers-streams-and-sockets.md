@@ -243,7 +243,7 @@ I didn’t call the close method on either the client or the server after sendin
 
 ## Streams, Pipes, and Readline
 
-The communication stream between the sockets discussed in the previous sections is an implementation of the underlying abstract stream interface. Streams can be readable, writable, or both, and all streams are instances of EventEmitter, discussed in the upcoming section [Events and EventEmitter](Events%20and%20EventEmitter.md).
+The communication stream between the sockets discussed in the previous sections is an implementation of the underlying abstract stream interface. Streams can be readable, writable, or both, and all streams are instances of EventEmitter, discussed in the upcoming section [Events and EventEmitter](events-and-eventemitter.md).
 
 It’s important to take away from this section that all of these communication streams, including process.stdin and process.stdout, are implementations of the abstract stream interface. Because of this underlying interface, there is basic functionality available in all streams in Node:
 
