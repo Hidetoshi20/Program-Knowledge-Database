@@ -16,8 +16,8 @@ theme:
   name: material
   custom_dir: overrides
   language: zh
-  logo: material/book-open-page-variant
-  favicon: material/book-open-page-variant
+  icon:
+    logo: material/library
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
