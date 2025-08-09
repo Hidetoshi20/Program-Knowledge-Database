@@ -1,15 +1,39 @@
 # 浏览器工作原理与存储机制
 
-## 待整理主题
+## 目录
 
-- 浏览器崩溃的边缘案例
-- 内容更新和页面变化联系起来
-- 死锁问题
-- JS 编写完到发布到线上的过程
+- [浏览器存储 (Storage)](#storage)
+- [浏览器渲染 (Render)](#render)
+- [事件循环 (Event Loop)](#event-loop)
+
+> 待整理主题：浏览器崩溃边缘案例、内容更新与页面变化的关联、死锁问题、从编写 JS 到上线的过程
 
 ---
 
-## 浏览器存储 (Storage)
+## 浏览器存储 (Storage) {#storage}
+
+### 快速问答（Cheat Sheet）
+- 使用哪种存储？
+  - 仅当前标签页会话内、容量小：sessionStorage
+  - 跨标签/持久化、容量中等（~5MB）：localStorage
+  - 需要与服务端同行发送、跨请求携带：Cookie
+  - 大容量、结构化查询、事务：IndexedDB
+- 何时不要用 Cookie？
+  - 频繁更新的大数据；敏感数据明文；非必须随请求发送的数据
+- Token 放哪里？
+  - 首选 HttpOnly Cookie（防 XSS），或短期放内存 + 刷新机制
+
+### 选择存储的决策流
+```mermaid
+flowchart TD
+    A[要在浏览器端持久保存数据吗？] -->|否| B[仅当前标签页生效]
+    B --> C[sessionStorage]
+    A -->|是| D[需要随每次请求发送吗？]
+    D -->|是| E[Cookie]
+    D -->|否| F[数据量较大/结构化访问？]
+    F -->|是| G[IndexedDB]
+    F -->|否| H[localStorage]
+```
 
 ### Cookie, sessionStorage, localStorage 的区别
 
@@ -132,29 +156,72 @@ sequenceDiagram
 
 ---
 
-## 浏览器渲染 (Render)
+## 浏览器渲染 (Render) {#render}
 
 ### 从输入 URL 到页面呈现发生了什么？
 
 > 参考链接：[当你用浏览器打开一个链接的时候，计算机做了哪些工作_浏览器打开网址干了什么-CSDN博客](https://blog.csdn.net/qq_31960623/article/details/116207760)
 
-1.  **URL 解析**
-2.  **缓存检查**：首先检查强制缓存，如果命中则结束。
-3.  **DNS 查询**：
-    -   浏览器缓存 -> 操作系统缓存 -> 路由器缓存 -> ISP 缓存 -> 根 DNS 服务器 -> ... (递归或迭代查询)
-4.  **ARP 请求**：获取 MAC 地址。
-5.  **数据包封装**：应用层 -> 传输层 (TCP) -> 网络层 (IP) -> 链路层 (以太网)。
-6.  **建立 TCP 连接** (三次握手)。
-7.  **发送 HTTP 请求**。
-8.  **接收服务器响应**：可能是 `304` (协商缓存命中)。
-9.  **解析与渲染页面**：
-    -   **构建 DOM 树**：解析器解析 HTML。当遇到非阻塞资源（如图片），浏览器会请求资源并继续解析。当遇到 `<script>` 标签（特别是没有 `async` 或 `defer` 属性的）会阻塞渲染并停止 HTML 的解析。
-    -   **预加载扫描器 (Preload Scanner)**：浏览器构建 DOM 树时，预加载扫描器会解析可用的内容并请求高优先级资源，如 CSS、JavaScript 和 web 字体，减少阻塞。
-    -   **构建 CSSOM 树**：解析 CSS 文件。
-    -   **合并生成渲染树 (Render Tree)**。
-    -   **布局 (Layout/Reflow)**：第一次确定节点的大小和位置称为布局。随后对节点大小和位置的重新计算称为回流。
-    -   **绘制 (Paint)**。
-10. **交互 (Interactive)**：即使主线程绘制页面完成，如果加载了庞大的 JavaScript 文件，主线程可能仍然很忙，无法响应滚动、触摸等交互。
+```mermaid
+flowchart TB
+
+  %% 客户端阶段
+  subgraph Client[客户端]
+    A[用户输入 URL / 点击链接]
+    A --> B[开始导航]
+    B --> C{"已注册 Service Worker？"}
+    C -- 是 --> SW[Service Worker 拦截 fetch]
+    SW --> SWC{"SW 缓存命中？"}
+    SWC -- 是 --> Z1[返回缓存响应]
+    SWC -- 否 --> NET_ENTRY[走网络]
+    C -- 否 --> NET_ENTRY
+  end
+
+  %% 网络阶段
+  subgraph Networking[网络]
+    NET_ENTRY --> HC{"HTTP 强缓存（Cache-Control/Expires）命中？"}
+    HC -- 是 --> ZHIT[使用 HTTP 缓存响应]
+    HC -- 否 --> DNC{"DNS 缓存命中？"}
+    DNC -- 是 --> IP[得到服务器 IP]
+    DNC -- 否 --> DNS["递归解析：根→顶级域→权威"]
+    DNS --> IP
+    IP --> CONN{"可复用连接 (HTTP2/HTTP3)？"}
+    CONN -- 是 --> REQ[发送 HTTP 请求]
+    CONN -- 否 --> TCP["TCP 3 次握手 或 QUIC"] --> TLSQ{"HTTPS/QUIC？"}
+    TLSQ -- 是 --> TLS["TLS/QUIC 握手：ALPN/SNI/证书/会话复用"] --> REQ
+    TLSQ -- 否 --> REQ
+    REQ --> EDGE{"CDN/边缘可用？"}
+    EDGE -- 是 --> CDN["边缘缓存/计算"] --> RESP["返回响应头/体（可流式）"]
+    EDGE -- 否 --> ORG["源站应用/网关"] --> RESP
+    RESP --> CC["缓存协商：ETag/If-None-Match 或 Last-Modified"]
+    CC -- 304 --> USE304[使用本地已缓存实体]
+    CC -- 200 --> BODY["接收响应实体（流）"]
+  end
+
+  %% 渲染阶段
+  subgraph Rendering[解析与渲染]
+    Z1 --> START[开始解析 HTML]
+    ZHIT --> START
+    USE304 --> START
+    BODY --> START
+    START --> PRELOAD["预加载扫描器发现高优资源：CSS/JS/字体"]
+    START --> DOM[构建 DOM]
+    PRELOAD --> CSSOM[构建 CSSOM]
+    DOM & CSSOM --> RT[合成 Render Tree]
+    RT --> LAYOUT["布局（回流）Layout"]
+    LAYOUT --> PAINT[绘制 Paint]
+    PAINT --> COMPOSE[合成 Compositing]
+    COMPOSE --> FCP[首次内容绘制 FCP]
+    PRELOAD --> JSB{"阻塞型 JS？"}
+    JSB -- 是 --> BLOCK[阻塞解析直至执行] --> DOM
+    JSB -- 否 --> ASYNC[defer/async 稍后执行]
+  end
+
+  %% 交互阶段
+  subgraph Interactivity[交互]
+    COMPOSE --> TTI[达到可交互 TTI]
+  end
+```
 
 ### 浏览器渲染页面流程
 
@@ -162,23 +229,64 @@ sequenceDiagram
 
 不同的浏览器内核（如 WebKit, Gecko）叫法有区别，但主要流程相同。
 
-**通用流程:**
-
 ```mermaid
-flowchart TD
-    A[HTML] --> B(解析 HTML 生成 DOM 树);
-    C[CSS] --> D(解析 CSS 生成 CSSOM 树);
-    B & D --> E(合并成渲染树 Render Tree);
-    E --> F(布局 Layout / Reflow);
-    F --> G(绘制 Paint / Repaint);
-    G --> H(合成 Compositing);
+flowchart TB
+
+  %% 解析阶段
+  subgraph Parse[解析]
+    HP["HTML Parser"] --> DOM["DOM 树"]
+    CP["CSS Parser"] --> CSSOM["CSSOM 树"]
+    HP --> RBJS{"遇到阻塞脚本？"}
+    RBJS -- 是 --> EXEC["执行脚本（可能修改 DOM/CSSOM）"] --> DOM
+    RBJS -- 否 --> DOM
+  end
+
+  %% 样式计算
+  subgraph Style[样式计算]
+    DOM & CSSOM --> CSTYLE["计算样式（Cascade/Inheritance/Specificity）"]
+    CSTYLE --> RTREE["生成渲染树（可见元素）"]
+  end
+
+  %% 布局阶段
+  subgraph Layout[布局]
+    RTREE --> LAYOUT["布局（回流）：确定盒模型尺寸与位置"]
+    LAYOUT --> LAYOUTTREE["布局树（盒）"]
+  end
+
+  %% 绘制阶段
+  subgraph Paint[绘制]
+    LAYOUTTREE --> DISPLAY["生成显示列表（Display List）"]
+    DISPLAY --> RASTER_INPUT["分层/栅格输入（Layers/Tiles）"]
+  end
+
+  %% 合成阶段
+  subgraph Composite[合成]
+    RASTER_INPUT --> RASTER["GPU 栅格化（按瓦片 Tiles）"]
+    RASTER --> COMP["合成线程合成帧（Compositor）"]
+    COMP --> PRESENT["提交到屏幕（VSync/Presentation）"]
+  end
+
+  %% 增量更新路径（交互/脚本变更）
+  subgraph Incremental[增量更新]
+    CHANGE["DOM/CSS 变化"] --> INVSTYLE{"样式失效？"}
+    INVSTYLE -- 是 --> CSTYLE
+    INVSTYLE -- 否 --> NEEDLAYOUT{"需要布局？（尺寸/位置变化）"}
+    NEEDLAYOUT -- 是 --> LAYOUT
+    NEEDLAYOUT -- 否 --> NEEDPAINT{"需要重绘？（颜色/阴影等）"}
+    NEEDPAINT -- 是 --> DISPLAY
+    NEEDPAINT -- 否 --> ONLYCOMP["仅层/位移变化"] --> COMP
+  end
+
+  %% 主主流程连接
+  Parse --> Style --> Layout --> Paint --> Composite
+  CHANGE -.-> Incremental
 ```
 
 1.  HTML 被 HTML 解析器解析成 DOM 树；
 2.  CSS 被 CSS 解析器解析成 CSSOM 树；
-3.  结合 DOM 树和 CSSOM 树，生成一棵渲染树(Render Tree)，这一过程称为 Attachment；
-4.  生成布局(Layout/Flow)，浏览器在屏幕上“画”出渲染树中的所有节点；
-5.  将布局绘制(Paint)在屏幕上，显示出整个页面。
+3.  结合 DOM 树和 CSSOM 树，生成渲染树；
+4.  执行布局，确定每个盒的几何信息；
+5.  生成显示列表并进行绘制与合成，最终展示到屏幕。
 
 ### 重绘 (Repaint) 与重排 (Reflow)
 
@@ -212,71 +320,58 @@ flowchart TD
     -   **原理**：跟踪记录每个值被引用的次数。当引用次数变成 0 时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。
     -   **缺点**：会遇到**循环引用**的问题，导致内存泄漏。例如，对象 A 引用对象 B，对象 B 也引用对象 A，即使它们都已离开环境，但引用计数不为 0，导致无法回收。在 IE 的早期版本中，BOM 和 DOM 对象使用 C++ 的 COM 实现，其 GC 就是引用计数，因此存在循环引用问题。
 
-    ```javascript
-    // 循环引用示例
-    function fn() {
-        var a = {};
-        var b = {};
-        a.pro = b;
-        b.pro = a;
-    }
-    fn(); // a 和 b 互相引用，在引用计数策略下无法被回收
-    ```
+```javascript
+// 循环引用示例
+function fn() {
+    var a = {};
+    var b = {};
+    a.pro = b;
+    b.pro = a;
+}
+fn(); // a 和 b 互相引用，在引用计数策略下无法被回收
+```
 
 ### V8 引擎的 GC 优化策略
 
 1.  **分代回收 (Generational GC)**
     -   **思想**：通过区分“临时”与“持久”对象；多回收“临时对象”区（young generation），少回收“持久对象”区（tenured generation），减少每次需遍历的对象，从而减少每次 GC 的耗时。
 
-    ```mermaid
-    graph TD
-        subgraph 新生代 (Young Generation)
-            A[新创建的对象] --> B{Scavenge 算法};
-            B -- 存活时间长 --> C(晋升到老生代);
-            B -- 未存活 --> D[被回收];
-        end
-        subgraph 老生代 (Old Generation)
-            C --> E{Mark-Sweep & Mark-Compact 算法};
-            E --> F[被回收];
-        end
-    ```
+```mermaid
+graph TD
+    subgraph "新生代 (Young Generation)"
+        A[新创建的对象] --> B{Scavenge 算法};
+        B -- 存活时间长 --> C(晋升到老生代);
+        B -- 未存活 --> D[被回收];
+    end
+    subgraph "老生代 (Old Generation)"
+        C --> E{Mark-Sweep & Mark-Compact 算法};
+        E --> F[被回收];
+    end
+```
 
 2.  **增量 GC (Incremental GC)**
     -   **思想**：将一次完整的垃圾回收过程分解成许多小步骤，交替在主线程上执行，从而避免长时间的“全停顿”（Stop-the-world）。
 
----
-
-## 事件循环 (Event Loop)
+## 事件循环 (Event Loop) {#event-loop}
 
 > 参考链接：[微任务/宏任务和同步/异步之间的关系 - 掘金](https://juejin.cn/post/6962312899960242213)
 
-主线程从“任务队列”中读取执行事件，这个过程是循环不断的，这个机制被称为事件循环。
-
-**核心组成**:
-- **调用栈 (Call Stack)**
-- **宏任务队列 (Macrotask Queue)**: `setTimeout`, `setInterval`, I/O, UI rendering
-- **微任务队列 (Microtask Queue)**: `Promise.then`, `MutationObserver`, `process.nextTick`
-
-**执行流程:**
+事件循环负责在浏览器中调度宏任务与微任务：
+- 宏任务：setTimeout、setInterval、I/O、UI 渲染
+- 微任务：Promise.then、MutationObserver、queueMicrotask
 
 ```mermaid
 flowchart TD
-    Start(开始) --> A{调用栈是否为空？};
-    A -- 是 --> B{检查微任务队列是否为空？};
-    A -- 否 --> C(从调用栈中执行任务);
-    C --> A;
-    B -- 是 --> D{检查宏任务队列是否为空？};
-    B -- 否 --> E(执行所有微任务);
-    E --> D;
-    D -- 是 --> Start;
-    D -- 否 --> F(取出一个宏任务到调用栈);
-    F --> C;
+  A[开始] --> B{调用栈为空?}
+  B -- 否 --> C(继续执行栈顶任务)
+  C --> B
+  B -- 是 --> D{微任务队列为空?}
+  D -- 否 --> E[执行所有微任务]
+  E --> D
+  D -- 是 --> F{宏任务队列为空?}
+  F -- 否 --> G[取出一个宏任务执行]
+  G --> B
+  F -- 是 --> A
 ```
 
-1.  选择当前要执行的宏任务队列，选择一个最先进入任务队列的宏任务。
-2.  运行宏任务。
-3.  **进入 microtask 检查点**：当事件循环的微任务队列不为空时，选择一个最先进入 microtask 队列的 microtask，运行它，然后将其移除。**循环此过程直到微任务队列为空**。
-4.  更新界面渲染。
-5.  返回第一步，开始下一个事件循环。
-
-**关键点**：**当前执行栈执行完毕时会立刻先处理所有微任务队列中的事件, 然后再去宏任务队列中取出一个事件。同一次事件循环中, 微任务永远在宏任务之前执行。**
+关键点：一次事件循环中，微任务总是先于下一次宏任务执行；避免在微任务中无限入队，造成渲染饥饿。
