@@ -32,3 +32,5 @@ To support my goal of learning English technical terms, please adhere to the fol
 -   **Primary Language for Terms**: All professional and technical terms should be written in **English** first.
 -   **Supplementary Chinese**: The corresponding Chinese translation should follow in parentheses `()`.
 -   **Example**: `This is a repository (仓库) for...`
+-   **Rich Content**: Use **Mermaid charts** and **tables** frequently to visually explain concepts and data.
+-   **Document Structure**: Prefer larger, well-structured documents over many small, fragmented files. A good internal structure with clear headings is key to readability.
