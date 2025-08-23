@@ -10,6 +10,7 @@ Comprehensive React documentation organized into well-structured, larger documen
 **Complete guide to React core concepts (React 核心概念完整指南)**
 
 Covers all fundamental React concepts in a single comprehensive document (在一个综合文档中涵盖所有 React 基础概念):
+
 - ✅ **React Features Overview (React 特性概览)** - JSX, Virtual DOM, Component-based architecture (JSX、虚拟 DOM、基于组件的架构)
 - ✅ **Virtual DOM and Diff Algorithm (虚拟 DOM 与 Diff 算法)** - Internal workings and optimization (内部工作原理和优化)
 - ✅ **Component Fundamentals (组件基础)** - Function vs Class components, Props vs State (函数与类组件，Props 与 State)
@@ -21,6 +22,7 @@ Covers all fundamental React concepts in a single comprehensive document (在一
 **Complete guide to React internal architecture and advanced concepts (React 内部架构与高级概念完整指南)**
 
 Advanced React concepts for experienced developers (面向有经验开发者的高级 React 概念):
+
 - ✅ **React Internal Architecture (React 内部架构)** - Rendering pipeline and architecture layers (渲染管道和架构层次)
 - ✅ **Fiber Architecture (Fiber 架构)** - Modern reconciliation algorithm (现代协调算法)
 - ✅ **Advanced Component Patterns (高级组件模式)** - HOC, Render Props, Compound Components (HOC、渲染属性、复合组件)
@@ -32,6 +34,7 @@ Advanced React concepts for experienced developers (面向有经验开发者的�
 **State management, communication, and routing (状态管理、通信与路由)**
 
 Complete ecosystem guide covering (完整的生态系统指南，涵盖):
+
 - ✅ **Component Communication (组件通信)** - Props, callbacks, context patterns (Props、回调、上下文模式)
 - ✅ **State Management (状态管理)** - Local state, Context API, Redux, Zustand (本地状态、Context API、Redux、Zustand)
 - ✅ **React Router (React 路由)** - Navigation, routing patterns, and best practices (导航、路由模式和最佳实践)
