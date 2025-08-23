@@ -1,112 +1,116 @@
-# hooks
+# React Hooks (React 钩子)
 
-# Hooks的理解
+## Understanding Hooks (Hooks 的理解)
 
-`Hook` 是 React 16.8 的新增特性。它可以让你在不编写 `class` 的情况下使用 `state` 以及其他的 `React` 特性
+`Hook` is a new feature introduced in React 16.8 (是 React 16.8 的新增特性). It allows you to use `state` and other React features without writing a `class` (它可以让你在不编写 `class` 的情况下使用 `state` 以及其他的 `React` 特性).
 
-至于为什么引入`hook`，官方给出的动机是解决长时间使用和维护`react`过程中常遇到的问题，例如：
+### Why Hooks Were Introduced (为什么引入 Hook)
 
-- 难以重用和共享组件中的与状态相关的逻辑
-- 逻辑复杂的组件难以开发与维护，当我们的组件需要处理多个互不相关的 local state 时，每个生命周期函数中可能会包含着各种互不相关的逻辑在里面
-- 类组件中的this增加学习成本，类组件在基于现有工具的优化上存在些许问题
-- 由于业务变动，函数组件不得不改为类组件等等
+The official motivation (官方给出的动机) is to solve common problems encountered during long-term React usage and maintenance (解决长时间使用和维护 React 过程中常遇到的问题), such as:
 
-在以前，函数组件也被称为无状态的组件，只负责渲染的一些工作
+- **Difficult to reuse and share stateful logic (难以重用和共享组件中的与状态相关的逻辑)** between components
+- **Complex components are hard to develop and maintain (逻辑复杂的组件难以开发与维护)**: When components need to handle multiple unrelated local states (当我们的组件需要处理多个互不相关的 local state 时), each lifecycle method may contain various unrelated logic (每个生命周期函数中可能会包含着各种互不相关的逻辑)
+- **`this` in class components increases learning cost (类组件中的 this 增加学习成本)**, and class components have optimization issues with existing tools (类组件在基于现有工具的优化上存在些许问题)
+- **Business changes force function components to be converted to class components (由于业务变动，函数组件不得不改为类组件)**, etc.
 
-因此，现在的函数组件也可以是有状态的组件，内部也可以维护自身的状态以及做一些逻辑方面的处理
+### Function Components Evolution (函数组件的演进)
 
-上面讲到，`Hooks`让我们的函数组件拥有了类组件的特性，例如组件内的状态、生命周期
+Previously (在以前), function components were also called stateless components (函数组件也被称为无状态的组件), only responsible for rendering work (只负责渲染的一些工作).
 
-最常见的`hooks`有如下：
+Now (现在), function components can also be stateful components (函数组件也可以是有状态的组件), capable of maintaining their own state and handling logic (内部也可以维护自身的状态以及做一些逻辑方面的处理).
 
-- useState
-- useEffect
-- 其他
+`Hooks` give our function components the characteristics of class components (让我们的函数组件拥有了类组件的特性), such as internal state and lifecycle (例如组件内的状态、生命周期).
 
-# useState
+### Most Common Hooks (最常见的 Hooks)
 
-### setState执行机制
+- `useState`
+- `useEffect`  
+- Others (其他)
 
-在`react`类组件的状态需要通过`setState`进行更改，在不同场景下对应不同的执行顺序：
+## useState Hook
 
-- 在组件生命周期或React合成事件中，setState是异步
-- 在setTimeout或者原生dom事件中，setState是同步
+### setState Execution Mechanism (setState 执行机制)
 
-当我们批量更改`state`的值的时候，`react`内部会将其进行覆盖，只取最后一次的执行结果
+In React class components (在 React 类组件中), state needs to be changed through `setState` (状态需要通过 `setState` 进行更改), with different execution orders in different scenarios (在不同场景下对应不同的执行顺序):
 
-当需要下一个`state`依赖当前`state`的时候，则可以在`setState`中传递一个回调函数进行下次更新
+- **In component lifecycle or React synthetic events (在组件生命周期或 React 合成事件中)**: `setState` is asynchronous (setState 是异步的)
+- **In setTimeout or native DOM events (在 setTimeout 或者原生 DOM 事件中)**: `setState` is synchronous (setState 是同步的)
 
-### 更新类型
+When we batch update `state` values (当我们批量更改 `state` 的值的时候), React internally will override them (React 内部会将其进行覆盖), only taking the result of the last execution (只取最后一次的执行结果).
 
-在使用`setState`更新数据的时候，`setState`的更新类型分成：
+When the next `state` depends on the current `state` (当需要下一个 `state` 依赖当前 `state` 的时候), you can pass a callback function in `setState` for the next update (则可以在 `setState` 中传递一个回调函数进行下次更新).
 
-- 异步更新
-- 同步更新
+### Update Types (更新类型)
 
-### 异步更新
+When using `setState` to update data (在使用 `setState` 更新数据的时候), `setState` update types are divided into (setState 的更新类型分成):
 
-先举出一个例子：
+- **Asynchronous Updates (异步更新)**
+- **Synchronous Updates (同步更新)**
+
+#### Asynchronous Updates (异步更新)
+
+Here's an example (先举出一个例子):
 
 ```jsx
 function changeText() {
   this.setState({
-    message: "你好啊"
+    message: "Hello React"
   })
-  console.log(this.state.message); // Hello World
+  console.log(this.state.message); // Still shows old value
 }
 ```
 
-从上面可以看到，最终打印结果为`Hello world`，并不能在执行完`setState`之后立马拿到最新的`state`的结果
+From the above, we can see (从上面可以看到) that the final printed result is the old value (最终打印结果为旧值), and we cannot immediately get the latest `state` result after executing `setState` (并不能在执行完 `setState` 之后立马拿到最新的 `state` 的结果).
 
-如果想要立刻获取更新后的值，在第二个参数的回调中更新后会执行
+If you want to immediately get the updated value (如果想要立刻获取更新后的值), use the callback in the second parameter (在第二个参数的回调中更新后会执行):
 
 ```jsx
 function changeText() {
   this.setState({
-    message: "你好啊"
+    message: "Hello React"
   }, () => {
-    console.log(this.state.message); // 你好啊
+    console.log(this.state.message); // Shows updated value
   });
 }
 ```
 
-### 同步更新
+#### Synchronous Updates (同步更新)
 
-同样先给出一个在`setTimeout`中更新的例子：
+Here's an example with `setTimeout` (同样先给出一个在 `setTimeout` 中更新的例子):
 
 ```jsx
 function changeText() {
   setTimeout(() => {
     this.setState({
-      message: "你好啊"
+      message: "Hello React"
     });
-    console.log(this.state.message); // 你好啊
+    console.log(this.state.message); // Shows updated value immediately
   }, 0);
 }
 ```
 
-上面的例子中，可以看到更新是同步
+In the above example (上面的例子中), we can see the update is synchronous (可以看到更新是同步的).
 
-再来举一个原生`DOM`事件的例子：
+Here's another example with native DOM events (再来举一个原生 DOM 事件的例子):
 
 ```jsx
 function componentDidMount() {
   const btnEl = document.getElementById("btn");
   btnEl.addEventListener('click', () => {
     this.setState({
-      message: "你好啊,李银河"
+      message: "Hello from native event"
     });
-    console.log(this.state.message); // 你好啊,李银河
+    console.log(this.state.message); // Shows updated value immediately
   })
 }
 ```
 
-### 小结
+#### Summary (小结)
 
-- 在组件生命周期或React合成事件中，setState是异步
-- 在setTimeout或者原生dom事件中，setState是同步
+- **In component lifecycle or React synthetic events (在组件生命周期或 React 合成事件中)**: `setState` is asynchronous (setState 是异步的)
+- **In setTimeout or native DOM events (在 setTimeout 或者原生 DOM 事件中)**: `setState` is synchronous (setState 是同步的)
 
-### 三、批量更新
+### Batch Updates (批量更新)
 
 同样先给出一个例子：
 
@@ -164,51 +168,86 @@ onClick = () => {
 
 [深入 React 的 setState 机制](https://segmentfault.com/a/1190000039077904)
 
-# useEffect
+## useEffect Hook
 
-`useEffect`可以让我们在函数组件中进行一些带有副作用的操作
+`useEffect` allows us to perform side effects (可以让我们进行一些带有副作用的操作) in function components (在函数组件中).
 
-`useEffect`相当于`componentDidMount`，`componentDidUpdate` 和 `componentWillUnmount` 这三个生命周期函数的组合
+`useEffect` is equivalent to the combination (相当于组合) of `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` lifecycle methods (这三个生命周期函数的组合).
 
-# 其它 hooks
+### Basic Usage (基本用法)
 
-在组件通信过程中可以使用`useContext`，`refs`学习中我们也用到了`useRef`获取`DOM`结构……
+```jsx
+import React, { useState, useEffect } from 'react';
 
-还有很多额外的`hooks`，如：
+function Example() {
+  const [count, setCount] = useState(0);
 
-- `useReducer`
-- `useCallback`
-- `useMemo`
-- `useRef`
+  // Similar to componentDidMount and componentDidUpdate
+  useEffect(() => {
+    // Update document title
+    document.title = `You clicked ${count} times`;
+  });
 
-## **`useLayoutEffect`**
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
 
-[useLayoutEffect和useEffect的区别](https://zhuanlan.zhihu.com/p/348701319)
+### Cleanup Effects (清理副作用)
 
-[使用 State Hook – React](https://zh-hans.reactjs.org/docs/hooks-state.html)
+```jsx
+useEffect(() => {
+  // Setup subscription
+  const subscription = subscribeToSomething();
+  
+  // Cleanup function (similar to componentWillUnmount)
+  return () => {
+    subscription.unsubscribe();
+  };
+}, []); // Empty dependency array means this effect runs once
+```
 
-[使用 Effect Hook – React](https://zh-hans.reactjs.org/docs/hooks-effect.html)
+## Other Hooks (其它 Hooks)
 
-[10分钟了解 react 引入的 Hooks - sfornt - 博客园](https://www.cnblogs.com/lalalagq/p/9898531.html)
+In component communication (在组件通信过程中), we can use `useContext` (可以使用 `useContext`). In refs learning (在 refs 学习中), we also used `useRef` to get DOM structure (我们也用到了 `useRef` 获取 DOM 结构)...
 
-# refs
+There are many additional hooks (还有很多额外的 hooks), such as:
 
-### 一、是什么
+- **`useReducer`**: For complex state logic (用于复杂状态逻辑)
+- **`useCallback`**: Memoizes callback functions (缓存回调函数)
+- **`useMemo`**: Memoizes expensive calculations (缓存昂贵的计算)
+- **`useRef`**: Access DOM elements or store mutable values (访问 DOM 元素或存储可变值)
 
-`Refs` 在计算机中称为弹性文件系统（英语：Resilient File System，简称ReFS）
+### `useLayoutEffect`
 
-`React` 中的 `Refs`提供了一种方式，允许我们访问 `DOM`节点或在 `render`方法中创建的 `React`元素
+`useLayoutEffect` has the same signature as `useEffect` (与 `useEffect` 具有相同的签名), but it fires synchronously after all DOM mutations (但它在所有 DOM 变更之后同步触发). Use this to read layout from the DOM and synchronously re-render (用于从 DOM 读取布局并同步重新渲染).
 
-本质为`ReactDOM.render()`返回的组件实例，如果是渲染组件则返回的是组件实例，如果渲染`dom`则返回的是具体的`dom`节点
+**Key Difference (主要区别)**:
+- `useEffect`: Runs after the render is committed to the screen (在渲染提交到屏幕后运行)
+- `useLayoutEffect`: Runs synchronously after all DOM mutations but before the browser paints (在所有 DOM 变更后但在浏览器绘制前同步运行)
 
-### 二、如何使用
+## Refs in React (React 中的 Refs)
 
-创建`ref`的形式有三种：
+### What are Refs? (什么是 Refs?)
 
-- 传入字符串，使用时通过 this.refs.传入的字符串的格式获取对应的元素
-- 传入对象，对象是通过 React.createRef() 方式创建出来，使用时获取到创建的对象中存在 current 属性就是对应的元素
-- 传入函数，该函数会在 DOM 被挂载时进行回调，这个函数会传入一个 元素对象，可以自己保存，使用时，直接拿到之前保存的元素对象即可
-- 传入hook，hook是通过 useRef() 方式创建，使用时通过生成hook对象的 current 属性就是对应的元素
+`Refs` in React provide a way (提供了一种方式) to access DOM nodes or React elements created in the `render` method (允许我们访问 DOM 节点或在 render 方法中创建的 React 元素).
+
+Essentially (本质为), they are component instances returned by `ReactDOM.render()` (ReactDOM.render() 返回的组件实例). If rendering a component, it returns the component instance (如果是渲染组件则返回的是组件实例); if rendering a DOM element, it returns the specific DOM node (如果渲染 DOM 则返回的是具体的 DOM 节点).
+
+### How to Use Refs (如何使用 Refs)
+
+There are four ways to create `ref` (创建 ref 的形式有四种):
+
+1. **String Refs (字符串 Refs)** - ⚠️ Deprecated (已废弃): Access via `this.refs.stringName` (使用时通过 this.refs.传入的字符串的格式获取对应的元素)
+2. **Object Refs (对象 Refs)**: Created via `React.createRef()` (对象是通过 React.createRef() 方式创建出来), access via `ref.current` (使用时获取到创建的对象中存在 current 属性就是对应的元素)
+3. **Callback Refs (回调 Refs)**: Function called when DOM is mounted (该函数会在 DOM 被挂载时进行回调), receives element object as parameter (这个函数会传入一个元素对象，可以自己保存)
+4. **Hook Refs (Hook Refs)**: Created via `useRef()` (hook 是通过 useRef() 方式创建), access via `hookRef.current` (使用时通过生成 hook 对象的 current 属性就是对应的元素)
 
 ### 传入字符串
 
@@ -316,10 +355,17 @@ const node = myref.current;
 - 对Dom元素的操作和对组件实例的操作
 - 集成第三方 DOM 库
 
-### 参考文献
+## References (参考文献)
 
-[Refs and the DOM – React](https://zh-hans.reactjs.org/docs/refs-and-the-dom.html)
+### Official Documentation (官方文档)
+- [Using the State Hook – React (使用 State Hook)](https://zh-hans.reactjs.org/docs/hooks-state.html)
+- [Using the Effect Hook – React (使用 Effect Hook)](https://zh-hans.reactjs.org/docs/hooks-effect.html)
+- [Refs and the DOM – React (Refs 和 DOM)](https://zh-hans.reactjs.org/docs/refs-and-the-dom.html)
 
-[你想知道的关于 Refs 的知识都在这了](https://segmentfault.com/a/1190000020842342)
-
-[web前端面试 - 面试官系列](https://vue3js.cn/interview)
+### Additional Resources (其他资源)
+- [Understanding React setState (揭密 React setState)](https://juejin.cn/post/6844903667426918408)
+- [Do You Really Understand setState? (你真的理解 setState 吗？)](https://juejin.cn/post/6844903636749778958)
+- [Deep Dive into React setState Mechanism (深入 React 的 setState 机制)](https://segmentfault.com/a/1190000039077904)
+- [useLayoutEffect vs useEffect Differences (useLayoutEffect 和 useEffect 的区别)](https://zhuanlan.zhihu.com/p/348701319)
+- [Everything You Want to Know About Refs (你想知道的关于 Refs 的知识都在这了)](https://segmentfault.com/a/1190000020842342)
+- [10 Minutes to Understand React Hooks (10分钟了解 React 引入的 Hooks)](https://www.cnblogs.com/lalalagq/p/9898531.html)
