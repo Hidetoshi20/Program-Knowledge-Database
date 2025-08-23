@@ -23,9 +23,35 @@ Now (现在), function components can also be stateful components (函数组件�
 
 ### Most Common Hooks (最常见的 Hooks)
 
-- `useState`
-- `useEffect`  
-- Others (其他)
+| Hook | Purpose (用途) | Returns (返回值) | Common Use Cases (常见用例) |
+|---|---|---|---|
+| **`useState`** | Manage component state (管理组件状态) | `[state, setState]` | Form inputs, toggles (表单输入，切换) |
+| **`useEffect`** | Handle side effects (处理副作用) | Cleanup function (清理函数) | API calls, subscriptions (API 调用，订阅) |
+| **`useContext`** | Access context values (访问上下文值) | Context value (上下文值) | Theme, user data (主题，用户数据) |
+| **`useReducer`** | Complex state logic (复杂状态逻辑) | `[state, dispatch]` | State machines (状态机) |
+| **`useMemo`** | Memoize expensive calculations (缓存昂贵计算) | Memoized value (缓存值) | Performance optimization (性能优化) |
+| **`useCallback`** | Memoize callback functions (缓存回调函数) | Memoized function (缓存函数) | Prevent re-renders (防止重新渲染) |
+| **`useRef`** | Access DOM or store mutable values (访问 DOM 或存储可变值) | Ref object (引用对象) | DOM manipulation (DOM 操作) |
+
+```mermaid
+graph TD
+    A["React Hooks<br/>(React 钩子)"] --> B["State Management<br/>(状态管理)"]
+    A --> C["Side Effects<br/>(副作用)"]
+    A --> D["Performance<br/>(性能优化)"]
+    A --> E["Context & Refs<br/>(上下文和引用)"]
+    
+    B --> B1["useState"]
+    B --> B2["useReducer"]
+    
+    C --> C1["useEffect"]
+    C --> C2["useLayoutEffect"]
+    
+    D --> D1["useMemo"]
+    D --> D2["useCallback"]
+    
+    E --> E1["useContext"]
+    E --> E2["useRef"]
+```
 
 ## useState Hook
 
@@ -105,10 +131,29 @@ function componentDidMount() {
 }
 ```
 
-#### Summary (小结)
+#### setState Behavior Summary (setState 行为总结)
 
-- **In component lifecycle or React synthetic events (在组件生命周期或 React 合成事件中)**: `setState` is asynchronous (setState 是异步的)
-- **In setTimeout or native DOM events (在 setTimeout 或者原生 DOM 事件中)**: `setState` is synchronous (setState 是同步的)
+| Context (上下文) | Behavior (行为) | Batching (批处理) | Example (示例) |
+|---|---|---|---|
+| **React Lifecycle Methods (React 生命周期方法)** | Asynchronous (异步) | ✅ Yes (是) | `componentDidMount`, `componentDidUpdate` |
+| **React Synthetic Events (React 合成事件)** | Asynchronous (异步) | ✅ Yes (是) | `onClick`, `onChange` |
+| **setTimeout/setInterval** | Synchronous (同步) | ❌ No (否) | `setTimeout(() => setState(), 0)` |
+| **Native DOM Events (原生 DOM 事件)** | Synchronous (同步) | ❌ No (否) | `addEventListener('click', ...)` |
+| **Promise callbacks (Promise 回调)** | Synchronous (同步) | ❌ No (否) | `.then(() => setState())` |
+
+```mermaid
+flowchart TD
+    A["setState Call<br/>(setState 调用)"] --> B{"Context Check<br/>(上下文检查)"}
+    
+    B -->|"React Context<br/>(React 上下文)"| C["Asynchronous<br/>(异步)"]
+    B -->|"Non-React Context<br/>(非 React 上下文)"| D["Synchronous<br/>(同步)"]
+    
+    C --> C1["Batch Updates<br/>(批量更新)"]
+    C1 --> C2["Single Re-render<br/>(单次重新渲染)"]
+    
+    D --> D1["Immediate Update<br/>(立即更新)"]
+    D1 --> D2["Multiple Re-renders<br/>(多次重新渲染)"]
+```
 
 ### Batch Updates (批量更新)
 
@@ -172,7 +217,35 @@ onClick = () => {
 
 `useEffect` allows us to perform side effects (可以让我们进行一些带有副作用的操作) in function components (在函数组件中).
 
-`useEffect` is equivalent to the combination (相当于组合) of `componentDidMount`, `componentDidUpdate`, and `componentWillUnmount` lifecycle methods (这三个生命周期函数的组合).
+### useEffect vs Lifecycle Methods (useEffect 与生命周期方法对比)
+
+| Lifecycle Method (生命周期方法) | useEffect Equivalent (useEffect 等价) | Dependency Array (依赖数组) |
+|---|---|---|
+| `componentDidMount` | `useEffect(() => {}, [])` | Empty array (空数组) |
+| `componentDidUpdate` | `useEffect(() => {})` | No dependency array (无依赖数组) |
+| `componentWillUnmount` | `useEffect(() => { return () => {} }, [])` | Return cleanup function (返回清理函数) |
+| `componentDidMount` + `componentDidUpdate` | `useEffect(() => {}, [dependency])` | Specific dependencies (特定依赖) |
+
+```mermaid
+graph TD
+    A["useEffect Hook<br/>(useEffect 钩子)"] --> B["Dependency Array<br/>(依赖数组)"]
+    
+    B --> B1["[] (Empty)<br/>(空数组)"]
+    B --> B2["[deps] (With Dependencies)<br/>(有依赖)"]
+    B --> B3["No Array (Undefined)<br/>(无数组)"]
+    
+    B1 --> B1a["Runs Once<br/>(运行一次)"]
+    B1a --> B1b["componentDidMount"]
+    
+    B2 --> B2a["Runs When Dependencies Change<br/>(依赖变化时运行)"]
+    B2a --> B2b["Selective Updates<br/>(选择性更新)"]
+    
+    B3 --> B3a["Runs Every Render<br/>(每次渲染都运行)"]
+    B3a --> B3b["componentDidUpdate"]
+    
+    A --> C["Cleanup Function<br/>(清理函数)"]
+    C --> C1["componentWillUnmount"]
+```
 
 ### Basic Usage (基本用法)
 

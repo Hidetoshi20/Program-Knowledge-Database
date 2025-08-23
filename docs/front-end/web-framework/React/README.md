@@ -13,8 +13,7 @@ Consolidated into fewer files for better navigation (聚合为更少文件，便
 
 ## Ecosystem and Engineering (生态与工程)
 
-- [State and Communication (Context/Redux) (状态与通信（Context/Redux）)](./state-and-communication.md)
-- [Routing (React Router) (路由（React Router）)](./router.md)
+- [State Management, Communication and Routing (状态管理、通信与路由)](./state-and-communication.md) - Includes Context/Redux/Router (包含 Context/Redux/路由)
 - [Performance and Error Handling (with Animation) (性能与错误处理（含动画）)](./performance-and-error-handling.md)
 
 ## Others (其他)
