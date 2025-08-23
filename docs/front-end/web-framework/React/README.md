@@ -7,6 +7,10 @@
 - [基础：特性/虚拟 DOM/生命周期/事件](./basics.md)
 - [组件与 Hooks](./components-and-hooks.md)
 
+## 深入原理 (Deep Dive)
+
+- [内核深度解析：Fiber/渲染机制/并发模式](./internals-deep-dive.md)
+
 ## 生态与工程
 
 - [状态与通信（Context/Redux）](./state-and-communication.md)
