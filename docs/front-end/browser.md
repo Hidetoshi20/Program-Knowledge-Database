@@ -1,7 +1,7 @@
 # 浏览器工作原理与存储机制
 > 延伸阅读：
-> - [Web 性能优化](../performance/)
-> - [Web 网络与跨域](../networking/)
+> - [Web 性能优化](performance/README.md)
+> - [Web 网络与跨域](front-end-network.md)
 
 ## 目录
 

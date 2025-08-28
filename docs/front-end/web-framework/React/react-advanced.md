@@ -16,7 +16,7 @@ This comprehensive document covers advanced React concepts (本综合文档涵�
 
 ---
 
-## React Internal Architecture (React 内部架构)
+## React Internal Architecture (React 内部架构) {#react-internal-architecture-react-内部架构}
 
 ### React Rendering Pipeline (React 渲染管道)
 
@@ -43,7 +43,7 @@ graph TD
 
 ---
 
-## Fiber Architecture (Fiber 架构)
+## Fiber Architecture (Fiber 架构) {#fiber-architecture-fiber-架构}
 
 ### What is Fiber? (什么是 Fiber?)
 
@@ -315,7 +315,7 @@ graph TD
 
 ---
 
-## Error Handling and Boundaries (错误处理与边界)
+## Error Handling and Boundaries (错误处理与边界) {#error-handling-and-boundaries-错误处理与边界}
 
 ### Error Boundary Capabilities (错误边界能力)
 
@@ -394,7 +394,7 @@ class ErrorBoundary extends React.Component {
 
 ---
 
-## Animation and Transitions (动画与过渡)
+## Animation and Transitions (动画与过渡) {#animation-and-transitions-动画与过渡}
 
 ### Animation Libraries Comparison (动画库对比)
 

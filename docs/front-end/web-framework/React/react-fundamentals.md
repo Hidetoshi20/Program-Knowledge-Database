@@ -16,7 +16,7 @@ This comprehensive document covers all fundamental React concepts (本综合文�
 
 ---
 
-## React Features Overview (React 特性概览)
+## React Features Overview (React 特性概览) {#react-features-overview-react-特性概览}
 
 ### Core Features Table (核心特性表格)
 
@@ -361,7 +361,7 @@ graph LR
 
 ---
 
-## Event System (事件系统)
+## Event System (事件系统) {#event-system-事件系统}
 
 ### Event Architecture (事件架构)
 
