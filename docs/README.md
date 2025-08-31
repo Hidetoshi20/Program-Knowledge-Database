@@ -5,16 +5,19 @@ Welcome to my comprehensive programming knowledge database! This site contains m
 ## 📚 Knowledge Areas
 
 ### 🖥️ Program Language
+- Index: `./program-language/README.md`
 - **HTML** - Web markup language fundamentals
 - **CSS** - Styling and layout techniques  
 - **JavaScript** - Core language concepts and ES6+ features
 - **TypeScript** - Type-safe JavaScript development
 
 ### 🗄️ Database Systems
+- Index: `./database-systems/README.md`
 - **Database Concepts** - Core database principles
 - **Design & Implementation** - Database design patterns and best practices
 
 ### 🌐 Network
+- Index: `./network/README.md`
 - **Computer Networking** - Network protocols and architecture
 - **Network Layers** - Application, transport, and network layer concepts
 
@@ -23,6 +26,7 @@ Welcome to my comprehensive programming knowledge database! This site contains m
 - **Moving to Server Side** - Advanced Node.js concepts
 
 ### 🎨 Web Front End
+- Index: `./front-end/README.md`
 - **Browser** - Browser internals and APIs
 - **React** - Component-based UI development
 - **Vue** - Progressive JavaScript framework
@@ -38,8 +42,8 @@ Browse through the navigation menu to explore different topics. Each section con
 
 ## 📖 Resources
 
-- **Program Resources** - General programming resources
-- **Web Resources** - Web development specific resources
+- **Global Resources**: `./resources/README.md`
+- **Front-end Resources**: `./front-end/resources/README.md`
 
 ---
 
