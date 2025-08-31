@@ -1,0 +1,5 @@
+[mcp_servers.filesystem]
+command = "npx"
+args = ["-y", "@modelcontextprotocol/server-filesystem", "/Users/hidetoshidekisugi/Documents/hidetoshi-program-knowledge-database"]
+env = {}
+
