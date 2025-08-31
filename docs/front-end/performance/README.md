@@ -1,5 +1,5 @@
 # Web Performance
-> 相关阅读：[浏览器基础](../browser.md)
+> 相关阅读：[浏览器基础](../foundations/browser.md)
 
 1. 性能优化怎么做的（结合资源和代码压缩优化、图片/路由/组件懒加载或者分包、CDN、SSR，HTTP2、浏览器加载和渲染、动画体验等）
 2. CDN原理？CDN优化时如何判断该将哪些包分离
