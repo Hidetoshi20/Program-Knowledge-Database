@@ -32,7 +32,7 @@ graph TD
   - 相关网络分层：`docs/network/network-carrier/application-layer.md`
 - Web 安全：`docs/front-end/web-security/README.md`
 - Web 性能：`docs/front-end/performance/README.md`
-- 工程与构建（模块化/打包）：`docs/front-end/tooling/bundlers-and-modules.md`
+- 工程与构建（模块化/打包）：`docs/front-end/tooling/modules-and-bundling/README.md`
 - 框架与生态：
   - React：`docs/front-end/frameworks/react/README.md`
   - Vue：`docs/front-end/frameworks/vue/README.md`
@@ -60,7 +60,7 @@ graph LR
 - B：`foundations/network.md`（可对齐 `../network/network-carrier/application-layer.md`）
 - C：`web-security/README.md`，`performance/README.md`
 - D：`frameworks/react/*`，`frameworks/vue/*`
-- E：`tooling/bundlers-and-modules.md`，`tooling/testing/README.md`
+- E：`tooling/modules-and-bundling/README.md`，`tooling/testing/README.md`
 - F：`visualization/README.md`，`scenarios/auth-and-loading.md`
 
 ## 结构优化建议（可逐步落地）
@@ -126,7 +126,7 @@ docs/front-end/
 - Web 性能：`./performance/README.md`
 - React 全家桶：`./frameworks/react/README.md`
 - Vue 学习笔记：`./frameworks/vue/README.md`
-- 模块与打包：`./tooling/bundlers-and-modules.md`
+- 模块与打包：`./tooling/modules-and-bundling/README.md`
 - 测试工具：`./tooling/testing/README.md`
 - 可视化：`./visualization/README.md`
 - 业务场景：`./scenarios/auth-and-loading.md`，`./scenarios/page-navigation.md`，`./scenarios/input-change-listening.md`，`./scenarios/pull-to-refresh-and-infinite-scroll.md`，`./scenarios/qr-code-login.md`，`./scenarios/resource-preloading.md`，`./scenarios/internationalization-language-switching.md`，`./scenarios/data-display-optimization.md`
